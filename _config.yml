@@ -1,0 +1,122 @@
+# Hexo Configuration
+## Docs: http://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: twiceYuan
+subtitle: the singularity is near
+description: twiceYuan's Blog
+author: twiceYuan
+language: zh-Hans
+timezone:
+
+# 头像 Next 主题专用
+avatar: /about/Bitface.jpg
+
+# 社交链接，将在侧栏中显示
+social:
+  GitHub: http://github.com/twiceyuan
+  Twitter: http://twitter.com/twiceyuan
+  微博: http://weibo.com/chunwenzinicheng
+  知乎: http://www.zhihu.com/people/twiceyuan
+
+
+# Analytics
+baidu_analytics: 1560044f7350c95ffd183a737b08e65d
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://twiceyuan.com
+# enforce_ssl: twiceyuan.com   # without any protocol
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: true
+  tab_replace:
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+## 归档生成器（禁止分页）
+archive_generator:
+  yearly: true
+  monthly: true
+  per_page: 0
+
+## 目录生成器（禁止分页）
+category_generator:
+  yearly: true
+  monthly: true
+  per_page: 0
+
+## 标签生成器（禁止分页）
+tag_generator:
+  yearly: true
+  monthly: true
+  per_page: 0
+#  pagination_dir: page
+
+# Extensions
+## Plugins: http://hexo.io/plugins/
+## Themes: http://hexo.io/themes/
+theme: next
+
+# Comment
+disqus_shortname: twiceyuan
+# uyan_uid: 1955161
+
+# Deployment
+## Docs: http://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: git@git.coding.net:twiceyuan/twiceyuan.git
+  #repo: git@gitcafe.com:twiceyuan/twiceyuan.git
+  #repo: git@bitbucket.org:twiceYuan/twiceyuan.bitbucket.org.git
+  #branch: gitcafe-pages
+  branch: coding-pages
+
+# Backup
+backup:
+  type: git
+  theme: next,landscape
+  repository:
+    github: git@git.coding.net:twiceyuan/twiceyuan.git,backup
+

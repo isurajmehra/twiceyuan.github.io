@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow: /*说说这段时间*
+Disallow: /404/
+Disallow: /proxy.pac
