@@ -1,6 +1,6 @@
 title: 关于Adapter的一个异常
 date: 2015-11-22 22:50:55
-tags: 【Android】
+tags:  [Android]
 
 ---
 
