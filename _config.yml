@@ -26,8 +26,8 @@ baidu_analytics: 1560044f7350c95ffd183a737b08e65d
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://twiceyuan.com
-# enforce_ssl: twiceyuan.com   # without any protocol
+url: https://twiceyuan.com
+enforce_ssl: twiceyuan.com   # without any protocol
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:

@@ -33,7 +33,7 @@ icon_font: default
 # Code Highlight theme
 # Available value: normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night
 
 # Swiftype Search Key
 # swiftype_key: txCZpEG9e-s9Ez1X91yw
@@ -53,7 +53,6 @@ scheme: Mist
 sidebar: post
 #sidebar: always
 #sidebar: hide
-
 
 # Automatically scroll page to section which is under <!-- more --> mark.
 scroll_to_more: true
