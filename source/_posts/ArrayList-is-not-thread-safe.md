@@ -107,3 +107,11 @@ SafeArrayList [length=4]
 
 Java 中的 Vector 就是针对于多线程情况下做过处理的一个 List 实现。在上述代码实现中，只实现了三个方法的互斥，实际使用上需要考虑的则远不止这么多，因此需要真正做到线程安全的操作 List 建议使用 Vector。
 
+## ReentrantReadWriteLock 和 CopyOnWriteArrayList
+
+评论中成哥给了另外两种更好的方案。避免评论丢失也搬到这边来：
+
+>Vector 和使用 synchronize 都是非常强的独占锁，读写的效率并不高。其实有以下两个方法进行补充吧：
+>1. 使用 ReentrantReadWriteLock 读写锁，解除了读与读之间的互斥锁。
+>2. 使用 CopyOnWriteArrayList，以牺牲空间的代价来获取锁的消耗，即读的时候没有锁，写的时候，采用复制到新的内部数组来实现。
+
