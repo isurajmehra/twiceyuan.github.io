@@ -11,7 +11,7 @@ language: zh-Hans
 timezone:
 
 # 头像 Next 主题专用
-avatar: /about/Bitface.jpg
+avatar: https://s.gravatar.com/avatar/38576d83bd35b1a8b8df8642ebfa5b51?s=256
 
 # 社交链接，将在侧栏中显示
 social:
@@ -116,6 +116,6 @@ deploy:
 # Backup
 backup:
   type: git
-  theme: next,landscape
+  theme: next2,landscape
   repository:
     github: git@git.coding.net:twiceyuan/twiceyuan.git,backup

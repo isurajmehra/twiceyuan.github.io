@@ -114,10 +114,8 @@
 
 
 {# REDIRECT HTTPS #}
-{#
 <script type="text/javascript">
     var host = "{{ config.enforce_ssl }}";
     if ((host == window.location.host) && (window.location.protocol != "https:"))
         window.location.protocol = "https";
 </script>
-#}
