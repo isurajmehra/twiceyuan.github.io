@@ -106,12 +106,12 @@ disqus_shortname: twiceyuan
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: git@gitlab.com:twiceyuan/twiceyuan.gitlab.io.git
+  type: # git
+  # repo: git@gitlab.com:twiceyuan/twiceyuan.gitlab.io.git
   #repo: git@gitcafe.com:twiceyuan/twiceyuan.git
   #repo: git@bitbucket.org:twiceYuan/twiceyuan.bitbucket.org.git
   #branch: gitcafe-pages
-  branch: master
+  # branch: master
 
 # Backup
 backup:
