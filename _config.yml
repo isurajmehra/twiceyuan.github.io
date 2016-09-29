@@ -41,7 +41,6 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
-auto_detect: false
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -56,7 +55,7 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: true
+  auto_detect: false
   tab_replace:
 
 # Category & Tag
