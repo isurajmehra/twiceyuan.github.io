@@ -28,14 +28,22 @@ date: 1993-03-02 19:45:11
 
     #avatar-content {
         height: 160px;
-        margin: 16px;
+        margin: auto;
+        width: 100%;
         float: left;
     }
 
     #profile {
         float: left;
+        width: 100%;
         line-height: 25px;
-        margin: 25px
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        font-weight: 200;
+        text-align: center;
+        font-size: 18px;
     }
 
     .clear {
@@ -71,48 +79,39 @@ date: 1993-03-02 19:45:11
         background-image: url("https://v2ex.com/static/img/shadow_light.png");
         background-repeat: repeat-x;
     }
+
+    .sns-link {
+        color:#4981ce;
+        font-weight:700;
+        margin-left: 4px;
+        margin-right: 4px;
+    }
     </style>
 </head>
 <body>
     <div class="entry">
-        <div class="clear"><hr/></div>
         <div id="avatar-content">
             <img src="https://s.gravatar.com/avatar/38576d83bd35b1a8b8df8642ebfa5b51?s=256" class="nofancybox avatar" height="160px" width="160px" />
         </div>
-        <div id="profile" width="400px" style="">
-            名字： twiceYuan<br/>
-            生日： 1993/03<br/>
-            坐标： 江苏 南京<br/>
-            邮箱： dHdpY2V5dWFuQGdtYWlsLmNvbQo=<br/>
-            方向： Android<br/>
-            其它：
-            <a style="color:#4981ce;font-weight:700;" href="https://v2ex.com/member/twoyuan" style="color:black;" target="_blank">v2ex</a>
-            <a style="color:#4981ce;font-weight:700;" href="https://github.com/twiceyuan" style="color:black;" target="_blank">GitHub</a>
-            <a style="color:#4981ce;font-weight:700;" href="http://zhihu.com/people/twiceyuan" style="color:black;" target="_blank">知乎</a>
-            <br/>
+        <div id="profile">
+            twiceYuan<br/>
+            Android Developer
         </div>
-        <div class="clear"></div>
-
-        <h3>README</h3>
-        <p>软件工程本科毕业，12 年开始接触 Android，也水过 iOS、J2EE、Node.js，目前用两台 Android 手机和一台 Android 平板，主力机 rMBP，玩具 Chromebook 一台。对 Android 应用开发中常用的架构和轮子比较熟悉，经常关注 GitHub 上有趣的新项目。热衷于简化工作流程、尝试最佳实践。</p>
-
-        <h3>Belief</h3>
-        <p>
-        1. The singularity is near.<br/>
-        2. Stop talking, start doing.<br/>
-        </p>
-
-        <h3>喜欢</h3>
-        <p>女朋友，海贼王，蛙鱼（家乡的小吃），智力游戏或者玩具（比如魔方），IPN 下的几档播客</p>
-
-        <h3>讨厌</h3>
-        <p>IDE 提示的 Warning，国产套壳 Android，「接地气」，文艺，成功学，技术 QQ 群，无脑的重复，宽带太慢</p>
-
-        <div class="clear"><hr/></div>
         <br/>
-        <div style="margin: auto;width: 240px">
+        <div style="float: clear"></div>
+        <div style="width: 100%; float: left;" align="center">
+            - 其他社区 - <br>
+            <a class="sns-link" href="https://v2ex.com/member/twoyuan" style="color:black;" target="_blank">V2EX</a>
+            <a class="sns-link" href="https://github.com/twiceyuan" style="color:black;" target="_blank">GitHub</a>
+            <a class="sns-link" href="http://zhihu.com/people/twiceyuan" style="color:black;" target="_blank">知乎</a>
+            <br/>
+            <hr/>
+        </div>
+        <br/>
+        <div style="float: clear"></div>
+        <div style="width: 100%; float: left;">
         	<a href="/about/alipay.png" title="" class="fancybox" rel="article0">
-        	    <p style="font-size: 12px; color: #999">如果博客对你产(shi)生(fen)了(you)帮(qian)助，欢迎用钱砸我</p>
+        	    <p align="center" style="font-size: 12px; color: #999">- DONOTE ME -</p>
         	</a>
         </div>
     </div>
