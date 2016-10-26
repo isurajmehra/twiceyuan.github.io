@@ -6,10 +6,13 @@ NexT.utils = NexT.$u = {
    */
   wrapImageWithFancyBox: function () {
     $('.content img').not('.group-picture img').each(function () {
-
+      
       var $image = $(this);
       var imageTitle = $image.attr('title');
       var $imageWrapLink = $image.parent('a');
+
+      // 如果不想让图片显示 fancybox 效果，就是用 nofancybox 这个 class
+      if ($(this).hasClass('nofancybox')) return;
 
       if ($imageWrapLink.size() < 1) {
         $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
