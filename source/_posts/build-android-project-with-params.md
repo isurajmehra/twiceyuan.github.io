@@ -31,19 +31,19 @@ tags: [Android, jenkins]
    echo "构建类型 $build_type"
    chmod +x gradlew
    case $build_type in
-   	test)
-       	./gradlew clean assembleDebug
-       	;;
+       test)
+           ./gradlew clean assembleDebug
+           ;;
        test_fir)
            ./gradlew clean assembleDebug
            ./gradlew app:publishApkDebug
-       	;;
-   	release)
+           ;;
+       release)
            ./gradlew clean assembleRelease
-       	;;
-   	*)
-       	exit
-   	    ;;
+           ;;
+       *)
+           exit
+           ;;
    esac
    ```
 3. 删除构建完成后的 fir.im 上传。因为 fir.im 官方的插件也没有提供参数化构建的支持，所以这里改用官方提供的 gradle 构建插件，通过在 shell 中判断参数来决定是否调用上传脚本。
@@ -73,7 +73,8 @@ tags: [Android, jenkins]
 2. 在 module 级别 build.gradle 添加如下配置：
    ```gradle
    apply plugin:'im.fir.plugin.gradle'// 必填
-   fir{
+   
+   fir {
      //必填 上传 fir.im apk 字段，否则无法上传 APP 到 fir.im
      apiToken '替换为你的 fir.im API_TOKEN'
 
@@ -86,3 +87,34 @@ tags: [Android, jenkins]
 
 配置完成够，会发现 jenkins 项目视图下的「立即构建」编程为使用参数进行构建。点击后会让用户选择三种构建类型，这里选择 test_fir 就可以构建并且上传到 fir.im 了。其他两种类型则会构建后归档构建结果。定制其他类型的构建同理。
 
+### 额外的尝试
+
+使用 gradle 插件已经上传之后，定制化是方便了一些，但是相应的 changelog 这个参数不太好传入了，因为是在 gralde 配置中的固定字符串。因为需要在上传的时候标记这个包是线上环境还是测试环境，所以为了定制这个 changelog 又进行了以下尝试：
+
+1. 使用 gradle.properties。
+   
+   在 module 的 gradle 配置中，fir 的 changeLog 使用一个变量来表示：
+   ```gradle
+   changeLog "$change_log_string"
+   ```
+   之后在 jenkins 执行 gradlew 之前，通过追加的方式把这个变量添加到配置文件中：
+   ```bash
+   echo '\nchange_log_string=测试环境\n' >> gradle.properties
+   ```
+   之后发现一个比较头疼的问题：gradle.properties 中定义的配置中文会乱码，尝试修改了很多地方的配置，最后在本地测试也是同样乱码，通过搜索知道可能需要对 unicode 字符进行 encode 之后才行，觉得这样影响本身文本的可读性就放弃掉了
+   
+2. 动态追加 module 的 build.gradle。
+
+   这种方法相比相面的，虽然不怎么优雅，但是简单粗暴而且不会乱码。方法通常简单，在需要上传 fir 的任务执行之前用追加上 fir 的配置：
+   
+   ```bash
+   export FIR_TOKEN="这里放你的 token"
+   export CHANGE_LOG="测试还是线上环境"
+   echo '\n' >> app/build.gradle
+   echo 'fir {\n' >> app/build.gradle
+   echo "apiToken '$FIR_TOKEN'\n" >> app/build.gradle
+   echo "changeLog '$CHANGE_LOG'\n" >> app/build.gradle
+   echo '}\n' >> app/build.gradle
+   ```
+   
+   相应的，在项目的配置里就不需要配置 fir 的 dsl 了，否则也会造成错误
