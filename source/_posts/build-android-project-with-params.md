@@ -27,7 +27,7 @@ tags: [Android, jenkins]
 
 1. 勾选「General」中的「参数化构建」选项，添加参数，选择 Choice。然后在依次在 name，choices，description 中填写，参数名，可选的参数选项和该参数的说明。例如我这里添加的 name 为 build_type，choices 为 test, test_fir, release(每一行代表一种 build type)。
 2. 删除掉「构建」中的「Invoke Gradle Script」，因为需要针对参数进行处理所以自带的调用 gradle 脚本不能满足需求，这里选择「Execute Shell」类型添加，并在 Command 中填写：
-   ```shell
+   ```bash
    echo "构建类型 $build_type"
    chmod +x gradlew
    case $build_type in
@@ -53,7 +53,7 @@ tags: [Android, jenkins]
 项目中的配置主要是配置 fir.im 的 gradle 插件，可以参考官方的说明 http://blog.fir.im/gradle/ 。这里也简单描述一下步骤
 
 1. 项目级别 build.gradle 添加以下配置：
-   ```groovy
+   ```gradle
    buildscript {
      repositories {
        // ...
@@ -71,7 +71,7 @@ tags: [Android, jenkins]
    }
    ```
 2. 在 module 级别 build.gradle 添加如下配置：
-   ```groovy
+   ```gradle
    apply plugin:'im.fir.plugin.gradle'// 必填
    fir{
      //必填 上传 fir.im apk 字段，否则无法上传 APP 到 fir.im
