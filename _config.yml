@@ -101,7 +101,7 @@ theme: next2
 
 # Comment
 disqus_shortname: twiceyuan
-carnival: 608 # 也是一个评论系统，这是他们的唯一 ID
+duoshuo_shortname: twiceyuan
 # uyan_uid: 1955161
 
 # Deployment
