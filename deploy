@@ -1,3 +1,9 @@
+TEMP_PATH=$(pwd)
+
+cd ~/Blog
+
 git add -A
 git commit -m "update"
 git push origin master
+
+cd $TEMP_PATH
