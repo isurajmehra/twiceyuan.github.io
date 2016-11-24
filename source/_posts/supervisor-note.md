@@ -12,10 +12,12 @@ tags: [Linux]
 
 使用 python 实现的，所以使用 pip 或者系统默认的包管理工具都可以找得到，比如`pip install supervisor` 或者 `sudo apt-get install supervisor`。
 
-### 配置
+### 基本使用
 
 `supervisord -c /path/to/configure/file.conf` 可以直接根据配置文件来开启 supervisor，更方便的是使用 `supervisorctl` 。
 
 使用 supervisorctl 会进入一个 shell 的交互界面，可以输入命令来完成启动，重启，查看状态等工作。比如 help。
 
 哦对有 help，自己看 help 吧，本文介绍完毕。
+
+参考：http://liyangliang.me/posts/2015/06/using-supervisor/ 
