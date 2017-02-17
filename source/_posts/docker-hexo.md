@@ -7,45 +7,17 @@ tags: [Hexo, Docker]
 
 <!--more-->
 
-我这里用的是 pull 数量最多的 emitting/hexo。首先把镜像拉到本地：
+Dockerfile 已经上传到 DockerHub，直接在 .zshrc 中添加两个 alias 即可。
 
-    docker pull emitting/hexo
+    alias docker-hexo='docker run --rm \
+    -e USER_NAME=twiceYuan \
+    -e USER_EMAIL=twiceyuan@gmail.com \
+    -v "$PWD:/blog" \
+    -v "/Users/twiceYuan/.ssh:/root/.ssh" \
+    -p 4000:4000 twiceyuan/hexo-cli'
+    
+    alias hexo='docker-hexo hexo'
 
-这时运行 `docker run emmiting/hexo hexo version` 就可以看到输出：
+其中，替换掉 username 和 user email 两个变量，替换掉 .ssh 的路径就可以了。
 
-> hexo-cli: 1.0.2
-> os: Linux 4.9.4-moby linux x64
-> http_parser: 2.7.0
-> node: 7.5.0
-> v8: 5.4.500.48
-> uv: 1.10.2
-> zlib: 1.2.8
-> ares: 1.10.1-DEV
-> modules: 51
-> openssl: 1.0.2k
-> icu: 58.2
-> unicode: 9.0
-> cldr: 30.0.3
-> tz: 2016j
-
-之后需要做几件事情来保证能像本地命令一样使用 docker 中的 hexo：
-1. 映射 SSH key 所在的文件夹
-2. 映射当前目录为 docker 中的工作目录
-3. 映射需要暴露的端口 4000
-4. 设置 Git 的变量 user.email 和 user.name
-
-把这几步统一定义为一个 alias：
-
-    alias docker-hexo='docker run --rm -v "$PWD:/blog" -v "[用户目录]/.ssh:/root/.ssh" -p 4000:4000 emitting/hexo git config --global user.email "[你的邮箱]" && git config --global user.name "[你的用户名]" &&'
-
-例如：
-
-    alias docker-hexo='docker run --rm -v "$PWD:/blog" -v "/Users/twiceYuan/.ssh:/root/.ssh" -p 4000:4000 emitting/hexo     git config --global user.email "twiceyuan@gmail.com" && git config --global user.name "twiceYuan" &&'
-
-然后定义一个可以直接使用的命令：
-
-    alias hexod='docker-hexo hexo'
-
-之后如果需要安装 node 组件，可以使用 `docker-hexo npm install [...]`
-
-如果需要直接操作 hexo，就使用 hexod 操作，例如 `hexod server`。
+使用时和在本地时一样。
