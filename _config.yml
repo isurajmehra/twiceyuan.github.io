@@ -97,7 +97,8 @@ tag_generator:
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: next2
+theme: material-flow
+#theme: next2
 
 # Comment
 disqus_shortname: twiceyuan
