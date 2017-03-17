@@ -19,13 +19,16 @@ toc: false
     	font-size: 30px;
     }
 
-    .avatar {
-		margin-left: auto; 
+    #profile-avatar {
+		    margin-left: auto;
         margin-right: auto;
-		-webkit-border-radius: 81px;
+		 -webkit-border-radius: 81px;
         border-bottom: 1px solid #ccc;
         border-right: 1px solid #ccc;
         box-shadow: 0 -2px 4px #FFF;
+        max-width: inherit;
+        width: 160px;
+        height: 160px;
     }
 
     #avatar-content {
@@ -73,7 +76,7 @@ toc: false
         outline: none;
     }
 
-    a:link, a:visited, a:active {
+    div.entry a:link, div.entry a:visited, div.entry a:active {
         color: #778087;
         text-decoration: none;
         word-break: break-all;
@@ -97,7 +100,7 @@ toc: false
 <body>
     <div class="entry">
         <div id="avatar-content">
-            <img class="nofancybox avatar" src="https://s.gravatar.com/avatar/38576d83bd35b1a8b8df8642ebfa5b51?s=256" height="160px" width="160px" />
+            <img id="profile-avatar" class="nofancybox" src="https://s.gravatar.com/avatar/38576d83bd35b1a8b8df8642ebfa5b51?s=256" height="160px" width="160px" />
         </div>
         <div id="profile">
             twiceYuan<br/>
@@ -110,11 +113,11 @@ toc: false
         </div>
         <div class="clear"></div>
         <div style="width: 100%; float: left;" align="center">
-            
+
             <a class="sns-link" href="http://zhihu.com/people/twiceyuan" style="color:black;" target="_blank">知乎</a>
             <a class="sns-link" href="https://v2ex.com/member/twoyuan" style="color:black;" target="_blank">V2EX</a>
             <a class="sns-link" href="https://github.com/twiceyuan" style="color:black;" target="_blank">GitHub</a>
-            
+
             <br/>
             <hr/>
         </div>

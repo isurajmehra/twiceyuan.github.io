@@ -9,6 +9,9 @@ description: twiceYuan's Blog
 author: twiceYuan
 language: zh-Hans
 timezone: Asia/Shanghai
+keywords:
+  - twiceYuan
+  - Android
 
 # 头像 Next 主题专用
 avatar: https://s.gravatar.com/avatar/38576d83bd35b1a8b8df8642ebfa5b51?s=256
@@ -100,9 +103,65 @@ tag_generator:
 theme: material-flow
 #theme: next2
 
+# auto prefixer
+autoprefixer:
+  exclude:
+    - '*.min.css'
+  browsers:
+    - 'last 2 versions'
+
+# rss
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+
 # Comment
 disqus_shortname: twiceyuan
 # uyan_uid: 1955161
+
+# if your search is enable && search service is 'hexo'
+search:
+  path: search.xml
+  field: post
+
+# Generator json content
+jsonContent:
+  meta: false
+  keywords: false
+  pages:
+    title: true
+    slug: false
+    date: false
+    updated: false
+    comments: false
+    path: false
+    link: false
+    permalink: true
+    excerpt: false
+    keywords: false
+    text: true
+    raw: false
+    content: false
+  posts:
+    title: true
+    slug: false
+    date: false
+    updated: false
+    comments: false
+    path: false
+    link: false
+    permalink: true
+    excerpt: false
+    keywords: false
+    text: true
+    raw: false
+    content: false
+    categories: false
+    tags: false
+
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
