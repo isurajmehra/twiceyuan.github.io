@@ -5,11 +5,11 @@ tags: [Jenkins]
 ---
 Jenkins 每次构建都会根据 git 的提交记录生成一个 web 页面来显示自上次构建之后的提交记录列表。在配置 CI 工作流时，很多情况需要获取这个提交记录的 String 值，但是 Jenkins 并没有提供这个功能。
 
+<!--more-->
+
 Jenkins 官方反馈中有人也提出了这一需求：https://issues.jenkins-ci.org/browse/JENKINS-12032 。下面有人给出了一个插件来解决，插件地址：https://github.com/daniel-beck/changelog-environment-plugin ，不过作者没有编译上传到 jenkins 的插件中心，也没有文档说明怎么使用，这里简单介绍一下。
 
 首先项目拉到本地，在项目根目录执行 `mvn verify` 就可以编译生成我们需要的 hpi 插件文件了（编译需要很多依赖，第一次可能会比较漫长）。之后在 Jenkins 中管理插件的高级(Advanced)中，选择上传 hpi 文件，就可以安装成功了。你也可以直接下载我编译好的{% asset_link changelog-environment.hpi 点击下载 %}。
-
-<!--more-->
 
 安装成功以后，在项目配置的 Build Environment 环节，会多出一个选项：Add Changelog Information to Environment。下面有三个编辑框，分别是：Entry Format、File Item Format 和 Date Format。第一个就是填写提交日志输出格式的地方，采用的是 Java String.format 占位符的形式。其中可以使用四个参数，分别是：
 

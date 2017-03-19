@@ -3,12 +3,11 @@ date: 2016-06-07 16:06:46
 tags: [Android]
 ---
 
-一直对 Android 启动模式有点含糊，主要是使用率不高，一旦使用起来总是再去查一下，然后用完就忘了，今天仔细看了一下，貌似之前理解的确实不透彻，这里再简单总结一下。
+Android 中 Activity 启动模式决定了 Activity 启动时对 Activity 栈的行为，在推送打开、拦截登录等常见的业务逻辑下很实用。这里再简单总结一下。
 
 <!--more-->
 
 LaunchMode 是在 Manifest 文件中的 Activity 标签下定义的，属性名就是 launchMode，共有四个值：Standard、SingleTop、SingleTask 和 SingleInstance。其中 Standard 是默认的，即如果没有标注这个属性，这个 Activity 就是以 Standard 模式启动的。
-
 
 
 用点菜的比喻总结一下。activityClass 相当于菜单，task 栈相当于一张桌子，每张桌子只有一个盘子大小，因此要想放多个菜盘子是叠起来的。
@@ -45,19 +44,3 @@ SingleInstance 模式下，服务员会给你找个新桌子，这个桌子只�
 > SingleInstance。创建另外一个任务栈并且在这个栈中只放自己，不允许其他 Activity 进入。这个模式在任何情况下都不会重复创建 Activity。
 
  ![SingleInstance](SingleInstance.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

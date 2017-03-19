@@ -3,19 +3,19 @@ date: 2014-01-23 16:58:06
 tags: [Android]
 ---
 
-首先在 AndroidManifest.xml 文件中添加代码 
+首先在 AndroidManifest.xml 文件中添加代码
 
 `<uses-permission android:name="android.permission.READ_SMS"/>`
 
 然后在程序代码中添加
-    
+
 `private static final Uri SMS_ALL = Uri.parse("content://sms")`
 
 <!--more-->
 
 在需要访问的地方
-    
-`Cursor c = context.getContentResolver().query(SMS_ALL, null, null, null, null);`
+
+    Cursor c = context.getContentResolver().query(SMS_ALL, null, null, null, null);`
 
 cursor结构：
 

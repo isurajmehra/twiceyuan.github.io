@@ -1,8 +1,11 @@
 title: 搭建 jenkins 构建 Android 项目
-date: 2016-07-27 08:08:23
-tags: [Android, Jenkins, CI]
+tags:
+  - Android
+  - CI
+  - Jenkins
+categories: []
+date: 2016-07-27 08:08:00
 ---
-
 之前用过 Flow.ci、Travis 等公共的 CI 工具感觉很方便，但毕竟源码在别人那里多少有点别扭。Jenkins 是一个免费的高度可定制的 CI 开源项目，现在的公司使用它来构建 Android 项目，所以也来试一试，记录下搭建的过程以及遇到的问题，供自己和需要的人参考。
 
 <!--more-->
@@ -33,16 +36,18 @@ tags: [Android, Jenkins, CI]
 
 使用上面提到的方法进入 jenkins container 的 shell 中，下载 Google 官方的 Android SDK。因为 Docker 的系统层用了 ubuntu 所以选择 Linux 版的 SDK，使用 wget 下载。
 
-    # 下载
-    wget http://dl.google.com/android/android-sdk_[version name]-linux.tgz
-    # 解压
-    tar zxvf [下载后的文件]
-    # 删除压缩包
-    rm [下载后的文件]
-    # 运行非图形化界面，查看可下载的组件(和 UI 里查看并勾选的那个列表是相同的功能)
-    android list sdk --all
-    # 记下需要安装的组件编号(前面的数字)，执行下面的命令下载安装
-    android update sdk -u --all --filter <number>
+```bash
+# 下载
+wget http://dl.google.com/android/android-sdk_[version name]-linux.tgz
+# 解压
+tar zxvf [下载后的文件]
+# 删除压缩包
+rm [下载后的文件]
+# 运行非图形化界面，查看可下载的组件(和 UI 里查看并勾选的那个列表是相同的功能)
+android list sdk --all
+# 记下需要安装的组件编号(前面的数字)，执行下面的命令下载安装
+android update sdk -u --all --filter <number>
+```
 
 主要需要的组件包括 Platform Tools, Build Tools, Android Support 库，我这边查到的编号是 7、30 和 143。
 

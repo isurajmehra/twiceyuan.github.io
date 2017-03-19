@@ -1,4 +1,4 @@
-title: Hexo自动添加ReadMore标记
+title: Hexo 自动添加 Read More 标记
 date: 2014-05-25 15:40:23
 tags: hexo
 ---
@@ -6,8 +6,7 @@ hexo 在写作的时候，如果在文中添加`<!--more-->`则该标记之前�
 <!--more-->
 在 hexo 的 github 上看到有人说是跟主题有关，费死八难找到了代码的关键部分：文件`/themes/[主题名]/layout/_partial/article.ejs`其中有一段为：
 
-
-```
+```bash
     <div class="article-entry" itemprop="articleBody">
       <% if (post.excerpt && index) { %>
         <%- post.excerpt %>
@@ -17,7 +16,7 @@ hexo 在写作的时候，如果在文中添加`<!--more-->`则该标记之前�
           </p>
         <% } %>
       <% } else { %>
-      	  <%- post.content %>	
+      	  <%- post.content %>
       <% } %>
     </div>
 ```
@@ -28,8 +27,7 @@ hexo 在写作的时候，如果在文中添加`<!--more-->`则该标记之前�
 
 所以代码大概是这样：
 
-
-```
+```js
     var count = 0
     var content = post.content
     while(count < 4) {
@@ -43,10 +41,10 @@ hexo 在写作的时候，如果在文中添加`<!--more-->`则该标记之前�
       // 显示「Read More」按钮
     }
 ```
-    
+
 根据上述思路，修改后的代码为：
 
-```
+```bash
     <div class="article-entry" itemprop="articleBody">
       <% if (post.excerpt && index) { %>
         <%- post.excerpt %>
@@ -70,6 +68,5 @@ hexo 在写作的时候，如果在文中添加`<!--more-->`则该标记之前�
       <% } %>
     </div>
 ```
-    
+
 如果需要截取 N 个段落，则可以使用 replace 替换 content 里 N-1 次`\n`然后使用 indexOf 即可。但是发现如果所要截取的部分有一半处于代码片段的话，就会很惨不忍睹。所以建议使用这种方法自动截取摘要的话，尽量为自己博客有代码的文章手动截取摘要。
-    

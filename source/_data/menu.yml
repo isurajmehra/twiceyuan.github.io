@@ -1,9 +1,15 @@
-- name: Home
+- name: 主页
   slug: home
   url: /
-- name: Archives
+- name: Android
+  slug: Android
+  url: /tags/Android/
+- name: 归档
   slug: archives
   url: /archives
-- name: About
+- name: 链接
+  slug: links
+  url: /links
+- name: 关于
   slug: about
   url: /about
