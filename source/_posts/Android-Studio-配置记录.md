@@ -26,8 +26,8 @@ date: 2015-05-09 12:22:00
 -  成员变量按列对齐
 
    强迫症患者福音，自动格式化的时候对齐类中成员的关键字、类型和变量名，Android 中使用 Butterknife 生成 View 绑定代码时强烈使用，有效改善生成代码的可读性。
-   
-   `Settings` > `Code Style` > `Java` > `Wrapping and Baces` > `Field Groups` > `Align in columns`（勾上）
+
+   `Settings` > `Code Style` > `Java` > `Wrapping and Baces` > `Group declarations` > `Align fileds in columns`（勾上）
 
 -  Tips of the day
 
