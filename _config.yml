@@ -167,7 +167,7 @@ admin:
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
-deploy:
+# deploy:
   # type: git
   # repo: git@git.coding.net:twiceyuan/twiceyuan.git
   # branch: coding-pages
