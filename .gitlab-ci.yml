@@ -1,4 +1,4 @@
-image: node:4.2.2
+image: node:7.7.3
 pages:
   cache:
     paths:
