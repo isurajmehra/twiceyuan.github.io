@@ -167,10 +167,12 @@ admin:
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
-# deploy:
+deploy:
   # type: git
   # repo: git@git.coding.net:twiceyuan/twiceyuan.git
   # branch: coding-pages
+  # repo: git@rasp.xyz:twiceyuan/main-blog.git
+  # branch: master
   #repo: git@gitlab.com:twiceyuan/twiceyuan.gitlab.io.git
   #repo: git@gitcafe.com:twiceyuan/twiceyuan.git
   #repo: git@bitbucket.org:twiceYuan/twiceyuan.bitbucket.org.git
