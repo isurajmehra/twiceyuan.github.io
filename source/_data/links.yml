@@ -1,2 +1,4 @@
-- name: Rasp.xyz
+- name: rasp.xyz
   url:  https://rasp.xyz
+- name: wordpress
+  url:  https://rasp.xyz/wordpress/

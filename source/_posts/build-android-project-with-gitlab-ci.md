@@ -41,7 +41,7 @@ cache:
   script:
   - mkdir -p apk
   - rm -rf app/build/outputs/apk/
-  - ./gradlew sample:assembleRelease 
+  - ./gradlew sample:assembleRelease
   - cp sample/build/outputs/apk/*.apk apk/
   artifacts:
     paths:
@@ -50,7 +50,7 @@ cache:
 
 ### 使用定制的 docker 镜像进行构建
 
-定制的镜像下载通常所需的 SDK 组件，这样构建项目时就不需要临时下载了。这里我使用的是别人分享的一个 Dockerfile，项目地址是：https://github.com/jangrewe/gitlab-ci-android。作者把需要下载的依赖包放到一个 txt 文件中，你可以根据需要修改经常使用的 SDK 以及依赖版本编译自己的 image。这里和 jenkins 中使用有所不同，一旦你需要升级 SDK 版本或者依赖版本，就要重新编译一个新的镜像。
+定制的镜像下载通常所需的 SDK 组件，这样构建项目时就不需要临时下载了。这里我使用的是别人分享的一个 Dockerfile，项目地址是：https://github.com/jangrewe/gitlab-ci-android 。作者把需要下载的依赖包放到一个 txt 文件中，你可以根据需要修改经常使用的 SDK 以及依赖版本编译自己的 image。这里和 jenkins 中使用有所不同，一旦你需要升级 SDK 版本或者依赖版本，就要重新编译一个新的镜像。
 
 ### 修改镜像拉取策略
 
