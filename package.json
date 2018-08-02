@@ -25,6 +25,7 @@
     "hexo-renderer-less": "^0.2.0",
     "hexo-renderer-marked": "^0.2.5",
     "hexo-renderer-stylus": "^0.2.3",
-    "hexo-server": "^0.2.0"
+    "hexo-server": "^0.2.0",
+    "highlight.js": "^9.12.0"
   }
 }
