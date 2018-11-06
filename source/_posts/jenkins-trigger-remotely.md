@@ -11,4 +11,3 @@ tags: [jenkins]
 1. 首先获取 Jenkins 用户的 Application ID 和 token。使用一个有效账户登录 Jenkins，然后在左侧边栏中进入 People，选择自己的账户，再点击右侧 Configure，在右部面板找到 API Token 这一栏，点击 Show API Token 即可查看当前用户的 Application ID 和 Token，同时也可以在这里重置 Token。
 2. 获取请求地址，在 Job 的 configure 界面，勾选 Build Triggers 下的 Trigger builds remotely，token 自己填写一个，然后得到地址 `JENKINS_URL`/job/`JOB_NAME`/build?token=`TOKEN_NAME` 或者 /buildWithParameters?token=`TOKEN_NAME`
 3. 在需要继承系统的 WebHook 中填写该 URL，在 host 前面加上 [Application ID]:[Token]@，比如 https://myid:mytoken@myjenkins.com/job/myJobName/build?token=my_job_token 。
-

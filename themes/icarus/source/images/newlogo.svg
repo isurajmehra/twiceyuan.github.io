@@ -1,0 +1,15 @@
+
+<svg width="1036px" height="256px" viewBox="0 0 1036 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2">
+            <g id="logo">
+                <polygon id="Path" fill="#2366D1" points="110.851252 128 221.702503 192 110.851252 256 0 192"></polygon>
+                <polygon id="Path" fill="#609DFF" points="110.851252 64 221.702503 128 110.851252 192 0 128"></polygon>
+                <polygon id="Path" fill="#A4C7FF" points="110.851252 0 221.702503 64 110.851252 128 0 64"></polygon>
+            </g>
+            <text id="twiceYuan" font-family="ShreeDev0714, Shree Devanagari 714" font-size="169" font-weight="normal" fill="#000000">
+                <tspan x="280" y="173">twiceYuan</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

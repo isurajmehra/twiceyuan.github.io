@@ -1,6 +1,8 @@
 title: Android 启动模式（LaunchMode）
 date: 2016-06-07 16:06:46
 tags: [Android]
+toc: true
+
 ---
 
 Android 中 Activity 启动模式决定了 Activity 启动时对 Activity 栈的行为，在推送打开、拦截登录等常见的业务逻辑下很实用。这里再简单总结一下。
