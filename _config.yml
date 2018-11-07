@@ -187,6 +187,5 @@ deploy:
 # Backup
 backup:
   type: git
-  theme: icarus
   repository:
     github: git@github.com:twiceyuan/twiceyuan.github.io.git,backup
