@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://twiceyuan.com/"/>
-  <updated>2018-11-07T02:13:35.125Z</updated>
+  <updated>2018-12-11T09:28:59.613Z</updated>
   <id>https://twiceyuan.com/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>macOS 文件系统的大小写敏感转换</title>
+    <link href="https://twiceyuan.com/2018/12/11/MacCaseSensitiveConversion/"/>
+    <id>https://twiceyuan.com/2018/12/11/MacCaseSensitiveConversion/</id>
+    <published>2018-12-11T09:03:54.000Z</published>
+    <updated>2018-12-11T09:28:59.613Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍如何通过命令转换一个大小写敏感的 macOS 文件系统到非敏感。&lt;/p&gt;
+&lt;p&gt;感谢 &lt;a href=&quot;https://github.com/cr/MacCaseSensitiveConversion&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/cr/MacCaseSensitiveConversion&lt;/a&gt; 提供的宝贵经验，本文主要复述原作者提供的方法。&lt;/p&gt;
+&lt;p&gt;前不久因为硬盘事故重装了系统，无意重装时无意选择了 Case Sensitive(大小写敏感) 的 APFS 进行格式化。直到昨天安装 Steam 时发现安装后运行不了，查了一下原来是因为之前选择文件系统大小写敏感的原因，然后搜索到了 GitHub 上前文提到的 repo，了解到还有一系列应用比如 Creative Cloud 不能运行，索性晚上按照其提供的方法转换了文件系统格式。总体步骤如下：&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="macOS" scheme="https://twiceyuan.com/tags/macOS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Travis 上接受 SDK License</title>
     <link href="https://twiceyuan.com/2018/11/07/travis-accept-licenses/"/>
     <id>https://twiceyuan.com/2018/11/07/travis-accept-licenses/</id>
     <published>2018-11-07T02:02:28.000Z</published>
-    <updated>2018-11-07T02:13:35.125Z</updated>
+    <updated>2018-11-07T02:13:35.000Z</updated>
     
     <summary type="html">
     
@@ -41,7 +61,7 @@
     <link href="https://twiceyuan.com/2018/08/01/generate-app-versison-by-git-tag/"/>
     <id>https://twiceyuan.com/2018/08/01/generate-app-versison-by-git-tag/</id>
     <published>2018-08-01T09:43:20.000Z</published>
-    <updated>2018-09-02T16:03:51.684Z</updated>
+    <updated>2018-09-02T16:03:51.000Z</updated>
     
     <summary type="html">
     
@@ -139,7 +159,7 @@
     <link href="https://twiceyuan.com/2017/07/10/build-android-project-with-gitlab-ci/"/>
     <id>https://twiceyuan.com/2017/07/10/build-android-project-with-gitlab-ci/</id>
     <published>2017-07-10T03:17:48.000Z</published>
-    <updated>2018-09-02T16:03:51.681Z</updated>
+    <updated>2018-09-02T16:03:51.000Z</updated>
     
     <summary type="html">
     
@@ -165,7 +185,7 @@
     <link href="https://twiceyuan.com/2017/06/15/install-nginx-by-source/"/>
     <id>https://twiceyuan.com/2017/06/15/install-nginx-by-source/</id>
     <published>2017-06-15T07:23:51.000Z</published>
-    <updated>2018-09-02T16:03:51.685Z</updated>
+    <updated>2018-09-02T16:03:51.000Z</updated>
     
     <summary type="html">
     
@@ -183,7 +203,7 @@
     <link href="https://twiceyuan.com/2017/04/07/instantiating-an-abstract-class-in-java/"/>
     <id>https://twiceyuan.com/2017/04/07/instantiating-an-abstract-class-in-java/</id>
     <published>2017-04-07T11:39:24.000Z</published>
-    <updated>2018-09-02T16:03:51.686Z</updated>
+    <updated>2018-09-02T16:03:51.000Z</updated>
     
     <summary type="html">
     
@@ -203,7 +223,7 @@
     <link href="https://twiceyuan.com/2017/03/24/jitpack-publish-project-include-annotation-processor/"/>
     <id>https://twiceyuan.com/2017/03/24/jitpack-publish-project-include-annotation-processor/</id>
     <published>2017-03-24T08:14:24.000Z</published>
-    <updated>2018-09-02T16:03:51.690Z</updated>
+    <updated>2018-09-02T16:03:51.000Z</updated>
     
     <summary type="html">
     
@@ -221,7 +241,7 @@
     <link href="https://twiceyuan.com/2017/03/22/android-version-statistics/"/>
     <id>https://twiceyuan.com/2017/03/22/android-version-statistics/</id>
     <published>2017-03-22T15:26:47.000Z</published>
-    <updated>2018-09-02T16:03:51.680Z</updated>
+    <updated>2018-09-02T16:03:51.000Z</updated>
     
     <summary type="html">
     
@@ -243,7 +263,7 @@
     <link href="https://twiceyuan.com/2017/03/21/annotation-processor-debug-in-intellij/"/>
     <id>https://twiceyuan.com/2017/03/21/annotation-processor-debug-in-intellij/</id>
     <published>2017-03-21T05:33:48.000Z</published>
-    <updated>2018-09-02T16:03:51.681Z</updated>
+    <updated>2018-12-11T08:47:34.172Z</updated>
     
     <summary type="html">
     
@@ -263,7 +283,7 @@
     <link href="https://twiceyuan.com/2017/02/21/jenkins-changelog/"/>
     <id>https://twiceyuan.com/2017/02/21/jenkins-changelog/</id>
     <published>2017-02-20T20:32:29.000Z</published>
-    <updated>2018-09-02T16:03:51.689Z</updated>
+    <updated>2018-09-02T16:03:51.000Z</updated>
     
     <summary type="html">
     
@@ -302,7 +322,7 @@
     <link href="https://twiceyuan.com/2017/01/12/colordrawable-bug/"/>
     <id>https://twiceyuan.com/2017/01/12/colordrawable-bug/</id>
     <published>2017-01-12T15:35:13.000Z</published>
-    <updated>2018-09-02T16:03:51.682Z</updated>
+    <updated>2018-09-02T16:03:51.000Z</updated>
     
     <summary type="html">
     
@@ -365,7 +385,7 @@
     <link href="https://twiceyuan.com/2016/11/11/retrofit-dynamic-proxy/"/>
     <id>https://twiceyuan.com/2016/11/11/retrofit-dynamic-proxy/</id>
     <published>2016-11-11T13:25:55.000Z</published>
-    <updated>2018-09-02T16:03:51.692Z</updated>
+    <updated>2018-09-02T16:03:51.000Z</updated>
     
     <summary type="html">
     
@@ -403,28 +423,6 @@
       <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
     
       <category term="Jenkins" scheme="https://twiceyuan.com/tags/Jenkins/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 nexus 搭建 maven 私有仓库和 gradle maven 插件的配置</title>
-    <link href="https://twiceyuan.com/2016/10/29/setup-private-maven-repo-for-gradle-project/"/>
-    <id>https://twiceyuan.com/2016/10/29/setup-private-maven-repo-for-gradle-project/</id>
-    <published>2016-10-29T03:50:51.000Z</published>
-    <updated>2018-12-11T08:55:02.338Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;现在在 Android 开发特别是 Android Studio 普及依赖之后，gradle 是日常需要使用的必不可少的工具之一，使用 gradle 构建 Android 项目时一个重要的功能就是管理项目的依赖。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
-    
-      <category term="Maven" scheme="https://twiceyuan.com/tags/Maven/"/>
-    
-      <category term="Gradle" scheme="https://twiceyuan.com/tags/Gradle/"/>
     
   </entry>
   
