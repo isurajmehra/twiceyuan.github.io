@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8">
+<title>十年学会编程(作者：Peter Norvig) - twiceYuan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="为何人人都这么着急？ 信步走进任何一家书店，你会看到名为《如何在7天内学会Java》的书，还有各种各样类似的书：在几天内或几小时内学会Visual Basic, Windows, Internet等等，一眼望不到尽头。我在Amazon 上做了如下的 强力检索 ：pubdate: after 1992 and title: days and (title: learn or title: teach">
+<meta name="keywords" content="编程随想,Repost">
+<meta property="og:type" content="article">
+<meta property="og:title" content="十年学会编程(作者：Peter Norvig)">
+<meta property="og:url" content="https://twiceyuan.com/2013/09/17/十年学会编程/index.html">
+<meta property="og:site_name" content="twiceYuan">
+<meta property="og:description" content="为何人人都这么着急？ 信步走进任何一家书店，你会看到名为《如何在7天内学会Java》的书，还有各种各样类似的书：在几天内或几小时内学会Visual Basic, Windows, Internet等等，一眼望不到尽头。我在Amazon 上做了如下的 强力检索 ：pubdate: after 1992 and title: days and (title: learn or title: teach">
+<meta property="og:locale" content="en-US">
+<meta property="og:updated_time" content="2018-12-11T08:57:17.375Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="十年学会编程(作者：Peter Norvig)">
+<meta name="twitter:description" content="为何人人都这么着急？ 信步走进任何一家书店，你会看到名为《如何在7天内学会Java》的书，还有各种各样类似的书：在几天内或几小时内学会Visual Basic, Windows, Internet等等，一眼望不到尽头。我在Amazon 上做了如下的 强力检索 ：pubdate: after 1992 and title: days and (title: learn or title: teach">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+
+    
+    
+    
+    <style>body>.navbar,body>.section,body>.footer{opacity: 0}</style>
+    
+
+    
+    
+    
+    
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?1560044f7350c95ffd183a737b08e65d";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<style>
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #3273dc;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+</style>
+
+    
+
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                twiceYuan
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2013-09-17T15:57:31.000Z">2013-09-17</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    16 minutes read (About 2367 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                十年学会编程(作者：Peter Norvig)
+            
+        </h1>
+        <div class="content">
+            <p>为何人人都这么着急？</p>
+<p>信步走进任何一家书店，你会看到名为《如何在7天内学会Java》的书，还有各种各样类似的书：在几天内或几小时内学会Visual Basic, Windows, Internet等等，一眼望不到尽头。我在Amazon 上做了如下的 强力检索 ：pubdate: after 1992 and title: days and (title: learn or title: teach yourself) 得到了248个结果。前78个都是计算机类书籍（第79个是 Learn Bengali in 30 days）。我用”hours”替换”days”，得到了类似的结果：更多的253书。前77本是计算机类书籍，第78本是 Teach Yourself Grammar and Style in 24 Hours。在前200本书中，有96% 是计算机类书籍。<br><a id="more"></a><br>结论是：要么人们都在急急忙忙地学习计算机，要么计算机比其它任何东西都容易学。没有书籍教你在几天内学会古典音乐、量子物理，或者是养狗。 </p>
+<p>让我们分析一下，象一本名为《三天内学会Pascal》的书意味着什么： </p>
+<p>学习： 在三天里，你没有时间写一些重大的程序，并从成功或失败中得益。你没有时间与有经验的程序员合作，并理解在那样的环境下工作是怎么回事。一句话，你不会有时间学到太多东西。因此他们只能谈论一些肤浅的东西，而不是深入的理解。正如亚力山大教皇所说，浅尝辄止是危险的事情。 </p>
+<p>Pascal： 在三天时间里，你可能学会Pascal的语法（如果你已经学过类似的语言），但你学不到更多的如何使用这些语法的知识。也就是说，假如你曾是个BASIC程序员，你可以学着用Pascal语法写出BASIC风格的程序，但你不可能了解Pascal真正的好处（和坏处）。那么关键是什么？ Alan Perlis 说过：“一种不改变你编程的思维方式的语言，不值得去学。” 一种可能的情况是：你必须学一点儿Pascal（或可能性更大的象Visual Basic 或 JavaScript之类），因为你为了完成某种特定的任务，需要与一个现存的工具建立接口。不过那不是学习如何编程，而是在学习如何完成那个任务。</p>
+<p>三天内： 很不幸，这不够，原因由下一节告诉我们。 </p>
+<p>在十年里学会编程</p>
+<p>研究表明 (Hayes，Bloom)在任何一种领域内，象下棋、作曲、绘画、钢琴演奏、游泳、网球、以及原子物理学和拓扑学，等等，要达到专家水平大约都要化十年时间。没有真正的捷径：即使是莫扎特，4岁时就是音乐神童，13年后才开始写出世界级的作品。在另一方面，披头士似乎在1964年的Ed Sullivan表演上一炮走红。但他们从1957年就开始表演，在获得大众青睐后，他们的第一个重大成功，Sgt. Peppers，是1967年发行的。Samuel Johnson （塞缪尔·约翰逊，英国辞典编纂家及作家）认为要花比十年更长的时间：“在任何领域中出类拔萃都要用毕生的劳作来取得；它不可能用较低的代价获得。” 而Chaucer（乔叟，英国诗人）感叹到：“人生短暂，学海无涯。” </p>
+<p>这是我为编程成功开出的方子： </p>
+<p>设法对编程感兴趣，并且因为它有趣而编一些程序。确保编程一直充满足够乐趣，这样你才愿意投入十年宝贵时间。</p>
+<p>与其他程序员交流； 阅读其它程序。这比任何书本或训练课程都重要。</p>
+<p>写程序。 最好的学习方式是 从实践中学习。 用更技术性的话说，“在一个给定的领域内，个人的最大能力不是自动地由扩展了的经验取得的，但即使是高度有经验的人也可以通过有意识的努力来提高自己的能力” (p. 366) 和 “最有效的学习需要因人而异的适当难度，目标明确的任务，丰富的信息反馈，以及重复的机会和错误修正。” (p. 20-21) 此书 Cognition in Practice: Mind，Mathematics，and Culture in Everyday Life 是阐明此观点的令人感兴趣的参考文献。</p>
+<p>如果愿意，在大学里呆上4年或更长（在研究生院里）。你会接触到一些需要学历证明的工作，你会对此领域有更深的理解。如果你不喜欢学校，你可以（通过一些贡献）在工作中获得相似的经验。在任何情况下，光啃书本是不够的。Eric Raymond，The New Hacker’s Dictionary一书的作者，说过，“计算机科学不能把任何人变成编程专家，就象光研究刷子和颜料不会使人变成画家一样。” 我雇佣过的最好的程序员之一仅有高中程度；他做出了许多优秀的 软件，有他自己的新闻组，而且通过股票期权，他无疑比我富有的多。</p>
+<p>和其他程序员一起做项目。在其中的一些项目中作为最好的程序员； 而在另一些项目中是最差的。当你是最好的，你能测试领导项目的能力，用你的观点激发别人。当你是最差的，你学习杰出者是怎么做的，了解他们不喜欢做什么（因为他们吩咐你做事）。</p>
+<p>在其他程序员 之后接手项目。使自己理解别人写的程序。当程序的原作者不在的时候，研究什么需要理解并且修改它。思考如何设计你的程序以便后来者的维护。</p>
+<p>学习至少半打的编程语言。包括一种支持类抽象的语言（象Java 或C++），一种支持函数化抽象的语言（象Lisp或ML），一种支持语法抽象的语言（象 Lisp），一种支持声明规格说明的语言（象Prolog或C++ 的模板），一种支持共行程序（coroutine）的语言（象Icon或Scheme），一种支持并行的语言（象Sisal）。</p>
+<p>请记住“计算机科学”中有“计算机”一词。了解你的计算机要花多长时间执行一条指令，从内存中取一个字（有cache），从磁盘中读取连续的字，和在磁盘中找到新的位置。（答案） </p>
+<p>参与一种语言标准化的工作。它可以是ANSI C++委员会，也可以是决定你周围小范围内的编程风格是应该两个还是四个空格缩进。通过任何一种方式，你了解到其他人在某种语言中的想法，他们的理解深度，甚至一些他们这样想的原因。</p>
+<p>找到适当的理由尽快地从语言标准化的努力中脱身。<br>明白了这些，仅从书本中你能得到多少就成了一个问题。在我第一个孩子出生前，我读了所有的（关于育儿的）How to 书籍，仍然感觉是个手足无措的新手。30个月以后，我的第二个孩子快要出生了，我回头温习这些书了吗？ 没有。相反，我依靠我的个人经验，它比专家写的数千页书更有用和可靠。 </p>
+<p>Fred Brooks在他的随笔 《没有银弹》 中定出了一个寻找优秀软件设计者的三步计划： </p>
+<p>尽可能早地，有系统地识别顶级的设计人员。</p>
+<p>为设计人员指派一位职业导师，负责他们技术方面的成长，仔细地为他们规划职业生涯。</p>
+<p>为成长中的设计人员提供相互交流和学习的机会。</p>
+<p>此计划假设某些人已经具备了杰出设计者的必要才能； 要做的只是如何恰当地诱导他们。 Alan Perlis 说得更简明扼要：“每个人都能被教会雕刻：对米开朗其罗而言，反倒是告诉他哪些事不要做。同样的道理也适用于优秀的程序员。” </p>
+<p>所以尽管买那本Java的书吧。你可能会从中学到点儿东西。但作为一个程序员，你不会在几天内或24小时内，哪怕是几个月内改变你的人生，或你实际的水平。 </p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Repost/">Repost</a>, <a class="has-link-grey -link" href="/tags/编程随想/">编程随想</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2013/09/27/在Mac中离线升级AndroidStudio/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">在 Mac中离线升级 Android Studio</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2013/09/16/OSX下使用dd工具制作Linux启动盘/">
+                <span class="level-item">OS X 下实用 dd 工具制作 Linux 的启动盘</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://twiceyuan.com/2013/09/17/十年学会编程/';
+        this.page.identifier = '2013/09/17/十年学会编程/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'twiceyuan' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="https://s.gravatar.com/avatar/38576d83bd35b1a8b8df8642ebfa5b51?s=256">
+                    
+                    <p class="is-size-4 is-block">
+                        twiceYuan
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        // TODO
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Entradas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        108
+                    </p>
+                </div>
+            </div>
+            <!-- <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categorias
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div> -->
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiquetas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        52
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/twiceyuan">
+                SEGUIR</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="http://github.com/twiceyuan">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Telegram" href="https://t.me/twiceyuan">
+                
+                <i class="fab fa-telegram"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="http://twitter.com/twiceYuan">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+
+    
+        
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nube de etiquetas
+        </h3>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 18.75px;">Android Studio</a> <a href="/tags/CI/" style="font-size: 13.75px;">CI</a> <a href="/tags/Chrome/" style="font-size: 11.25px;">Chrome</a> <a href="/tags/Dagger-2/" style="font-size: 10px;">Dagger 2</a> <a href="/tags/DevOps/" style="font-size: 10px;">DevOps</a> <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 11.25px;">Git</a> <a href="/tags/GitLab/" style="font-size: 10px;">GitLab</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Hexo/" style="font-size: 17.5px;">Hexo</a> <a href="/tags/Java/" style="font-size: 13.75px;">Java</a> <a href="/tags/Java-EE/" style="font-size: 10px;">Java EE</a> <a href="/tags/Jenkins/" style="font-size: 13.75px;">Jenkins</a> <a href="/tags/Kotlin/" style="font-size: 12.5px;">Kotlin</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MIUI/" style="font-size: 10px;">MIUI</a> <a href="/tags/Mac/" style="font-size: 16.25px;">Mac</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mavericks/" style="font-size: 10px;">Mavericks</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Oracle/" style="font-size: 12.5px;">Oracle</a> <a href="/tags/Repost/" style="font-size: 11.25px;">Repost</a> <a href="/tags/RxAndroid/" style="font-size: 11.25px;">RxAndroid</a> <a href="/tags/RxJava/" style="font-size: 11.25px;">RxJava</a> <a href="/tags/SSH框架/" style="font-size: 10px;">SSH框架</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/hexo/" style="font-size: 11.25px;">hexo</a> <a href="/tags/iTunes/" style="font-size: 10px;">iTunes</a> <a href="/tags/macOS/" style="font-size: 18.75px;">macOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/tips/" style="font-size: 15px;">tips</a> <a href="/tags/业界新闻/" style="font-size: 10px;">业界新闻</a> <a href="/tags/利器/" style="font-size: 10px;">利器</a> <a href="/tags/博客搭建/" style="font-size: 11.25px;">博客搭建</a> <a href="/tags/复习/" style="font-size: 10px;">复习</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 11.25px;">数据库</a> <a href="/tags/生活技能/" style="font-size: 10px;">生活技能</a> <a href="/tags/知乎/" style="font-size: 12.5px;">知乎</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/编程随想/" style="font-size: 10px;">编程随想</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/自学/" style="font-size: 10px;">自学</a> <a href="/tags/评测/" style="font-size: 10px;">评测</a> <a href="/tags/课堂笔记/" style="font-size: 16.25px;">课堂笔记</a> <a href="/tags/软件工程/" style="font-size: 10px;">软件工程</a> <a href="/tags/软件测试/" style="font-size: 10px;">软件测试</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-07T02:02:28.000Z">2018-11-07</time></div>
+                    <a href="/2018/11/07/travis-accept-licenses/" class="has-link-black-ter is-size-6">Travis 上接受 SDK License</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-01T09:43:20.000Z">2018-08-01</time></div>
+                    <a href="/2018/08/01/generate-app-versison-by-git-tag/" class="has-link-black-ter is-size-6">使用 Git 的 tag 管理 App 版本</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-01T07:58:07.000Z">2018-08-01</time></div>
+                    <a href="/2018/08/01/jenkins-trigger-remotely/" class="has-link-black-ter is-size-6">开启用户鉴权时 Jenkins 触发远程构建时的 403 问题</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-12T06:45:40.000Z">2017-12-12</time></div>
+                    <a href="/2017/12/12/kotlin-generic-type/" class="has-link-black-ter is-size-6">Kotlin 的泛型系统</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-10T15:50:54.000Z">2017-12-10</time></div>
+                    <a href="/2017/12/10/rewrite-retropreference-by-kotlin/" class="has-link-black-ter is-size-6">Kotlin 中的属性委托：ValueKit 的实现介绍</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    twiceYuan
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2018 twiceYuan&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en-US");</script>
+
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                if (typeof($.fn.lightGallery) === 'function') {
+                    $('.article').lightGallery({ selector: '.gallery-item' });
+                }
+                if (typeof($.fn.justifiedGallery) === 'function') {
+                    $('.justified-gallery').justifiedGallery();
+                }
+            });
+        })(jQuery);
+    </script>
+    
+
+    
+    
+    
+    <div id="outdated">
+        <h6>Your browser is out-of-date!</h6>
+        <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+        <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // plugin function, place inside DOM ready function
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'flex'
+            })
+        });
+    </script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/animejs@2.2.0/anime.js"></script>
+    <script>
+    function isIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        var trident = ua.indexOf('Trident/');
+        return (msie > 0 || trident > 0);
+    }
+
+    $(document).ready(function () {
+        $('body>.navbar,body>.section,body>.footer').css('opacity', 1);
+        if (!isIE()) {
+            ['.column-main > .card',
+             '.column-left > .card',
+             '.column-right > .card'].map(function(target) {
+                anime({
+                    targets: target,
+                    scale: [0.8, 1],
+                    opacity: [0, 1],
+                    duration: 300,
+                    easing: 'easeOutSine',
+                    delay: function(el, i, l) {
+                        return i * 100;
+                    }
+                })
+            });
+
+            anime({
+                targets: '.navbar-main',
+                translateY: [-100, 0],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutSine'
+            });
+        }
+    });
+    </script>
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<style>
+#back-to-top {
+    position: fixed;
+    padding: 8px 0;
+    transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform, 0.4s ease border-radius;
+    opacity: 0;
+    line-height: 24px;
+    outline: none;
+    transform: translateY(120px);
+}
+#back-to-top.fade-in {
+    opacity: 1;
+}
+#back-to-top.rise-up {
+    transform: translateY(0);
+}
+</style>
+<script src="/js/back-to-top.js"></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

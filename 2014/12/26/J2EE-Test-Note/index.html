@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8">
+<title>J2EE&amp;SSH 复习 - twiceYuan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="作者：这是大三第一学期学习J2EE三大框架时考试前根据重点做的总结，现在整理到一篇文章里，方便以后查阅，也希望能对初学者提供一些参考。">
+<meta name="keywords" content="课堂笔记,Java EE,SSH框架,Ajax">
+<meta property="og:type" content="article">
+<meta property="og:title" content="J2EE&amp;SSH 复习">
+<meta property="og:url" content="https://twiceyuan.com/2014/12/26/J2EE-Test-Note/index.html">
+<meta property="og:site_name" content="twiceYuan">
+<meta property="og:description" content="作者：这是大三第一学期学习J2EE三大框架时考试前根据重点做的总结，现在整理到一篇文章里，方便以后查阅，也希望能对初学者提供一些参考。">
+<meta property="og:locale" content="en-US">
+<meta property="og:updated_time" content="2018-09-02T16:03:51.667Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="J2EE&amp;SSH 复习">
+<meta name="twitter:description" content="作者：这是大三第一学期学习J2EE三大框架时考试前根据重点做的总结，现在整理到一篇文章里，方便以后查阅，也希望能对初学者提供一些参考。">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+
+    
+    
+    
+    <style>body>.navbar,body>.section,body>.footer{opacity: 0}</style>
+    
+
+    
+    
+    
+    
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?1560044f7350c95ffd183a737b08e65d";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<style>
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #3273dc;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+</style>
+
+    
+
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                twiceYuan
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="Catálogo" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2014-12-26T12:07:03.000Z">2014-12-26</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    25 minutes read (About 3677 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                J2EE&amp;SSH 复习
+            
+        </h1>
+        <div class="content">
+            <blockquote>
+<p>作者：这是大三第一学期学习J2EE三大框架时考试前根据重点做的总结，现在整理到一篇文章里，方便以后查阅，也希望能对初学者提供一些参考。</p>
+</blockquote>
+<a id="more"></a>
+<p>#SSH之前需要了解的</p>
+<p>##Java基础部分</p>
+<p>###Java 三大平台</p>
+<ul>
+<li>Java SE 标准版 <em>主要用于开发一般台式机应用程序</em></li>
+<li>Java ME 微型版 <em>主要用于开发掌上电脑手机等移动设备使用的嵌入式系统</em></li>
+<li>Java EE 企业版 <em>主要用于快速设计、开发、部署和管理企业级的软件系统</em></li>
+</ul>
+<p>###JSP 和 Servlet</p>
+<ul>
+<li><code>&lt;form&gt;</code>标签<ul>
+<li>action属性：<strong>接受表单的服务端程序或动态网页的地址</strong></li>
+<li>method属性：<strong>表单数据传输到服务器的方法</strong><ul>
+<li>POST： <strong>在HTTP请求中嵌入表格数据</strong></li>
+<li>GET：<strong>将表单附加到请求该页的URL地址中</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Servlet 和 JSP 的关系：</p>
+<p>*.jsp文件被传送到服务器后先由服务器翻译成Servlet文件，而Servlet就是*.java文件，然后*.java文件又被翻译成*.class文件再由JVM（Java虚拟机）解释执行。</p>
+</li>
+<li><p>Servlet 生命周期</p>
+<ul>
+<li>开始：装载到容器</li>
+<li>初始化：调用<code>init()</code>方法</li>
+<li>处理请求：调用<code>service()</code>方法，根据不同的<code>doXXX()</code>方法处理客户端请求，并将结果封装在<code>HttpServletResponse</code>中返回给客户端</li>
+<li>移除：调用<code>destroy()</code>方法移除Servlet实例</li>
+</ul>
+</li>
+<li><p>JSP 内置对象</p>
+<ol>
+<li><p>Request对象</p>
+<p>访问客户端<strong>请求</strong>的信息</p>
+</li>
+<li><p>Response对象</p>
+<p>将服务器端的<strong>响应</strong>数据发送给客户端</p>
+</li>
+<li><p>Session对象</p>
+<p><strong>服务器单独处理和记录客户端使用者信息的技术</strong></p>
+</li>
+</ol>
+</li>
+</ul>
+<p>#Struts 2</p>
+<p>##MVC</p>
+<p>###MVC 的概念（了解）</p>
+<ul>
+<li>Model 模型：对操作数据对象的封装</li>
+<li>View 视图：处理数据显示的部分</li>
+<li>Controller 控制器：负责从视图读取数据，控制用户输入，并向模型发送数据</li>
+</ul>
+<p>###MVC模式的优点</p>
+<ol>
+<li>多个视图对应一个模型</li>
+<li>模型返回数据和显示逻辑分离</li>
+<li>应用被隔离为三层，降低各层间耦合，提供应用可扩展性</li>
+<li>控制层包含用户请求权限的概念</li>
+<li>更符合软件工程化管理的精神</li>
+</ol>
+<h2 id="Struts工作流程"><a href="#Struts工作流程" class="headerlink" title="Struts工作流程"></a>Struts工作流程</h2><ul>
+<li><p>基本流程</p>
+<ol>
+<li>浏览器请求一个资源</li>
+<li>过滤器Dispatcher查找请求，确定Action</li>
+<li>拦截器Filter自动对请求应用通知功能，如验证和文件上传</li>
+<li><code>execute()</code>方法存储数据和（或）重新获得信息</li>
+<li>返回结果，可能是HTML、图片、PDF或其他</li>
+</ol>
+</li>
+<li><p>struts 配置文件</p>
+<p>web.xml（位于WebRoot/WEB-INF下）</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">    &lt;filter&gt; &lt;!--配置过滤器--&gt;</span><br><span class="line">        &lt;filter-name&gt;struts2&lt;/filter-name&gt; &lt;!-- 过滤器名 --&gt;</span><br><span class="line">        &lt;filter-class&gt;org.apache.struts2.dispatcher.FilterDispatcher&lt;/filter-class&gt; &lt;!--过滤器类的完整包名+类名--&gt;</span><br><span class="line">    &lt;/filter&gt;</span><br><span class="line">  </span><br><span class="line">    &lt;filter-mapping&gt; &lt;!-- 配置过滤器映射范围 --&gt;</span><br><span class="line">        &lt;filter-name&gt;struts2&lt;/filter-name&gt;&lt;!--要配置的过滤器名--&gt;</span><br><span class="line">        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;&lt;!--过滤器映射范围 * 代表所有请求--&gt;</span><br><span class="line">    &lt;/filter-mapping&gt;</span><br><span class="line">```      </span><br><span class="line"></span><br><span class="line">struts.xml（位于src下）</span><br><span class="line"></span><br><span class="line">```  </span><br><span class="line">    &lt;struts&gt;</span><br><span class="line">      &lt;package name=&quot;default&quot; namespace=&quot;/&quot; extends=&quot;struts-default&quot;&gt;</span><br><span class="line">        &lt;!-- 登录相关 --&gt;</span><br><span class="line">        &lt;!-- name： action名，class：Action完整包名+类名 --&gt;</span><br><span class="line">        &lt;action name=&quot;login&quot; class=&quot;com.struts.action.ManagerAction&quot;&gt;</span><br><span class="line">          </span><br><span class="line">            &lt;!-- success：请求处理成功 --&gt;</span><br><span class="line">            &lt;result name=&quot;success&quot;&gt;/main_menu.jsp&lt;/result&gt;</span><br><span class="line">              </span><br><span class="line">            &lt;!-- error：请求处理失败 --&gt;</span><br><span class="line">            &lt;result name=&quot;error&quot;&gt;/login.jsp&lt;/result&gt;</span><br><span class="line">              </span><br><span class="line">            &lt;!-- input：验证输入 --&gt;</span><br><span class="line">            &lt;result name=&quot;input&quot;&gt;/login.jsp&lt;/result&gt;</span><br><span class="line">              </span><br><span class="line">            &lt;!-- none：请求完成后不做任何跳转 --&gt;</span><br><span class="line">            &lt;result name=&quot;none&quot;&gt;&lt;/result&gt;</span><br><span class="line">              </span><br><span class="line">            &lt;!-- login：返回登录页面 --&gt;</span><br><span class="line">            &lt;result name=&quot;login&quot;&gt;/login.jsp&lt;/result&gt;</span><br><span class="line">              </span><br><span class="line">        &lt;/action&gt;</span><br><span class="line">      &lt;/package&gt;</span><br><span class="line">    &lt;/struts&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>##Struts几种校验器</p>
+<ol>
+<li>必填字符串校验器</li>
+<li>必填校验器</li>
+<li>整数校验器</li>
+<li>日期校验器</li>
+<li>邮件地址校验器</li>
+<li>网址校验器</li>
+<li>字符串长度校验器</li>
+<li>正则表达式校验器</li>
+</ol>
+<p>##Struts的OGNL表达式</p>
+<p>  <code>#foo.blah // 返回foo.getBlah()</code></p>
+<p>##Struts 标签</p>
+<ol>
+<li><p><code>&lt;s:if&gt; &lt;s:elseif&gt; &lt;s:else&gt;</code></p>
+<p>类似于Java中if、else if、else的使用</p>
+</li>
+<li><p><code>&lt;s:iterator&gt;</code>标签</p>
+<p>对对象进行枚举迭代，</p>
+<ul>
+<li>values指定集合变量</li>
+<li>id指定变量名。  </li>
+<li><p>status产生一个IteratorStatus变量，包含一下属性方法：</p>
+<ul>
+<li>int getCount(); 迭代元素个数</li>
+<li>int getIndex(); 迭代元素当前索引</li>
+<li>boolean getFirst(); 是否为第一个</li>
+<li>boolean getEven(); 是否为偶</li>
+<li>boolean getLast(); 是否最后一个</li>
+<li>bolean getOdd();   是否为奇</li>
+</ul>
+<p>由于iteratorstatus对象并不是ognl的根对象因此访问需要加上 #访问如下例子:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;s:iterator value=&quot;&#123;&apos;dd&apos;,&apos;bb&apos;,&apos;cc&apos;&#125;&quot; status=&quot;st&quot;&gt;</span><br><span class="line">    &lt;s:if test=&quot;#st.odd&quot;&gt;</span><br><span class="line">        &lt;s:property value=&quot;#st.index&quot;/&gt;</span><br><span class="line">    &lt;/s:if&gt;</span><br><span class="line">&lt;/s:iterator&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li><p><code>&lt;s:form&gt;</code>和<code>&lt;s:file&gt;</code>上传标签</p>
+<p>类似JSP中的<code>&lt;form&gt;</code>标签（例如上传文件，其中嵌套一个<code>&lt;s:file&gt;</code>标签，并以二进制流的方式处理表单数据，即设置<code>&lt;s:form&gt;</code>的enctype属性为 <code>multipart/form-data）</code></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;s:form action=&quot;upload.action&quot; method=&quot;post&quot; entype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">    &lt;s:file name=&quot;upload&quot; label=&quot;Upload File&quot;&gt;&lt;/s:file&gt;</span><br><span class="line">    &lt;s:submit value=&quot;upload&quot; /&gt;</span><br><span class="line">&lt;/s:form&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>##Struts国际化</p>
+<ol>
+<li><p>在src下新建一个struts.properties文件，并输入以下代码</p>
+<pre><code>struts.custom.i18n.resources=资源文件名(例如messageResource)
+</code></pre></li>
+<li><p>新建两个资源文件，分别为中文和英文。首先，新建第一个英文资源文件<code>messageResource_en_US.properties</code></p>
+<p><code>`</code><br>username=username<br>password=password<br>login=login</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> 再新建一个中文的资源文件`messageResource_zh_CN.properties`(中文值为ASCII码)</span><br><span class="line"> ``` username=\u7528\u6237\u540d password=\u5bc6\u7801 login=\u767b\u5f55 ```3. 新建jsp页面，在页面中使用国际化文件   ```     &lt;s:textfield name=&quot;user.xh&quot; key=&quot;username&quot; /&gt;   &lt;s:password name=&quot;user.pw&quot; key =&quot;password&quot; /&gt;   &lt;s:submit value=&quot;%&#123;getText(&apos;login&apos;)&#125;&quot; /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#Hibernate</p>
+<p>##概念</p>
+<p>###Hibernate概念</p>
+<p>Hibernate是一个开放源代码的对象关系映射框架，它对JDBC进行了轻量级的封装（未完全封装），使Java程序员可以使用面向对象的编程思想来操纵数据库。</p>
+<p>###ORM概念</p>
+<p>ORM（对象/关系映射）是用于将对象与对象之间的关系对应到数据库表与表之间的关系的一种模式。Hibernate作为ORM中间件出现。</p>
+<p>##Hibernate核心接口</p>
+<ul>
+<li>Configuration接口 <strong>负责管理Hibernate的配置信息</strong></li>
+<li>SessionFactory接口 <strong>负责创建Session实例</strong></li>
+<li>Session接口 <strong>Hibernate持久化操作的基础，封装了一些持久化方法例如save、update</strong></li>
+<li>Transaction接口 <strong>Hibernate进行事务操作的接口</strong></li>
+<li>Query接口 <strong>执行HQL语句进行查询</strong></li>
+</ul>
+<p>##HQL语言</p>
+<p>###定义</p>
+<p>HQL是Hibernate Query Language（Hibernate查询语言）。很像SQL语言，操作的对象是类、实例和属性。</p>
+<p>###Hibernate关联映射</p>
+<ul>
+<li>一对一关联</li>
+<li>多对一单向关联</li>
+<li>一对多双向关联</li>
+<li>多对多关联</li>
+</ul>
+<p>##Hibernate高级功能</p>
+<p>###Hibernate批量插入</p>
+<ol>
+<li><p>修改Hibernate配置文件 <code>Hibernate.cfg.xml</code>:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;hibername-configuration&gt;</span><br><span class="line">  &lt;session-factory&gt;</span><br><span class="line">    ...</span><br><span class="line">    &lt;!-- 设置批量尺寸--&gt;</span><br><span class="line">    &lt;property name=&quot;hibernate.jdbc.batch_size&quot;&gt;50&lt;/property&gt; </span><br><span class="line">    &lt;!--配置数据库方言--&gt;</span><br><span class="line">    &lt;property name=&quot;dialect&quot;&gt;org.hibernate.dialect.MySQL&lt;/property&gt; </span><br><span class="line">    &lt;!--关闭二级缓存以提高速度--&gt;</span><br><span class="line">    &lt;property name=&quot;hibernate.cache_use_second_level_cache&quot;&gt;false&lt;/property&gt;</span><br><span class="line">  &lt;/session-factory&gt;</span><br><span class="line">&lt;/hibername-configuration&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li><p>Java代码中模拟插入数据:</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">   Session session = HibernateSessionFactory.getSesstion();// 获得Session</span><br><span class="line">   Transaction ts = session.beginTransaction();// 开始事务</span><br><span class="line"></span><br><span class="line">   for (int i = 0;i &lt; 500;i++) &#123;</span><br><span class="line">       Kcb kcb = new Kcb(); // 创建一个新课表</span><br><span class="line">       kcb.setKch(i + &quot;&quot;); // 设置课程号（模拟）</span><br><span class="line">       session.save(kcb); // 存储</span><br><span class="line">       if (i % 50 == 0) &#123;</span><br><span class="line">           session.flush(); // 提交</span><br><span class="line">           session.clear(); // 清除缓冲区</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   ts.commit(); // 提交数据</span><br><span class="line">   HibernateSessionFactory.closeSession(); // 关闭Session</span><br><span class="line">   ```        </span><br><span class="line"></span><br><span class="line">###Hibernate批量删除</span><br><span class="line"></span><br><span class="line">1. 修改配置文件，添加查询翻译器属性。</span><br><span class="line">2. Java代码中批量删除课程号大于200的课程</span><br></pre></td></tr></table></figure>
+<p>Session session = HibernateSessionFactory.getSesstion();// 获得Session<br>Transaction ts = session.beginTransaction();// 开始事务<br>Query query = session.createQuery(“delete from Kcb where kch&gt;200”);<br>query.executeUpdate();<br>ts.commit(); // 提交数据<br>HibernateSessionFactory.closeSession(); // 关闭Session</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">###实体对象生命周期</span><br><span class="line"></span><br><span class="line">* 瞬时态 **实体对象在内存中的存在 与数据库无关**</span><br><span class="line">* 持久态 **Hibernate所管理的状态**</span><br><span class="line">* 脱管状态 **Session实例关闭之后其管理对象的状态**</span><br><span class="line"></span><br><span class="line">处于持久态的对象也称为PO(Persistence Object)，瞬时对象和脱管对象也称为VO（Value Object）。</span><br><span class="line"></span><br><span class="line">###Hibernate事务管理</span><br><span class="line"></span><br><span class="line">* 基于JDBC的事务管理</span><br><span class="line">  </span><br><span class="line">  Hibernate是JDBC的轻量级封装，本身不具备事务管理能力。在事务管理层，Hibernate将其委托给底层的JDBC或JTA，以实现事务管理和调度功能。</span><br><span class="line">  </span><br><span class="line">* 基于JTA的事务管理</span><br><span class="line"></span><br><span class="line">  JTA(Java Transaction API)是由Java EE Transction Manager去管理事务。其最大的特点是调用UserTransaction接口的begin、commit和rollback方法来完成事务范围的界定、事务的提交和回滚。JTA可以实现统一事务对应不同的数据库。</span><br><span class="line"></span><br><span class="line">###Hibernate锁机制</span><br><span class="line"></span><br><span class="line">* 悲观锁 **对数据被外界修改持保守态度**</span><br><span class="line">* 乐观锁 **认为数据很少发生同时存取的问题**</span><br><span class="line"></span><br><span class="line">##Hibernate与Struts2整合</span><br><span class="line"></span><br><span class="line">###DAO模式</span><br><span class="line"></span><br><span class="line">* DAO概念：**Data Access Object，数据访问接口**</span><br><span class="line">* DAO组件实现</span><br><span class="line"></span><br><span class="line">###整合过程</span><br><span class="line"></span><br><span class="line">1. 建立数据库及表结构</span><br><span class="line">2. 在MyEclipse创建对数据库的连接</span><br><span class="line">3. 创建Web项目</span><br><span class="line">4. 添加Hibernate开发能力</span><br><span class="line">5. 生成数据库表对应的Java对象和映射文件</span><br><span class="line">6. `hibernate.cfg.xml`中注册映射文件，配置数据库属性</span><br></pre></td></tr></table></figure>
+<p><hibername-configuration><br> <session-factory></session-factory></hibername-configuration></p>
+<pre><code>&lt;property name=&quot;connection.username&quot;&gt;[数据库用户名]&lt;/property&gt;
+&lt;property name=&quot;connection.password&quot;&gt;[数据库密码]&lt;/property&gt;
+&lt;property name=&quot;connection.url&quot;&gt;[数据库地址、数据库名、访问参数]&lt;/property&gt;
+&lt;property name=&quot;connection.driver_class&quot;&gt;[数据库驱动]&lt;/property&gt;
+&lt;!-- 配置数据库方言 --&gt;
+&lt;property name=”dialect&gt;org.hibernate.dialect.MySQL”&lt;/property&gt;
+&lt;!-- 注册Hibernate映射表 --&gt;
+&lt;mapping resource=&quot;com/model/Kcb.hbm.xml&quot;/&gt;
+......
+</code></pre><p><br> </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">          </span><br><span class="line">7. DAO层组件实现</span><br><span class="line">8. 添加Struts类库，编写`struts.xml`文件。</span><br><span class="line">9. 修改`web.xml`文件。</span><br><span class="line"></span><br><span class="line">#Spring</span><br><span class="line">##Spring概念</span><br><span class="line"></span><br><span class="line">* Spring是一个开源框架</span><br><span class="line">* 为了解决企业应用开发的复杂性而创建的</span><br><span class="line"></span><br><span class="line">* 使用基本的Java Bean来完成以前只可能由EJB完成的事情</span><br><span class="line">* 不仅限于服务端开发</span><br><span class="line">* 简单性、可测试性和松耦合</span><br><span class="line"></span><br><span class="line">##核心机制</span><br><span class="line"></span><br><span class="line">* Spring的核心机制是依赖注入，也称为控制反转（IoC-DI，Inversion of Control-Dependency Inversion）。</span><br><span class="line"></span><br><span class="line">* 工厂模式</span><br><span class="line">  </span><br><span class="line">  * 定义</span><br><span class="line">    </span><br><span class="line">    当应用程序中A组件需要B组件协助时，并不直接通过硬编码的方式来创建B组件的实例对象，而是根据需要，通过B对象的工厂类的生产方法来构造B的实例，这样可以降低A与B之间的耦合。</span><br><span class="line">    </span><br><span class="line">&gt;*（理解）*例如书上179页~181页例子中，为了完成每个国家的人吃饭行走两件事，如果不使用工厂模式，代码实现应该是这样的（为了体现工厂模式的价值，加上Country1~9代表其他国家）：</span><br></pre></td></tr></table></figure>
+<pre><code>Human humen[] = new Human[11];
+Human humen[0] = new Chinese();
+Human humen[1] = new American();
+Human humen[2] = new Country1();
+...(中间省略7个构造语句)
+Human humen[10] = new Country9();
+for (Human human:humen) {
+    human.eat();
+    human.walk();
+}
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">        </span><br><span class="line">&gt;而使用工厂模式下，代码是这样：</span><br></pre></td></tr></table></figure>
+
+String toCreate[] = new String{&quot;Chinese&quot;, &quot;American&quot;,&quot;Country1&quot;.....,&quot;Country9&quot;};
+Factory factory = new Factory();
+for (String countryName:toCreate) {
+    Human human = factory.getHuman(countryName);
+    human.eat();
+    human.walk();
+}
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">        </span><br><span class="line">&gt;两段代码的作用是一样的，第一个例子加上中间省略的语句，实际上有效代码有16行，而第二个例子只有7行。两段代码最大的差别在于对象的构造部分，在使用中不需要逐个使用其构造器来构造对象，而是选择使用工厂来完成，从而降低了吃饭行走组件和具体每个国家的人的耦合性。</span><br><span class="line">    </span><br><span class="line">* Spring的依赖注入</span><br><span class="line"></span><br><span class="line">  * 特点： 开发人员不用创建工厂，可以直接应用Spring提供的依赖注入方式。</span><br><span class="line">  * 两种注入方式：</span><br><span class="line">    * 设置注入</span><br><span class="line">      </span><br><span class="line">      通过setter方法注入被调用者的实例。</span><br><span class="line">      </span><br><span class="line">      1. 为属性设置setter方法</span><br><span class="line">      2. 在配置文件中指定需要容器注入的属性</span><br><span class="line">      </span><br><span class="line">             &lt;bean id=&quot;english&quot; class=&quot;org.English&quot;&gt;&lt;/bean&gt;             &lt;bean id=&quot;chinese&quot; class=&quot;org.Chinese&quot;&gt;		          &lt;property name=&quot;lan&quot; ref=&quot;english&quot;&gt;&lt;/property&gt;             &lt;/bean&gt;</span><br><span class="line">      </span><br><span class="line">    * 构造注入</span><br><span class="line">    </span><br><span class="line">      1. 为Bean类添加一个构造注入所需要的带参数的构造方法</span><br><span class="line">      2. 在配置文件里为bean设置构造注入（constructor-arg属性）</span><br><span class="line">  </span><br><span class="line">             &lt;bean id=&quot;english&quot; class=&quot;org.English&quot;&gt;&lt;/bean&gt;             &lt;bean id=&quot;chinese&quot; class=&quot;org.Chinese&quot;&gt;                 &lt;constructor-arg ref=&quot;english&quot;&gt;&lt;/constructor-arg &gt;             &lt;/bean&gt;  </span><br><span class="line">##Spring核心接口及基本配置</span><br><span class="line"></span><br><span class="line">* 核心接口</span><br><span class="line">  </span><br><span class="line">  1. BeanFactory 创建和分发bean的通用工厂</span><br><span class="line">  2. ApplicationContext（应用上下文）</span><br><span class="line">     * 对国际化的支持</span><br><span class="line">     * 提供载入资源的通用方法，如文本和图片</span><br><span class="line">     * 可以向注册为监听器的Bean发送事件</span><br><span class="line"></span><br><span class="line">* bean的基本配置</span><br><span class="line">  </span><br><span class="line">  * 配置格式</span><br><span class="line">    </span><br><span class="line">    格式：</span><br><span class="line">    </span><br><span class="line">        &lt;bean id=&quot;[bean的id]&quot; class=&quot;[bean完整类名]&quot; /&gt;</span><br><span class="line">    </span><br><span class="line">    例如：</span><br><span class="line">    </span><br><span class="line">        &lt;bean id=&quot;foo&quot; class=&quot;com.spring.Foo&quot; /&gt;    </span><br><span class="line">        </span><br><span class="line">##Spring 与 Struts 整合步骤</span><br><span class="line"></span><br><span class="line">1. 创建项目</span><br><span class="line">2. 添加Struts相关Jar包</span><br><span class="line">3. 创建页面及其Action</span><br><span class="line">4. 添加Spring框架支持包：`struts2-spring-plugin.jar`</span><br><span class="line">5. 修改web.xml使程序增加对Spring的支持</span><br><span class="line">   * 添加Spring的listener</span><br><span class="line">   * 在context-param中配置ApplicationContext的路径   </span><br><span class="line">6. *创建消息包文件 `struts.properties`* 内容为：</span><br><span class="line">       </span><br><span class="line">        struts.objectFactory=spring</span><br><span class="line"></span><br><span class="line">##Spring 与 Hibernate 整合步骤</span><br><span class="line"></span><br><span class="line">1. 建立数据库</span><br><span class="line">2. 创建Web项目</span><br><span class="line">3. 添加Spring开发能力</span><br><span class="line">   </span><br><span class="line">   * Spring 2.0 Core Libraries</span><br><span class="line">   * Spring Web Libraries</span><br><span class="line">   * Spring 2.0 AOP Libraries</span><br><span class="line">   * Spring 2.0 Persistence JDBC Libraries</span><br><span class="line">   </span><br><span class="line">4. 加载Hibernate框架</span><br><span class="line">5. 生成与数据库表对应的Java数据对象和映射</span><br><span class="line">6. 编写DAO接口和实现类</span><br><span class="line">7. 修改Spring配置文件</span><br><span class="line">   * 数据库相关配置</span><br><span class="line">   * Hibernate的SessionFactory配置</span><br><span class="line">   * 注入DAO</span><br><span class="line">   </span><br><span class="line">8. Spring的Bean很好地管理了以前在hibernate.cfg.xml文件中创建SessionFactory，使文件更容易阅读</span><br><span class="line">9. 编写测试类</span><br><span class="line"></span><br><span class="line">##SSH 三种框架的整合</span><br><span class="line"></span><br><span class="line">* SSH的层次划分</span><br><span class="line">  </span><br><span class="line">  1. Hibernate完成数据的持久层应用</span><br><span class="line">  2. Spring来管理组件</span><br><span class="line">  3. Struts完成页面跳转</span><br><span class="line">  </span><br><span class="line">* SSH中DAO的具体实现</span><br><span class="line">  </span><br><span class="line">  * find	查找学生方法</span><br><span class="line">  * findAll	分页查找方法</span><br><span class="line">  * save	插入方法</span><br><span class="line">  * update	更新方法</span><br></pre></td></tr></table></figure>
+
+public class XsDaoImpl extends HibernateDaoSuppport implements XsDao{
+    // 删除学生信息
+    public void delete(String xh){
+         getHibernateTemplate().delete(find(xh));
+    }
+    // 查找学生信息
+    public Xsb find(String xh){
+        return getHibernateTemplate().find(&quot;from Xsb where xh=?&quot;, xh);
+    }
+    // 查找所有学生信息
+    public List&lt;Xsb&gt; findAll() {
+        return getHibernateTemplate().find(&quot;from Xsb&quot;);;
+    }
+    // 添加学生信息
+    public void save(Xch xch){
+        return getHibernateTemplate().save(xch);
+    }
+    // 修改学生信息
+    public void update(Xch xch){
+        getHibernateTemplate().update(xch);
+    }
+}
+</code></pre><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#Ajax</span><br><span class="line">##概述</span><br><span class="line"></span><br><span class="line">Ajax不是一种全新的技术，它是几种技术的融合：</span><br><span class="line"></span><br><span class="line">* *HTML/XHTML* 实现页面内容的表示</span><br><span class="line">* *CSS* 格式化文本内容</span><br><span class="line">* *DOM* 对页面内容进行动态更新</span><br><span class="line">* *XML* 实现数据交换和格式转换</span><br><span class="line">* *XMLHttpRequest* 实现与服务器异步通信</span><br><span class="line">* *JavaScript* 实现以上技术的融合</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line"></span><br><span class="line">* 必须是客户端和服务器一同合作的应用程序</span><br><span class="line">* JavaScript是撰写Ajax应用程序的客户端语言</span><br><span class="line">* XML是请求或回应时建议使用的交换信息的格式</span><br><span class="line"></span><br><span class="line">##JavaScript浏览器对象</span><br><span class="line"></span><br><span class="line">* `window`对象</span><br><span class="line">  </span><br><span class="line">  window对象描述*浏览器窗口*的特征。它可以认为是任何对象的假定父对象</span><br><span class="line">  </span><br><span class="line">* `Document`对象</span><br><span class="line"></span><br><span class="line">  Document表示浏览器窗口或者其中一个框架中显示的*HTML文档*。</span><br><span class="line">  </span><br><span class="line">* `History`对象</span><br><span class="line"></span><br><span class="line">  history对象包含用户已经*浏览过的URL集合*。</span><br><span class="line">  </span><br><span class="line">##XMLHttpRequest对象</span><br><span class="line"></span><br><span class="line">* XMLHttpRequest概述和特点</span><br><span class="line"></span><br><span class="line">  XMLHttpRequest对象提供客户端与HTTP服务器异步通信的协议。通过它Ajax可以像桌面应用一样只同服务器进行数据层交换，而不必每次都刷新页面。（减轻服务器负担，加快响应速度）</span><br><span class="line"></span><br><span class="line">* 获得XMLHttpRequest的方法</span><br></pre></td></tr></table></figure>
+<p>   var xmlHttp;<br>   function createXMLHttpRequest() {</p>
+<pre><code>if (window.XMLHttpRequest) {
+    // Firefox、Safari、Chrome下获取XMLHttpRequest对象的方法
+    xmlHttp = new XMLHttpRequest();
+}
+else {
+    // IE下获得XMLHttpRequest的方法
+    xmlHttp = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+}
+</code></pre><p>   }<br><code>`</code></p>
+</li>
+</ol>
+<p>##DWR</p>
+<p>###概述和特点</p>
+<p>DWR是类似于Hibernate的开源框架。借助DWR开发人员无需具备专业的JavaScript知识就可以轻松实现Ajax，使Ajax应用更加“平民化”。</p>
+<p>###使用方法</p>
+<ul>
+<li>导入 DWR 的Jar包</li>
+<li>在web.xml中添加DWR的servlet映射</li>
+<li>添加dwr.xml文件来配置那些Java类可以被DWR应用创建并远程调用。</li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Ajax/">Ajax</a>, <a class="has-link-grey -link" href="/tags/Java-EE/">Java EE</a>, <a class="has-link-grey -link" href="/tags/SSH框架/">SSH框架</a>, <a class="has-link-grey -link" href="/tags/课堂笔记/">课堂笔记</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2015/01/06/软件工程复习/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">软件工程复习</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2014/11/21/Android网络调试开启方法/">
+                <span class="level-item">Android网络调试开启方法</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://twiceyuan.com/2014/12/26/J2EE-Test-Note/';
+        this.page.identifier = '2014/12/26/J2EE-Test-Note/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'twiceyuan' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="https://s.gravatar.com/avatar/38576d83bd35b1a8b8df8642ebfa5b51?s=256">
+                    
+                    <p class="is-size-4 is-block">
+                        twiceYuan
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        // TODO
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Entradas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        108
+                    </p>
+                </div>
+            </div>
+            <!-- <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categorias
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div> -->
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiquetas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        52
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/twiceyuan">
+                SEGUIR</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="http://github.com/twiceyuan">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Telegram" href="https://t.me/twiceyuan">
+                
+                <i class="fab fa-telegram"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="http://twitter.com/twiceYuan">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                Catálogo
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Struts工作流程">
+        <span class="has-mr-6">1</span>
+        <span>Struts工作流程</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nube de etiquetas
+        </h3>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 18.75px;">Android Studio</a> <a href="/tags/CI/" style="font-size: 13.75px;">CI</a> <a href="/tags/Chrome/" style="font-size: 11.25px;">Chrome</a> <a href="/tags/Dagger-2/" style="font-size: 10px;">Dagger 2</a> <a href="/tags/DevOps/" style="font-size: 10px;">DevOps</a> <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 11.25px;">Git</a> <a href="/tags/GitLab/" style="font-size: 10px;">GitLab</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Hexo/" style="font-size: 17.5px;">Hexo</a> <a href="/tags/Java/" style="font-size: 13.75px;">Java</a> <a href="/tags/Java-EE/" style="font-size: 10px;">Java EE</a> <a href="/tags/Jenkins/" style="font-size: 13.75px;">Jenkins</a> <a href="/tags/Kotlin/" style="font-size: 12.5px;">Kotlin</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MIUI/" style="font-size: 10px;">MIUI</a> <a href="/tags/Mac/" style="font-size: 16.25px;">Mac</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mavericks/" style="font-size: 10px;">Mavericks</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Oracle/" style="font-size: 12.5px;">Oracle</a> <a href="/tags/Repost/" style="font-size: 11.25px;">Repost</a> <a href="/tags/RxAndroid/" style="font-size: 11.25px;">RxAndroid</a> <a href="/tags/RxJava/" style="font-size: 11.25px;">RxJava</a> <a href="/tags/SSH框架/" style="font-size: 10px;">SSH框架</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/hexo/" style="font-size: 11.25px;">hexo</a> <a href="/tags/iTunes/" style="font-size: 10px;">iTunes</a> <a href="/tags/macOS/" style="font-size: 18.75px;">macOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/tips/" style="font-size: 15px;">tips</a> <a href="/tags/业界新闻/" style="font-size: 10px;">业界新闻</a> <a href="/tags/利器/" style="font-size: 10px;">利器</a> <a href="/tags/博客搭建/" style="font-size: 11.25px;">博客搭建</a> <a href="/tags/复习/" style="font-size: 10px;">复习</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 11.25px;">数据库</a> <a href="/tags/生活技能/" style="font-size: 10px;">生活技能</a> <a href="/tags/知乎/" style="font-size: 12.5px;">知乎</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/编程随想/" style="font-size: 10px;">编程随想</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/自学/" style="font-size: 10px;">自学</a> <a href="/tags/评测/" style="font-size: 10px;">评测</a> <a href="/tags/课堂笔记/" style="font-size: 16.25px;">课堂笔记</a> <a href="/tags/软件工程/" style="font-size: 10px;">软件工程</a> <a href="/tags/软件测试/" style="font-size: 10px;">软件测试</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-07T02:02:28.000Z">2018-11-07</time></div>
+                    <a href="/2018/11/07/travis-accept-licenses/" class="has-link-black-ter is-size-6">Travis 上接受 SDK License</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-01T09:43:20.000Z">2018-08-01</time></div>
+                    <a href="/2018/08/01/generate-app-versison-by-git-tag/" class="has-link-black-ter is-size-6">使用 Git 的 tag 管理 App 版本</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-01T07:58:07.000Z">2018-08-01</time></div>
+                    <a href="/2018/08/01/jenkins-trigger-remotely/" class="has-link-black-ter is-size-6">开启用户鉴权时 Jenkins 触发远程构建时的 403 问题</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-12T06:45:40.000Z">2017-12-12</time></div>
+                    <a href="/2017/12/12/kotlin-generic-type/" class="has-link-black-ter is-size-6">Kotlin 的泛型系统</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-10T15:50:54.000Z">2017-12-10</time></div>
+                    <a href="/2017/12/10/rewrite-retropreference-by-kotlin/" class="has-link-black-ter is-size-6">Kotlin 中的属性委托：ValueKit 的实现介绍</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    twiceYuan
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2018 twiceYuan&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en-US");</script>
+
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                if (typeof($.fn.lightGallery) === 'function') {
+                    $('.article').lightGallery({ selector: '.gallery-item' });
+                }
+                if (typeof($.fn.justifiedGallery) === 'function') {
+                    $('.justified-gallery').justifiedGallery();
+                }
+            });
+        })(jQuery);
+    </script>
+    
+
+    
+    
+    
+    <div id="outdated">
+        <h6>Your browser is out-of-date!</h6>
+        <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+        <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // plugin function, place inside DOM ready function
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'flex'
+            })
+        });
+    </script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/animejs@2.2.0/anime.js"></script>
+    <script>
+    function isIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        var trident = ua.indexOf('Trident/');
+        return (msie > 0 || trident > 0);
+    }
+
+    $(document).ready(function () {
+        $('body>.navbar,body>.section,body>.footer').css('opacity', 1);
+        if (!isIE()) {
+            ['.column-main > .card',
+             '.column-left > .card',
+             '.column-right > .card'].map(function(target) {
+                anime({
+                    targets: target,
+                    scale: [0.8, 1],
+                    opacity: [0, 1],
+                    duration: 300,
+                    easing: 'easeOutSine',
+                    delay: function(el, i, l) {
+                        return i * 100;
+                    }
+                })
+            });
+
+            anime({
+                targets: '.navbar-main',
+                translateY: [-100, 0],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutSine'
+            });
+        }
+    });
+    </script>
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<style>
+#back-to-top {
+    position: fixed;
+    padding: 8px 0;
+    transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform, 0.4s ease border-radius;
+    opacity: 0;
+    line-height: 24px;
+    outline: none;
+    transform: translateY(120px);
+}
+#back-to-top.fade-in {
+    opacity: 1;
+}
+#back-to-top.rise-up {
+    transform: translateY(0);
+}
+</style>
+<script src="/js/back-to-top.js"></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

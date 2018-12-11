@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8">
+<title>操作系统复习 - twiceYuan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="进程控制块PCB包含哪些内容；  标识信息 又称进程名或进程号，唯一数值编号 描述信息 进程状态，程序代码位置，数据存放位置 现场信息  管理和控制信息   操作系统通常采用的处理器两态模式：核心态（管态）. 用户态（目态）；  操作系统的定义；P1">
+<meta name="keywords" content="课堂笔记,操作系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统复习">
+<meta property="og:url" content="https://twiceyuan.com/2015/01/09/操作系统复习/index.html">
+<meta property="og:site_name" content="twiceYuan">
+<meta property="og:description" content="进程控制块PCB包含哪些内容；  标识信息 又称进程名或进程号，唯一数值编号 描述信息 进程状态，程序代码位置，数据存放位置 现场信息  管理和控制信息   操作系统通常采用的处理器两态模式：核心态（管态）. 用户态（目态）；  操作系统的定义；P1">
+<meta property="og:locale" content="en-US">
+<meta property="og:updated_time" content="2018-09-02T16:03:51.700Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="操作系统复习">
+<meta name="twitter:description" content="进程控制块PCB包含哪些内容；  标识信息 又称进程名或进程号，唯一数值编号 描述信息 进程状态，程序代码位置，数据存放位置 现场信息  管理和控制信息   操作系统通常采用的处理器两态模式：核心态（管态）. 用户态（目态）；  操作系统的定义；P1">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+
+    
+    
+    
+    <style>body>.navbar,body>.section,body>.footer{opacity: 0}</style>
+    
+
+    
+    
+    
+    
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?1560044f7350c95ffd183a737b08e65d";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<style>
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #3273dc;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+</style>
+
+    
+
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                twiceYuan
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2015-01-09T08:52:28.000Z">2015-01-09</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    20 minutes read (About 3008 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                操作系统复习
+            
+        </h1>
+        <div class="content">
+            <ol>
+<li><p>进程控制块PCB包含哪些内容；</p>
+<ul>
+<li>标识信息 <em>又称进程名或进程号，唯一数值编号</em></li>
+<li>描述信息 <em>进程状态，程序代码位置，数据存放位置</em></li>
+<li>现场信息 </li>
+<li>管理和控制信息</li>
+</ul>
+</li>
+<li><p>操作系统通常采用的处理器两态模式：核心态（管态）. 用户态（目态）；</p>
+</li>
+<li><p>操作系统的定义；P1<a id="more"></a></p>
+<p><strong>管理系统资源、控制程序执行、改善人机界面、提供各种服务，合理组织计算机工作流程和为用户方便而有效地使用计算机提供良好运行环境的最基本的系统软件。</strong></p>
+</li>
+<li><p>进程三态模型的变迁；课本P22</p>
+<ul>
+<li>运行态：发生等待事件→等待态；时间片到→就绪态</li>
+<li>等待态：等待事件结束→就绪态</li>
+<li>就绪态：调度→运行态</li>
+<li>（创建态→就绪态）</li>
+<li>（运行态→终止态）</li>
+</ul>
+</li>
+<li><p><strong>[计算]</strong>多道程序系统中，多道作业运行完成最少时间的计算，参照讲过的题目；</p>
+<p>P19页 例题2-1、2-3</p>
+</li>
+<li><p>输入井的四种状态；P137</p>
+<ul>
+<li>输入状态</li>
+<li>后备状态</li>
+<li>执行状态</li>
+<li>完成状态</li>
+</ul>
+</li>
+<li><p>Linux中，详细列出当前目录下所有扩展名是.c文件信息的命令；P192</p>
+<p><code>ls -l *.c</code></p>
+</li>
+<li><p>Linux中，gcc在每一次编译连接程序时，默认生成的可执行程序是a.out，而且将覆盖上一次生成的a.out。说法对吗？P178 line:4</p>
+<p><code>对</code></p>
+</li>
+<li><p>Linux命令ls | grep old中的“|” 是什么操作符； P192</p>
+<p>管道使用符号</p>
+</li>
+<li><p>操作系统通常采用逻辑扩充内存的技术来解决内存容量不足的问题，主要方法有哪三种？P83</p>
+<ul>
+<li>覆盖技术</li>
+<li>交换技术</li>
+<li>虚存技术</li>
+</ul>
+</li>
+<li><p>常用的可变分区管理中的分配算法；P91</p>
+<ul>
+<li>最先适应</li>
+<li>最佳适应</li>
+<li>最坏适应</li>
+<li>下次适应</li>
+</ul>
+</li>
+<li><p>文件控制模块（FCB）的定义；P144</p>
+<p><strong>为能对文件进行正确的存取，计算机系统为文件设置了一系列描述和控制信息，这些信息以一个数据结构的形式表示，人们称此结构为文件控制块。</strong></p>
+</li>
+<li><p>多级反馈队列轮转（Round Robin with Multiple Feedback）调度算法是一种综合的进程调度算法，该算法是LRU算法. 时钟算法和OPT算法的综合应用，说法对吗？P</p>
+<ul>
+<li><p>错，多级反馈队列轮转(Round Robin with Multiple Feedback)是时间片轮转算法和优先级调度算法和先来先服务算法的综合应用。</p>
+</li>
+<li><p>LRU算法、时钟算法和OPT算法是页面置换算法。</p>
+</li>
+</ul>
+</li>
+<li><p>进程控制是通过系统调用进行的吗？P25</p>
+<p><strong>不是。进程的控制是在操作系统的内核中采用进程控制原语进行。</strong></p>
+</li>
+<li><p>一个进程资源分配图是不可完全简化的，那么就一定发生了死锁？<a href="http://3y.uu456.com/bp-cd800226b4daa58da0114aa9-2.html" target="_blank" rel="noopener">死锁定理</a></p>
+<p><strong>死锁定理</strong>。在死锁检测时，可以利用把资源分配图进行简化的方法来判断系统当前是否处于死锁状态。具体方法如下：</p>
+<p>① 在资源分配图中，找出一个既非阻塞又非孤立的进程结点Pi。如果Pi可以获得其所需要的资源而继续执行，直至运行完毕，就可以释放其所占用的全部资源。这样，就可以把Pi所有关连的资源分配线和资源请求线消去，使之成为孤立的点。</p>
+<p>② 重复进行上述操作。在一系列的简化后，如果消去了资源分配图中所有的箭头线，使所有进程结点都成为孤立结点，则称该资源分配图是可完全简化的；反之，则称该资源分配图是不可完全简化的。</p>
+<p>如果当前系统状态对应的资源分配图是不可完全简化的，则系统处于死锁状态，该充分条件称为死锁定理。</p>
+</li>
+<li><p>利用Hash方法建立的文件结构称为Hash文件，这种物理结构适用于不宜采用连续结构，记录次序较混乱，又需要快速存取的情况，说法对吗？P150 Hash文件</p>
+<p>对。Hash文件定义</p>
+</li>
+<li><p>目前用的缓冲技术是硬件缓冲和软缓冲，缓冲区大小不随意修改；P126~127</p>
+<ul>
+<li>硬件缓冲：一般指在设备控制器中设置数据缓冲寄存器，用于暂时存放传输的数据</li>
+<li>软件缓冲：在贮存中开辟一块特定区域用来做缓冲区，优点是数量和大小可以改变，缺点是需要占用主存空间。</li>
+</ul>
+</li>
+<li><p>不同的计算机系统，其通道命令的格式是不相同的；P122</p>
+</li>
+<li><p>进程之间的状态变化，一定在PCB中反映出来；P23</p>
+<p><strong>进程控制块的描述信息中包含进程当前所处的状态。</strong></p>
+</li>
+<li><p>页式管理中，地址结构具有一维性质，而在段式管理中，地址结构具有二维性质；</p>
+</li>
+<li><p>多道系统环境下，操作系统分配资源是以进程为基本单位；</p>
+</li>
+<li><p>处理器调度有哪些？</p>
+<ul>
+<li>低级调度：进程调度（P28）</li>
+<li>中级调度：挂起调度，也称交换技术 （P84）</li>
+<li>高级调度：作业调度 （P28）</li>
+</ul>
+</li>
+<li><p>在可变分区的存储管理中，回收一个分区时，空闲区个数减少1个的情况；P89，例3-2</p>
+<p>两个空闲区之间的作业完成被回收时，该作业原来所占分区和它前后两个分区也就是三个空闲区自动合并为一个空闲区，这时空闲区的总数会减少1。</p>
+</li>
+<li><p>引入文件系统的主要目的；P143</p>
+<p>方便文件的访问和控制、多线程支持文件的并发访问、提供统一的用户接口、多种文件访问权限、优化性能、验证文件的正确性、恢复差错等，为用户和底层硬件之间建立了文件管理的桥梁。</p>
+</li>
+<li><p>用户可以调用关闭操作来归还文件的使用权；P153</p>
+</li>
+<li><p>了解信箱的消息传递方式；P67</p>
+<p><strong>采用信箱的消息传递方式是一种简洁的通信方式。通信的双方通过信箱来交流信息，从而避免了直接通信方式下通信双方必须以会合的方式进行。采用信箱通信方式的Send()原语和Receive()原语形式如下：</strong></p>
+<ul>
+<li>Send(Mailbox,Message)</li>
+<li>Receive(Mailbox,&amp;Message)</li>
+</ul>
+</li>
+<li><p>不安全状态和死锁状态之间的关系；P74</p>
+<ul>
+<li><p>不安全状态</p>
+<p>假如当前系统的可用资源，找不出一种进程申请序列，能够使所有的进程都能在有限时间内完成，那么这种状态称为不安全状态。不安全状态不一定是死锁状态，这是因为，并不是所有的进程都需要达到最大需求量的资源才能运行完毕</p>
+</li>
+<li><p>死锁状态</p>
+<p>如果系统的一个进程集合中的每个进程都在等待只能由该进程集合中的另一进程才能引发的事件，这时系统就处于死锁状态。死锁肯定是不安全状态</p>
+</li>
+</ul>
+</li>
+<li><p>Windows 2000/XP 中，exit() 函数会销毁所有全局的或静态的C++对象，然后促使操作系统终止应用程序；</p>
+</li>
+<li><p><strong>[计算]</strong>虚拟地址空间的计算；P104</p>
+<p>2^(计算机系统的位数)B；</p>
+<p>例如：操作系统是32位，虚拟地址空间为：2^32B=4GB</p>
+</li>
+<li><p>进程的概念；P20</p>
+<p>进程是并发环境下，一个具有独立功能的程序在某个数据集上的一次执行活动，它是操作系统进行资源分配和保护的基本单位，也是执行的单位。</p>
+</li>
+<li><p>存储管理的主要任务；P83</p>
+<ul>
+<li>内存的分配和回收</li>
+<li>地址转换</li>
+<li>内存的共享和存储保护</li>
+<li>内存的扩充</li>
+</ul>
+</li>
+<li><p>为什么要用缓冲区技术？常用的软件缓冲技术有哪些？</p>
+<p>使用缓冲技术的原因：</p>
+<ol>
+<li>协调CPU与I/O设备之间速率不匹配</li>
+<li>协调逻辑记录与物理记录（物理块）大小不一致</li>
+<li>解决DMA控制方式或通道方式下可能出现的进程长时间等待问题</li>
+</ol>
+<p>常用的缓冲技术：</p>
+<ol>
+<li>单缓冲技术</li>
+<li>双缓冲技术</li>
+<li>多缓冲技术</li>
+<li>缓冲池技术</li>
+</ol>
+</li>
+<li><p>为什么要做记录的成组和分解？有什么优点和缺点？</p>
+<p>原因：采用记录的成组和分解有利于提高存储空间的利用率，减少启动存储设备的次数。</p>
+<p>优点：提高磁盘存储效率，减少磁盘驱动调度次数，提高系统性能。</p>
+<p>缺点：需要软件进行成组和分解的额外操作；需要能容纳最大块长的输入输出缓冲区。</p>
+</li>
+<li><p><strong>[计算]</strong>使用快表与否对存取时间的影响，<strong>会计算</strong>；</p>
+<p>P97 例3-6</p>
+</li>
+<li><p><strong>[计算]</strong>磁盘物理块与逻辑块之间的换算，<strong>会计算</strong>；</p>
+<p>P96 例3-5</p>
+</li>
+<li><p><strong>[计算]</strong>FIFO和LRU算法；</p>
+<p>FIFO：P107 例3-7<br>LRU： P108 例3-8</p>
+</li>
+<li><p><strong>[计算]</strong>作业调度中，先来先服务，短作业优先策略和最高响应比调度策略，会列表计算；但注意题目，以往我们都说是多道系统下，因为采用的不可抢占方式，一道作业被调度就必须运行结束下一个作业才能调度，所以也可以说成是在单道串行方式下采用这些调度策略，具体做题方法和步骤与作业一样；</p>
+<p>复习：P16 习题9 孙钟秀版教材P123页介绍最高响应比调度策略</p>
+</li>
+<li><p><strong>[计算]</strong>移动臂调度算法，先来先服务. 最短寻道时间优先和电梯调度算法；</p>
+<p>P135 例4-4</p>
+</li>
+<li><p><strong>[计算]</strong>P.V操作解决同步与互斥问题，看例题和作业题。</p>
+<p>互斥问题：P49 例2-9</p>
+<p>同步问题：P54 例2-10</p>
+</li>
+<li><p>进程与线程的比较；P35</p>
+<ol>
+<li><p>并发性：系统进程可以并发执行，线程也可以并发运行</p>
+</li>
+<li><p>资源分配和占有：进程是资源分配和保护的基本单位，线程几乎不拥有资源</p>
+</li>
+<li><p>系统开销与效率：进程需要系统分配和回收资源，线程由于不拥有资源开销要比进程小得多</p>
+</li>
+<li><p>调度效率与灵活性：进程是资源分配和保护的基本单位，进程拥有资源；线程是系统调度和分派的基本单位，不拥有资源，但可以访问该进程的资源，所以调度和切换简单易行，线程的切换不会导致进程切换，因此系统效率高，并发度也大大提高。</p>
+</li>
+</ol>
+</li>
+<li><p>文件的逻辑结构有哪些？P147</p>
+<ul>
+<li>无结构字符流式文件</li>
+<li>有结构记录式文件<ul>
+<li>连续结构</li>
+<li>顺序结构</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>I/O控制方式 P123</p>
+<p>I/O通道控制方式：</p>
+<ol>
+<li>字节多路通道</li>
+<li>数组选择通道</li>
+<li>数组多路通道</li>
+</ol>
+</li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/操作系统/">操作系统</a>, <a class="has-link-grey -link" href="/tags/课堂笔记/">课堂笔记</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2015/01/10/TPB-AFK/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">TPB AFK 现实中的海盗湾</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2015/01/06/软件工程复习/">
+                <span class="level-item">软件工程复习</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://twiceyuan.com/2015/01/09/操作系统复习/';
+        this.page.identifier = '2015/01/09/操作系统复习/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'twiceyuan' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="https://s.gravatar.com/avatar/38576d83bd35b1a8b8df8642ebfa5b51?s=256">
+                    
+                    <p class="is-size-4 is-block">
+                        twiceYuan
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        // TODO
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Entradas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        108
+                    </p>
+                </div>
+            </div>
+            <!-- <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categorias
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div> -->
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiquetas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        52
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/twiceyuan">
+                SEGUIR</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="http://github.com/twiceyuan">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Telegram" href="https://t.me/twiceyuan">
+                
+                <i class="fab fa-telegram"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="http://twitter.com/twiceYuan">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+
+    
+        
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nube de etiquetas
+        </h3>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 18.75px;">Android Studio</a> <a href="/tags/CI/" style="font-size: 13.75px;">CI</a> <a href="/tags/Chrome/" style="font-size: 11.25px;">Chrome</a> <a href="/tags/Dagger-2/" style="font-size: 10px;">Dagger 2</a> <a href="/tags/DevOps/" style="font-size: 10px;">DevOps</a> <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 11.25px;">Git</a> <a href="/tags/GitLab/" style="font-size: 10px;">GitLab</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Hexo/" style="font-size: 17.5px;">Hexo</a> <a href="/tags/Java/" style="font-size: 13.75px;">Java</a> <a href="/tags/Java-EE/" style="font-size: 10px;">Java EE</a> <a href="/tags/Jenkins/" style="font-size: 13.75px;">Jenkins</a> <a href="/tags/Kotlin/" style="font-size: 12.5px;">Kotlin</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MIUI/" style="font-size: 10px;">MIUI</a> <a href="/tags/Mac/" style="font-size: 16.25px;">Mac</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mavericks/" style="font-size: 10px;">Mavericks</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Oracle/" style="font-size: 12.5px;">Oracle</a> <a href="/tags/Repost/" style="font-size: 11.25px;">Repost</a> <a href="/tags/RxAndroid/" style="font-size: 11.25px;">RxAndroid</a> <a href="/tags/RxJava/" style="font-size: 11.25px;">RxJava</a> <a href="/tags/SSH框架/" style="font-size: 10px;">SSH框架</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/hexo/" style="font-size: 11.25px;">hexo</a> <a href="/tags/iTunes/" style="font-size: 10px;">iTunes</a> <a href="/tags/macOS/" style="font-size: 18.75px;">macOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/tips/" style="font-size: 15px;">tips</a> <a href="/tags/业界新闻/" style="font-size: 10px;">业界新闻</a> <a href="/tags/利器/" style="font-size: 10px;">利器</a> <a href="/tags/博客搭建/" style="font-size: 11.25px;">博客搭建</a> <a href="/tags/复习/" style="font-size: 10px;">复习</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 11.25px;">数据库</a> <a href="/tags/生活技能/" style="font-size: 10px;">生活技能</a> <a href="/tags/知乎/" style="font-size: 12.5px;">知乎</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/编程随想/" style="font-size: 10px;">编程随想</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/自学/" style="font-size: 10px;">自学</a> <a href="/tags/评测/" style="font-size: 10px;">评测</a> <a href="/tags/课堂笔记/" style="font-size: 16.25px;">课堂笔记</a> <a href="/tags/软件工程/" style="font-size: 10px;">软件工程</a> <a href="/tags/软件测试/" style="font-size: 10px;">软件测试</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-07T02:02:28.000Z">2018-11-07</time></div>
+                    <a href="/2018/11/07/travis-accept-licenses/" class="has-link-black-ter is-size-6">Travis 上接受 SDK License</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-01T09:43:20.000Z">2018-08-01</time></div>
+                    <a href="/2018/08/01/generate-app-versison-by-git-tag/" class="has-link-black-ter is-size-6">使用 Git 的 tag 管理 App 版本</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-01T07:58:07.000Z">2018-08-01</time></div>
+                    <a href="/2018/08/01/jenkins-trigger-remotely/" class="has-link-black-ter is-size-6">开启用户鉴权时 Jenkins 触发远程构建时的 403 问题</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-12T06:45:40.000Z">2017-12-12</time></div>
+                    <a href="/2017/12/12/kotlin-generic-type/" class="has-link-black-ter is-size-6">Kotlin 的泛型系统</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-10T15:50:54.000Z">2017-12-10</time></div>
+                    <a href="/2017/12/10/rewrite-retropreference-by-kotlin/" class="has-link-black-ter is-size-6">Kotlin 中的属性委托：ValueKit 的实现介绍</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    twiceYuan
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2018 twiceYuan&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en-US");</script>
+
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                if (typeof($.fn.lightGallery) === 'function') {
+                    $('.article').lightGallery({ selector: '.gallery-item' });
+                }
+                if (typeof($.fn.justifiedGallery) === 'function') {
+                    $('.justified-gallery').justifiedGallery();
+                }
+            });
+        })(jQuery);
+    </script>
+    
+
+    
+    
+    
+    <div id="outdated">
+        <h6>Your browser is out-of-date!</h6>
+        <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+        <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // plugin function, place inside DOM ready function
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'flex'
+            })
+        });
+    </script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/animejs@2.2.0/anime.js"></script>
+    <script>
+    function isIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        var trident = ua.indexOf('Trident/');
+        return (msie > 0 || trident > 0);
+    }
+
+    $(document).ready(function () {
+        $('body>.navbar,body>.section,body>.footer').css('opacity', 1);
+        if (!isIE()) {
+            ['.column-main > .card',
+             '.column-left > .card',
+             '.column-right > .card'].map(function(target) {
+                anime({
+                    targets: target,
+                    scale: [0.8, 1],
+                    opacity: [0, 1],
+                    duration: 300,
+                    easing: 'easeOutSine',
+                    delay: function(el, i, l) {
+                        return i * 100;
+                    }
+                })
+            });
+
+            anime({
+                targets: '.navbar-main',
+                translateY: [-100, 0],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutSine'
+            });
+        }
+    });
+    </script>
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<style>
+#back-to-top {
+    position: fixed;
+    padding: 8px 0;
+    transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform, 0.4s ease border-radius;
+    opacity: 0;
+    line-height: 24px;
+    outline: none;
+    transform: translateY(120px);
+}
+#back-to-top.fade-in {
+    opacity: 1;
+}
+#back-to-top.rise-up {
+    transform: translateY(0);
+}
+</style>
+<script src="/js/back-to-top.js"></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

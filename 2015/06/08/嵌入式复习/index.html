@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8">
+<title>嵌入式复习 - twiceYuan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="嵌入式系统嵌入式系统定义嵌入式系统是以应用为中心、以计算机技术为基础、软件硬件可剪裁，适应应用系统对功能、可靠性、成本、体积、功耗严格要求的专用计算机系统。">
+<meta name="keywords" content="嵌入式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="嵌入式复习">
+<meta property="og:url" content="https://twiceyuan.com/2015/06/08/嵌入式复习/index.html">
+<meta property="og:site_name" content="twiceYuan">
+<meta property="og:description" content="嵌入式系统嵌入式系统定义嵌入式系统是以应用为中心、以计算机技术为基础、软件硬件可剪裁，适应应用系统对功能、可靠性、成本、体积、功耗严格要求的专用计算机系统。">
+<meta property="og:locale" content="en-US">
+<meta property="og:image" content="https://twiceyuan.com/2015/06/08/arm-overview/fs.jpg">
+<meta property="og:updated_time" content="2018-12-11T08:58:08.204Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="嵌入式复习">
+<meta name="twitter:description" content="嵌入式系统嵌入式系统定义嵌入式系统是以应用为中心、以计算机技术为基础、软件硬件可剪裁，适应应用系统对功能、可靠性、成本、体积、功耗严格要求的专用计算机系统。">
+<meta name="twitter:image" content="https://twiceyuan.com/2015/06/08/arm-overview/fs.jpg">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+
+    
+    
+    
+    <style>body>.navbar,body>.section,body>.footer{opacity: 0}</style>
+    
+
+    
+    
+    
+    
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?1560044f7350c95ffd183a737b08e65d";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<style>
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #3273dc;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+</style>
+
+    
+
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                twiceYuan
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2015-06-08T14:28:46.000Z">2015-06-08</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    30 minutes read (About 4442 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                嵌入式复习
+            
+        </h1>
+        <div class="content">
+            <h2 id="嵌入式系统"><a href="#嵌入式系统" class="headerlink" title="嵌入式系统"></a>嵌入式系统</h2><h3 id="嵌入式系统定义"><a href="#嵌入式系统定义" class="headerlink" title="嵌入式系统定义"></a>嵌入式系统定义</h3><p>嵌入式系统是以应用为中心、以计算机技术为基础、软件硬件可剪裁，适应应用系统对功能、可靠性、成本、体积、功耗严格要求的专用计算机系统。</p>
+<a id="more"></a>
+<h3 id="嵌入式系统特点"><a href="#嵌入式系统特点" class="headerlink" title="嵌入式系统特点"></a>嵌入式系统特点</h3><p>上课讲：嵌入式专用、综合性强、设计高效、程序固化、需要独立的开发系统、生命周期长、可靠性高、低功效。<br>书上：专用性、系统精简、低功耗、实时性、可靠性、技术融合、开发工具和环境。</p>
+<h2 id="ARM-核"><a href="#ARM-核" class="headerlink" title="ARM 核"></a>ARM 核</h2><h3 id="寄存器组"><a href="#寄存器组" class="headerlink" title="寄存器组"></a>寄存器组</h3><p>31个通用寄存器和6个状态寄存器</p>
+<h4 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h4><ol>
+<li><p>不分组寄存器R0~R7</p>
+<p>在所有处理器模式下，它们每一个都访问的是同一个物理寄存器，是真正并且在每种状态下都统一的通用寄存器。</p>
+</li>
+<li><p>分组寄存器R8~R14</p>
+<p>所对应的物理寄存器取决于当前的处理器模式<br>R8~R12有两个分组的物理寄存器。一组用于除FIQ模式之外的所有模式，一组用于FIQ模式。<br>R13常用作堆栈指针，称作SP。<br>R14用作子程序链接寄存器，也称LR。在每种处理器模式下，模式自身的R14用于保存子程序返回地址。当发生异常时，该模式下对应的R14被设置为异常返回地址。</p>
+</li>
+<li><p>R15用作程序计数器，也称PC。由于ARM处理器采用流水线机制，当正确读取pc时，该值为当前指令地址加8字节。即pc指向当前指令的下两条指令的地址。</p>
+</li>
+</ol>
+<h4 id="程序状态寄存器"><a href="#程序状态寄存器" class="headerlink" title="程序状态寄存器"></a>程序状态寄存器</h4><p>CPSR当前程序状态寄存器，SPSR程序状态备份寄存器。特定的异常发生时，SPSR用于保存CPSR的当前值，在异常中断程序退出时，可以用SPSR中保存的值来恢复CPSR。<br>功能：保存ALU当前操作信息、控制允许和禁止中断、设置处理器运行模式</p>
+<h3 id="工作状态及运行模式"><a href="#工作状态及运行模式" class="headerlink" title="工作状态及运行模式"></a>工作状态及运行模式</h3><p>两种工作状态：ARM、Thumb</p>
+<p>七种运行模式：用户模式User、快速中断模式FIQ、外部中断模式IRQ、管理模式svc、数据访问终止模式abt、未定义指令终止模式und、系统模式sys。（除了用户模式，其他都属于特权模式）</p>
+<h3 id="异常响应过程"><a href="#异常响应过程" class="headerlink" title="异常响应过程"></a>异常响应过程</h3><p>1）将下一条指令的地址存入响应的异常模式的链接寄存器LR，以便程序在处理异常返回时能从正确位置重新开始执行。</p>
+<p>2）复制CPSR寄存器的内容至对应模式下的SPSR_<mode>寄存器中。</mode></p>
+<p>3）对CPSR寄存器的一些控制位进行设置：无论发生异常时处理器处于Thumb状态还是ARM状态，响应异常后处理器都会切换到ARM状态，即CPSR[5]=0；将模式控制位CPSR[4:0]设置为被响应异常的模式编码；CPSR[7]=1,禁止IRQ中断；如果异常模式为复位模式或FIQ模式，则CPSR[6]=1,禁止FIQ中断。</p>
+<p>4）将程序计数器（PC）设置为异常向量的地址，使程序从相应的异常向量地址开始执行异常处理程序。一般来说，向量地址处将包含一条指向相应异常处理程序的转移指令，从而可以跳转到相应异常处理程序处。</p>
+<h3 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h3><p>立即寻址、寄存器寻址、寄存器间接寻址、寄存器移位寻址、基址加变址寻址、块拷贝寻址、堆栈寻址、相对寻址</p>
+<ol>
+<li><p>立即寻址：MOV  R1 , #0x10 ;        #号开始表示立即数</p>
+</li>
+<li><p>寄存器寻址：MOV  R1 , R2;          寄存器中的数值即为操作数</p>
+</li>
+<li><p>寄存器间接寻址：STR  R0 , [R1];<br>LDR  R0 , [R1];        寄存器中的数值即为操作数的地址</p>
+</li>
+<li><p>寄存器移位寻址：MOV R0,R1,LSL # 2;   注：LSL：逻辑左移 LSR：逻辑右移  ASL：算术左移 ASR：算术右移  ROR：循环右移 RRX：带扩展循环右移</p>
+</li>
+<li><p>基址加变址寻址：将寄存器的内容与指令中给出的地址偏移量相加，从而得到一个操作数的有效地址。<br>前变址法：LDR  R0,[R1,#4];   R1加偏移量4形成操作数地址，取出操作数存入R0。<br>后变址法：LDR  R0，[ R1],#4;    R1的值作为操作数的有效地址，取出操作数存入R0，将R1的内容加4来更新基址寄存器。</p>
+</li>
+<li><p>块拷贝：也叫做多寄存器寻址。快拷贝的地址变化方式：后增IA、先增IB、后减DA、先减DB。    STMIA  R0,{R1-R3,R8};<br>解释： [R0]&lt;—R1  [R0+4]&lt;-R2    [R0+8]&lt;-R3  [R0+12]&lt;-R8</p>
+</li>
+<li><p>堆栈寻址：堆栈的分类：满堆栈、空堆栈、递增堆栈、递减堆栈、满递增堆栈、满递减堆栈、空递增堆栈、空递减堆栈。   STMFD  SP！，{R1-R3，R8}；</p>
+</li>
+<li><p>相对寻址：以程序计数器PC的当前值为基地址，指令中的地址标号作为偏移量，相加后的地址即为操作数的有效地址。</p>
+</li>
+</ol>
+<p>BL  SUB1;<br>…<br>SUB1:<br>….<br>MOV  PC,LR；</p>
+<h3 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a>指令系统</h3><h4 id="单寄存器传送指令LDR和STR指令"><a href="#单寄存器传送指令LDR和STR指令" class="headerlink" title="单寄存器传送指令LDR和STR指令"></a>单寄存器传送指令LDR和STR指令</h4><ol>
+<li><p>LDR：加载字数据</p>
+<p>从内存中将一个32位的字数据或一个8位的字节数据读取至寄存器中。</p>
+<p> LDR {cond}{T}  Rd，addressing;加载指定存储单元中的32位字数据到寄存器Rd。</p>
+</li>
+<li><p>STR：存储字数据</p>
+<p>将一个32位的寄存器中的字数据或一个寄存器的低8位写入到指令指定的内存单元中。 STR {cond}{T}  Rd，addressing; 存储Rd中的字数据到指定的存储单元中。<br>多寄存器传送LDM和STM指令：  （用途：保护现场、数据复制、参数传递等）</p>
+</li>
+<li><p>LDM：多寄存器加载</p>
+<p>将连续内存单元数据加载到若干个寄存器中。</p>
+<p>LDMIA  R1！，{R5-R7}；加载R1指向的存储区域的多字数据至R5-R7中</p>
+</li>
+<li><p>STM：多寄存器存储</p>
+<p>将若干个寄存器的值放到连续的内存单元中。</p>
+<p>STMIA R0！，{R5-R7}；将R5-R7的数据存储到R0指向的存储区域，R0更新</p>
+<p>程序状态寄存器访问指令：   (只有特权模式下可以修改状态寄存器)</p>
+</li>
+<li><p>MRS：读状态存储器</p>
+</li>
+</ol>
+<p>MRS指令用于将状态寄存器的内容传送到通用寄存器中。这是程序获得程序状态寄存器PSR值得唯一方法；</p>
+<p>MRS  R0，CPSR；   读取CPSR状态寄存器的值，保存到R0中。</p>
+<ol>
+<li>MSR：写状态存储器</li>
+</ol>
+<p>可以将一个寄存器的内容或一个立即数传送到CPSR和SPSR；</p>
+<p>MSR  CPSR_c,#0xD3;  </p>
+<h3 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h3><table><br><thead><br><tr><br><th>版本</th><br><th>结构</th><br></tr><br></thead><br><tbody><br><tr><br><td>ARM7</td><br><td>诺依曼结构</td><br></tr><br><tr><br><td>ARM9</td><br><td>哈佛体系结构</td><br></tr><br><tr><br><td>ARM11</td><br><td>ARMv6指令集体系结构</td><br></tr><br></tbody><br></table>
+
+<h2 id="板级系统"><a href="#板级系统" class="headerlink" title="板级系统"></a>板级系统</h2><h3 id="S3C2410X的存储系统特征"><a href="#S3C2410X的存储系统特征" class="headerlink" title="S3C2410X的存储系统特征"></a>S3C2410X的存储系统特征</h3><ol>
+<li>支持数据存储大/小断选择（通过外部引脚进行选择）</li>
+<li>地址空间：具有8个存储体，每个存储体可达128MB，共计可达1GB</li>
+<li>对存储体的访问位数可变（8位/16位/32位）</li>
+<li>8个存储体中，Bank0~Bank5支持ROM,SRAM；Bank6、Bank7支持ROM、DRAM、SDRAM等。</li>
+<li>7个存储体的起始地址固定，一个存储体的起始地址可变</li>
+</ol>
+<h3 id="I-O接口，I-O编址方式、数据传送"><a href="#I-O接口，I-O编址方式、数据传送" class="headerlink" title="I/O接口，I/O编址方式、数据传送"></a>I/O接口，I/O编址方式、数据传送</h3><p>I/O接口：即输入输出接口，是微控制器同外界交互的重要通道。在主机和外围设备之间的信息交换中起桥梁和纽带作用。</p>
+<h4 id="设置接口电路的必要性："><a href="#设置接口电路的必要性：" class="headerlink" title="设置接口电路的必要性："></a>设置接口电路的必要性：</h4><ol>
+<li>解决主机CPU和外围设备之间的时序配合和通信联系问题；</li>
+<li>解决CPU和外围设备之间的数据格式转换和匹配问题；</li>
+<li>解决CPU的负载能力和外围设备端口选择问题。</li>
+</ol>
+<h4 id="I-O接口的编址方式：独立编址、统一编址"><a href="#I-O接口的编址方式：独立编址、统一编址" class="headerlink" title="I/O接口的编址方式：独立编址、统一编址"></a>I/O接口的编址方式：独立编址、统一编址</h4><ol>
+<li>独立编址：将存储器地址空间和I/O接口地址空间分开设置，互不影响。                         设有专门的输入指令和输出指令来完成I/O操作。</li>
+<li>统一编址：不区分存储器地址空间和I/O接口地址空间，把所有的I/O接口都当做是存储器的一个单元对待，每个接口芯片都安排一个或几个与存储器统一编号的地址号。</li>
+</ol>
+<h4 id="数据传送"><a href="#数据传送" class="headerlink" title="数据传送"></a>数据传送</h4><p>高阻输入，低挽输出，开漏输出</p>
+<h3 id="人机交互"><a href="#人机交互" class="headerlink" title="人机交互"></a>人机交互</h3><h4 id="LCD控制方式"><a href="#LCD控制方式" class="headerlink" title="LCD控制方式"></a>LCD控制方式</h4><p>LCD控制方式：总线驱动方式、控制器扫描方式</p>
+<h4 id="键盘设计"><a href="#键盘设计" class="headerlink" title="键盘设计"></a>键盘设计</h4><p>键盘：是有若干个按键构成的开关矩阵，它是嵌入式系统中最简单的数字量输入设备，操作员通过键盘输入数据或命令，实现简单的人机通信。键盘的基本电路是一个接触开关，通、断两种状态分别表示0和1，微处理器可以很容易的检测到开关的闭合。</p>
+<h2 id="开发模式及工具"><a href="#开发模式及工具" class="headerlink" title="开发模式及工具"></a>开发模式及工具</h2><h3 id="调试方法"><a href="#调试方法" class="headerlink" title="调试方法"></a>调试方法</h3><p>调试方法：在线仿真器法、片上调试法、模拟器法</p>
+<table><br><thead><br><tr><br><th>名称</th><br><th>名称含义</th><br><th>区别</th><br><th>应用场景</th><br></tr><br></thead><br><tbody><br><tr><br><td>在线仿真器法</td><br><td>在线仿真器（ICE）是一种用于替代目标机上的CPU的设备。</td><br><td>效果最好、功能最全面、实时性最强的调试方法，但代价昂贵，通常仅在特殊情况下使用。</td><br><td>ICE调试方法特别适用于调试实时的应用系统、设备驱动程序以及对硬件进行  功能和性能的测试。</td><br></tr><br><tr><br><td>片上调试法</td><br><td>片上调试（OCD）是CPU芯片提供的一种调试软件的功能。</td><br><td>目前使用最广泛的的调试方法。不占用目标机资源，调试环境和最终的程序运行环境基本一致。支持软硬断点、跟踪、精确计量程序的执行时间、时序分析等功能。但实时性不如ICE强，不支持非干扰调试查询，CPU必须具有OCD功能。</td><br><td>OCD存在各种实现，标准不唯一。</td><br></tr><br><tr><br><td>模拟器法</td><br><td>模拟器是在宿主机上模拟出一个虚拟目标机的硬件环境，可以在这个虚拟的硬件环境上运行基于此硬件环境的程序甚至操作系统，得到在真实硬件上运行的结果，进而达到在宿主机上运行和调试嵌入式程序的目的。</td><br><td>最节约成本。可以在没有实际的目的机环境时开发其应用程序，并且在调试时可以利用宿主机的资源来提供更详细的错误诊断信息。但实时性差、不能模拟所有设备。</td><br><td>应用场合：可以在没有实际的目的机环境时开发其应用程序</td><br></tr><br></tbody><br></table>
+
+<h3 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h3><h4 id="进程与线程的比较"><a href="#进程与线程的比较" class="headerlink" title="进程与线程的比较"></a>进程与线程的比较</h4><ul>
+<li>进程是多道程序设计的产物，线程是将并行性引入到进程内部，线程被称为轻量级进程。</li>
+<li>进程是操作系统调度程序执行和分配系统资源的基本单位。</li>
+<li>线程是操作系统调度程序执行的最小单位，是进程内部的一个执行控制流。</li>
+</ul>
+<p>不同方面：调度和切换、执行过程、拥有资源、系统开销</p>
+<h4 id="结合具体-OS-分析"><a href="#结合具体-OS-分析" class="headerlink" title="结合具体 OS 分析"></a>结合具体 OS 分析</h4><ol>
+<li><p>嵌入式Linux操作系统的进程和线程：</p>
+<p>嵌入式Linux操作系统提供产生进程的机制。首先，使用系统调用fork() 复制当前进程的内容创建一个子进程，子进程与父进程的区别仅仅在于不同的PID、PPID和其他的一些资源。然后，执行函数exec() 读取可执行文件并将其载入地址空间开始运行。<br>嵌入式Linux操作系统也提供了创建线程的API函数pthread_create()，通常可以将所要传递给线程函数的参数写成一个结构体，传入到该函数中。</p>
+</li>
+<li><p>WinCE操作系统的进程和线程：</p>
+<p>WinCE是基于优先级的抢占式多任务操作系统，一个应用程序对应一个进程，一个进程可以包含多个线程。进程本身不参加系统的调度，也没有优先级和上下文。进程创建时，会创建一个主线程作为该进程默认的执行本。</p>
+<p>在WinCE中，线程是系统调度的基本单位，有运行、挂起、睡眠、阻塞、终止五种状态。</p>
+</li>
+<li><p>μC/OS-Ⅱ操作系统的进程</p>
+<p>μC/OS-Ⅱ操作系统运行时，实质上是一个进程，而所谓系统任务、用户任务都是运行于操作系统进程环境中的线程。</p>
+<p>μC/OS-Ⅱ操作系统提供了系统函数OSTaskCreate() 创建任务，每个任务有自己的堆栈空间、代码空间、但它们共享系统其他资源。</p>
+</li>
+</ol>
+<h2 id="μC-OS-II"><a href="#μC-OS-II" class="headerlink" title="μC/OS-II"></a>μC/OS-II</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>开源、可移植性好、可固话、可剪裁、占先式、多任务、可确定性、任务栈、系统服务、中断管理、稳定性与可靠性、易学易用、支持教学与科研</p>
+<h3 id="任务调度策略"><a href="#任务调度策略" class="headerlink" title="任务调度策略"></a>任务调度策略</h3><p>P178为嵌入式任务管理   </p>
+<ol>
+<li>最短周期优先SBF</li>
+<li>优先级法</li>
+<li>轮转法</li>
+<li>多对轮转法和多级反馈队列法</li>
+<li>实时调度算法</li>
+</ol>
+<p>P194为μC/OS-Ⅱ的任务管理</p>
+<p>μC/OS-Ⅱ中有两种调度器：任务级调度器和中断级调度器。任务级的调度器由函数OSSched（）充当，中断级的调度器由函数OSIntExit（）充当。调度器的工作都是首先选择一个当前处于就绪态的优先级最高的任务，然后终止当前任务的运行，使新选出的任务投入运行。</p>
+<h3 id="表变量、组变量的认识"><a href="#表变量、组变量的认识" class="headerlink" title="表变量、组变量的认识"></a>表变量、组变量的认识</h3><p>μC/OS-Ⅱ使用两个变量OSRdyGrp和OSRdyTbl[]表示任务的就绪情况，OSRdyGrp是一个INT8U型的整数，简称组变量；OSRdyTbl[]是具有8个元素，元素数据类型是INT8U的数组，简称表变量。<br>组变量特点：组变量是一个8位的无符号整数，取值范围从0~255，最多具有256个值。如果把组变量的每个取值n作为数组OSUnMapTbl[]的下标，组变量的值为n时所表示的具有最高优先级的任务所在的行号作为对应的数组的元素值。</p>
+<p>通过查询组变量和表变量来确定处于就绪态的优先级最高的任务。</p>
+<h3 id="OSMapTbl-OSUnMapTbl"><a href="#OSMapTbl-OSUnMapTbl" class="headerlink" title="OSMapTbl[],OSUnMapTbl[]"></a>OSMapTbl[],OSUnMapTbl[]</h3><ol>
+<li><p>OSMapTbl[]是一个为了加快运算速度而定义的数组，一共8个元素。</p>
+<p>下标与值的关系：表变量中的下标对应位置为1。例如OSMapTbl[0]=0b00000001；</p>
+</li>
+<li><p>OSUnMapTbl[]中每个元素的值就是数组元素下标转化成二进制后，从低向高看第一个1所在的位的顺序号。</p>
+</li>
+</ol>
+<h3 id="就绪操作的核心代码"><a href="#就绪操作的核心代码" class="headerlink" title="就绪操作的核心代码"></a>就绪操作的核心代码</h3><p>就绪任务的登记：</p>
+<pre><code>OSRdyGrp  &lt;span class=&quot;string&quot;&gt;|OSMapTbl[Prio &amp;gt;&amp;gt; 3];&lt;/span&gt;
+OSRdyTbl[Prio &amp;gt;&amp;gt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;]  &lt;span class=&quot;string&quot;&gt;| = OSMapTbl[Prio &amp;amp; 0x07];&lt;/span&gt;
+`&lt;/pre&gt;
+
+任务的删除：
+
+&lt;pre&gt;`&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;((&lt;span class=&quot;constant&quot;&gt;OSRdyTbl&lt;/span&gt;[  prio &lt;span class=&quot;prompt&quot;&gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;]  &amp;amp; = ~&lt;span class=&quot;constant&quot;&gt;OSMapTbl&lt;/span&gt;[ prio  &amp;amp; &lt;span class=&quot;number&quot;&gt;0x07&lt;/span&gt; ] ) == &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)
+&lt;span class=&quot;constant&quot;&gt;OSRdyGrp&lt;/span&gt;  &amp;amp; =　~&lt;span class=&quot;constant&quot;&gt;OSMapTbl&lt;/span&gt;[ prio  &lt;span class=&quot;prompt&quot;&gt;&amp;gt;&amp;gt; &lt;/span&gt;&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;];
+`&lt;/pre&gt;
+
+寻找高优先级任务的方法
+
+&lt;pre&gt;`&lt;span class=&quot;setting&quot;&gt;y = &lt;span class=&quot;value&quot;&gt;OSUnMapTbl[OSRdyGrp];&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;setting&quot;&gt;prio= &lt;span class=&quot;value&quot;&gt;( y &amp;lt;&amp;lt; &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;) + OSUnMapTbl [ OSRdyTbl [ y ] ];&lt;/span&gt;&lt;/span&gt;
+</code></pre><h2 id="μC-OS-II-扩展"><a href="#μC-OS-II-扩展" class="headerlink" title="μC/OS-II 扩展"></a>μC/OS-II 扩展</h2><h3 id="FS"><a href="#FS" class="headerlink" title="FS"></a>FS</h3><p>μC/FS是一种几乎可以运行在所有介质上的基于FAT（文件分配表）的文件系统，前提是这种介质能提供基本的访问功能。μC/FS针对不同的设备，在速度、内存使用等方面进行了很好的优化，具有良好的性能。<br>μC/FS体系结构，由四个层次组成：</p>
+<p><img src="/2015/06/08/arm-overview/fs.jpg" alt=""></p>
+<h3 id="GUI"><a href="#GUI" class="headerlink" title="GUI"></a>GUI</h3><p>嵌入式GUI的特点：具有较高的性能，可以满足基本的应用需求；运行时占用较少的资源，体积小；具有较高的可靠性；上层接口与硬件无关，易于剪裁，易于移植。</p>
+<p>μC/GUI被设计成用于给使用一个图形LCD的任何应用程序提供一个高效率的，与处理器核LCD控制器无关的GUI。</p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h3><ul>
+<li>系统需求分析</li>
+<li>体系结构设计</li>
+<li>软硬件及机械系统设计</li>
+<li>系统集成</li>
+<li>系统测试</li>
+<li>最终产品</li>
+</ul>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/嵌入式/">嵌入式</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2015/06/10/软件测试复习/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">软件测试复习</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2015/06/02/ButterKnife/">
+                <span class="level-item">Android 绑定 View 终极利器——ButterKnife</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://twiceyuan.com/2015/06/08/嵌入式复习/';
+        this.page.identifier = '2015/06/08/嵌入式复习/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'twiceyuan' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="https://s.gravatar.com/avatar/38576d83bd35b1a8b8df8642ebfa5b51?s=256">
+                    
+                    <p class="is-size-4 is-block">
+                        twiceYuan
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        // TODO
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Entradas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        108
+                    </p>
+                </div>
+            </div>
+            <!-- <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categorias
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div> -->
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiquetas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        52
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/twiceyuan">
+                SEGUIR</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="http://github.com/twiceyuan">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Telegram" href="https://t.me/twiceyuan">
+                
+                <i class="fab fa-telegram"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="http://twitter.com/twiceYuan">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+
+    
+        
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nube de etiquetas
+        </h3>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 18.75px;">Android Studio</a> <a href="/tags/CI/" style="font-size: 13.75px;">CI</a> <a href="/tags/Chrome/" style="font-size: 11.25px;">Chrome</a> <a href="/tags/Dagger-2/" style="font-size: 10px;">Dagger 2</a> <a href="/tags/DevOps/" style="font-size: 10px;">DevOps</a> <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 11.25px;">Git</a> <a href="/tags/GitLab/" style="font-size: 10px;">GitLab</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Hexo/" style="font-size: 17.5px;">Hexo</a> <a href="/tags/Java/" style="font-size: 13.75px;">Java</a> <a href="/tags/Java-EE/" style="font-size: 10px;">Java EE</a> <a href="/tags/Jenkins/" style="font-size: 13.75px;">Jenkins</a> <a href="/tags/Kotlin/" style="font-size: 12.5px;">Kotlin</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MIUI/" style="font-size: 10px;">MIUI</a> <a href="/tags/Mac/" style="font-size: 16.25px;">Mac</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mavericks/" style="font-size: 10px;">Mavericks</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Oracle/" style="font-size: 12.5px;">Oracle</a> <a href="/tags/Repost/" style="font-size: 11.25px;">Repost</a> <a href="/tags/RxAndroid/" style="font-size: 11.25px;">RxAndroid</a> <a href="/tags/RxJava/" style="font-size: 11.25px;">RxJava</a> <a href="/tags/SSH框架/" style="font-size: 10px;">SSH框架</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/hexo/" style="font-size: 11.25px;">hexo</a> <a href="/tags/iTunes/" style="font-size: 10px;">iTunes</a> <a href="/tags/macOS/" style="font-size: 18.75px;">macOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/tips/" style="font-size: 15px;">tips</a> <a href="/tags/业界新闻/" style="font-size: 10px;">业界新闻</a> <a href="/tags/利器/" style="font-size: 10px;">利器</a> <a href="/tags/博客搭建/" style="font-size: 11.25px;">博客搭建</a> <a href="/tags/复习/" style="font-size: 10px;">复习</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 11.25px;">数据库</a> <a href="/tags/生活技能/" style="font-size: 10px;">生活技能</a> <a href="/tags/知乎/" style="font-size: 12.5px;">知乎</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/编程随想/" style="font-size: 10px;">编程随想</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/自学/" style="font-size: 10px;">自学</a> <a href="/tags/评测/" style="font-size: 10px;">评测</a> <a href="/tags/课堂笔记/" style="font-size: 16.25px;">课堂笔记</a> <a href="/tags/软件工程/" style="font-size: 10px;">软件工程</a> <a href="/tags/软件测试/" style="font-size: 10px;">软件测试</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-07T02:02:28.000Z">2018-11-07</time></div>
+                    <a href="/2018/11/07/travis-accept-licenses/" class="has-link-black-ter is-size-6">Travis 上接受 SDK License</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-01T09:43:20.000Z">2018-08-01</time></div>
+                    <a href="/2018/08/01/generate-app-versison-by-git-tag/" class="has-link-black-ter is-size-6">使用 Git 的 tag 管理 App 版本</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-01T07:58:07.000Z">2018-08-01</time></div>
+                    <a href="/2018/08/01/jenkins-trigger-remotely/" class="has-link-black-ter is-size-6">开启用户鉴权时 Jenkins 触发远程构建时的 403 问题</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-12T06:45:40.000Z">2017-12-12</time></div>
+                    <a href="/2017/12/12/kotlin-generic-type/" class="has-link-black-ter is-size-6">Kotlin 的泛型系统</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-10T15:50:54.000Z">2017-12-10</time></div>
+                    <a href="/2017/12/10/rewrite-retropreference-by-kotlin/" class="has-link-black-ter is-size-6">Kotlin 中的属性委托：ValueKit 的实现介绍</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    twiceYuan
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2018 twiceYuan&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en-US");</script>
+
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                if (typeof($.fn.lightGallery) === 'function') {
+                    $('.article').lightGallery({ selector: '.gallery-item' });
+                }
+                if (typeof($.fn.justifiedGallery) === 'function') {
+                    $('.justified-gallery').justifiedGallery();
+                }
+            });
+        })(jQuery);
+    </script>
+    
+
+    
+    
+    
+    <div id="outdated">
+        <h6>Your browser is out-of-date!</h6>
+        <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+        <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // plugin function, place inside DOM ready function
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'flex'
+            })
+        });
+    </script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/animejs@2.2.0/anime.js"></script>
+    <script>
+    function isIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        var trident = ua.indexOf('Trident/');
+        return (msie > 0 || trident > 0);
+    }
+
+    $(document).ready(function () {
+        $('body>.navbar,body>.section,body>.footer').css('opacity', 1);
+        if (!isIE()) {
+            ['.column-main > .card',
+             '.column-left > .card',
+             '.column-right > .card'].map(function(target) {
+                anime({
+                    targets: target,
+                    scale: [0.8, 1],
+                    opacity: [0, 1],
+                    duration: 300,
+                    easing: 'easeOutSine',
+                    delay: function(el, i, l) {
+                        return i * 100;
+                    }
+                })
+            });
+
+            anime({
+                targets: '.navbar-main',
+                translateY: [-100, 0],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutSine'
+            });
+        }
+    });
+    </script>
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<style>
+#back-to-top {
+    position: fixed;
+    padding: 8px 0;
+    transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform, 0.4s ease border-radius;
+    opacity: 0;
+    line-height: 24px;
+    outline: none;
+    transform: translateY(120px);
+}
+#back-to-top.fade-in {
+    opacity: 1;
+}
+#back-to-top.rise-up {
+    transform: translateY(0);
+}
+</style>
+<script src="/js/back-to-top.js"></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

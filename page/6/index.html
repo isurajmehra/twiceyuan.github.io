@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8">
+<title>twiceYuan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="twiceYuan&apos;s Blog">
+<meta name="keywords" content="twiceYuan,Android">
+<meta property="og:type" content="website">
+<meta property="og:title" content="twiceYuan">
+<meta property="og:url" content="https://twiceyuan.com/page/6/index.html">
+<meta property="og:site_name" content="twiceYuan">
+<meta property="og:description" content="twiceYuan&apos;s Blog">
+<meta property="og:locale" content="en-US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="twiceYuan">
+<meta name="twitter:description" content="twiceYuan&apos;s Blog">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+
+    
+    
+    
+    <style>body>.navbar,body>.section,body>.footer{opacity: 0}</style>
+    
+
+    
+    
+    
+    
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?1560044f7350c95ffd183a737b08e65d";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<style>
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #3273dc;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+</style>
+
+    
+
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                twiceYuan
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main">
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2015-04-15T12:05:47.000Z">2015-04-15</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    5 minutes read (About 804 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2015/04/15/AsyncTask简介/">AsyncTask简介</a>
+            
+        </h1>
+        <div class="content">
+            <p>AsyncTask enables proper and easy use of the UI thread. This class allows to perform background operations and publish results on the UI thread without having to manipulate threads and/or handlers.</p>
+<p><a id="more"></a></p>
+<p>AsyncTask is designed to be a helper class around Thread and Handler and does not constitute a generic threading framework. AsyncTasks should ideally be used for short operations (a few seconds at the most.) If you need to keep threads running for long periods of time, it is highly recommended you use the various APIs provided by the java.util.concurrent package such as Executor, ThreadPoolExecutor and FutureTask.</p>
+<p>An asynchronous task is defined by a computation that runs on a background thread and whose result is published on the UI thread. An asynchronous task is defined by 3 generic types, called Params, Progress and Result, and 4 steps, called onPreExecute, doInBackground, onProgressUpdate and onPostExecute.</p>
+<hr>
+<blockquote>
+<p>蹩脚翻译 仅供参考</p>
+</blockquote>
+<hr>
+<p>AsyncTask 能使 UI 线程的使用变得恰当和简单。这个类允许 UI 线程在不操纵 Thread 和/或 Handler 的情况下执行后台操作和发布结果。</p>
+<p>AsyncTask 被设计成为一个围绕 Thread 和 Handler 工作的帮助类，并且不会形成一个普通的线程框架。AsyncTask 理想中应该被用于短操作（大多是几秒）。如果你需要保持线程运行很长时间，推荐你使用 java.util.concurrent 包提供的许多类比如 Executor、ThreadPoolExecutor 和 FutureTask。</p>
+<p>一个 AsyncTask 被定义为一个运行在后台线程并且结果公布给 UI 线程的运算。AsyncTask 定义了三个泛型：Params、Progress 和 Result 以及四个步骤：onPreExecute、doInBackground、onProgressUpdate 和 onPostExecute。</p>
+<hr>
+<p>以上摘自 Google 官方文档 。</p>
+<p>之前一直使用 Handler+Thread 来完成各种异步操作，昨天参加南京 GDG 这边组织的 Android Study Jam 介绍了一下 AsyncTask 的用法，惭愧于之前一直没有使用正确的姿势来学习 Android，养成了各种不规范的习惯。</p>
+<p>在 AsyncTask 中，三个泛型分别代表着：</p>
+<ul>
+<li>Params：创建时被传入的参数</li>
+<li>Progress：执行过程中需要及时反馈给 UI 的进度</li>
+<li>Result：任务执行结束后的结果</li>
+</ul>
+<p>四个方法分别表示：</p>
+<ul>
+<li>onPreExecute：执行前的准备工作。一般用于初始化 UI</li>
+<li>doInbackground：后台任务</li>
+<li>onProgressUpdate：进度更新给 UI</li>
+<li>onPostExecute：返回结果</li>
+</ul>
+<p>下面是一个小 demo 来演示一下最基础的 AsyncTask 用法：</p>
+<h4 id="MainActivity-java"><a href="#MainActivity-java" class="headerlink" title="MainActivity.java"></a>MainActivity.java</h4><figure class="highlight scala hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> android.app.<span class="hljs-type">Activity</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> android.os.<span class="hljs-type">AsyncTask</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> android.os.<span class="hljs-type">Bundle</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> android.os.<span class="hljs-type">SystemClock</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> android.widget.<span class="hljs-type">ProgressBar</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> android.widget.<span class="hljs-type">TextView</span>;</span><br><span class="line"></span><br><span class="line">public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span></span> <span class="hljs-title">Activity</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-type">ProgressBar</span> pb_main;</span><br><span class="line">    <span class="hljs-type">TextView</span> tv_result;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-annotation">@Override</span></span><br><span class="line">    <span class="hljs-keyword">protected</span> void onCreate(<span class="hljs-type">Bundle</span> savedInstanceState) &#123;</span><br><span class="line">        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(<span class="hljs-type">R</span>.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        pb_main = (<span class="hljs-type">ProgressBar</span>) findViewById(<span class="hljs-type">R</span>.id.pb_main);</span><br><span class="line">        tv_result = (<span class="hljs-type">TextView</span>) findViewById(<span class="hljs-type">R</span>.id.tv_main);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-type">TestTask</span> task = <span class="hljs-keyword">new</span> <span class="hljs-type">TestTask</span>();</span><br><span class="line">        task.execute();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestTask</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span></span> <span class="hljs-title">AsyncTask&lt;Void</span>, <span class="hljs-title">Integer</span>, <span class="hljs-title">String&gt;</span> &#123;</span></span><br><span class="line"></span><br><span class="line">        <span class="hljs-annotation">@Override</span></span><br><span class="line">        <span class="hljs-keyword">protected</span> <span class="hljs-type">String</span> doInBackground(<span class="hljs-type">Void</span>… params) &#123;</span><br><span class="line"></span><br><span class="line">            int progress = <span class="hljs-number">0</span>;</span><br><span class="line">            <span class="hljs-keyword">while</span> (progress &lt; <span class="hljs-number">100</span>) &#123;</span><br><span class="line">                <span class="hljs-type">SystemClock</span>.sleep(<span class="hljs-number">100</span>);</span><br><span class="line">                progress++;</span><br><span class="line">                publishProgress(progress);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-string">“任务完成”</span> + progress;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-annotation">@Override</span></span><br><span class="line">        <span class="hljs-keyword">protected</span> void onProgressUpdate(<span class="hljs-type">Integer</span>… values) &#123;</span><br><span class="line">            pb_main.setProgress(values[<span class="hljs-number">0</span>]);</span><br><span class="line">            tv_result.setText(<span class="hljs-string">“任务进度：”</span> + values[<span class="hljs-number">0</span>] + <span class="hljs-string">“”</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="hljs-annotation">@Override</span></span><br><span class="line">        <span class="hljs-keyword">protected</span> void onPostExecute(<span class="hljs-type">String</span> s) &#123;</span><br><span class="line">            tv_result.setText(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="activity-main-xml"><a href="#activity-main-xml" class="headerlink" title="activity_main.xml"></a>activity_main.xml</h4><figure class="highlight nix hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;RelativeLayout xmlns:<span class="hljs-variable">android=</span><span class="hljs-string">“<a href="http://schemas.android.com/apk/res/android&quot;" target="_blank" rel="noopener">http://schemas.android.com/apk/res/android&quot;</a></span></span><br><span class="line">    xmlns:<span class="hljs-variable">tools=</span><span class="hljs-string">“<a href="http://schemas.android.com/tools&quot;" target="_blank" rel="noopener">http://schemas.android.com/tools&quot;</a></span></span><br><span class="line">    android:<span class="hljs-variable">layout_width=</span><span class="hljs-string">“match_parent”</span></span><br><span class="line">    android:<span class="hljs-variable">layout_height=</span><span class="hljs-string">“match_parent”</span></span><br><span class="line">    tools:<span class="hljs-variable">context=</span><span class="hljs-string">“.MainActivity”</span>&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:<span class="hljs-variable">padding=</span><span class="hljs-string">“20dp”</span></span><br><span class="line">        android:<span class="hljs-variable">id=</span><span class="hljs-string">“@+id/tv_main”</span></span><br><span class="line">        android:<span class="hljs-variable">layout_width=</span><span class="hljs-string">“match_parent”</span></span><br><span class="line">        android:<span class="hljs-variable">layout_height=</span><span class="hljs-string">“wrap_content”</span></span><br><span class="line">        android:<span class="hljs-variable">text=</span><span class="hljs-string">“@string/progress_info”</span></span><br><span class="line">        android:<span class="hljs-variable">layout_alignParentTop=</span><span class="hljs-string">“true”</span></span><br><span class="line">        android:<span class="hljs-variable">layout_centerHorizontal=</span><span class="hljs-string">“true”</span> /&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;ProgressBar</span><br><span class="line">        android:<span class="hljs-variable">id=</span><span class="hljs-string">“@+id/pb_main”</span></span><br><span class="line">        <span class="hljs-variable">style=</span><span class="hljs-string">“?android:attr/progressBarStyleHorizontal”</span></span><br><span class="line">        android:<span class="hljs-variable">layout_width=</span><span class="hljs-string">“match_parent”</span></span><br><span class="line">        android:<span class="hljs-variable">layout_height=</span><span class="hljs-string">“wrap_content”</span></span><br><span class="line">        android:<span class="hljs-variable">layout_centerVertical=</span><span class="hljs-string">“true”</span></span><br><span class="line">        android:<span class="hljs-variable">layout_alignParentLeft=</span><span class="hljs-string">“true”</span></span><br><span class="line">        android:<span class="hljs-variable">layout_alignParentStart=</span><span class="hljs-string">“true”</span> /&gt;</span><br><span class="line">        </span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2015-04-14T23:31:21.000Z">2015-04-15</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 638 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2015/04/15/How-to-speed-up-gradle-build-time/">How to speed up gradle build time</a>
+            
+        </h1>
+        <div class="content">
+            <p>If you use the new Gradle build system with Android (or Android Studio) you might have realized, that even the simplest Gradle call (e.g. gradle project or grade tasks) is pretty slow. On my computer it took around eight seconds for that kind of Gradle calls. <a id="more"></a>You can decrease this startup time of Gradle (on my computer down to two seconds), if you tell Gradle to use a daemon to build. Just create a file named gradle.properties in the following directory:</p>
+<ul>
+<li>/home/<username>/.gradle/ (Linux)</username></li>
+<li>/Users/<username>/.gradle/ (Mac)</username></li>
+<li>C:\Users\<username>.gradle (Windows)</username></li>
+</ul>
+<p>Add this line to the file:</p>
+<pre><code>org&lt;span class=&quot;class&quot;&gt;.gradle&lt;/span&gt;&lt;span class=&quot;class&quot;&gt;.daemon&lt;/span&gt;=true
+`&lt;/pre&gt;
+
+From now on Gradle will use a daemon to build, whether you are using Gradle from command line or building in Android Studio. You could also place the gradle.properties file to the root directory of your project and commit it to your SCM system. But you would have to do this, for every project (if you want to use the daemon in every project).
+
+Note: If you don’t build anything with Gradle for some time (currently 3 hours), it will stop the daemon, so that you will experience a long start-up time at the next build.
+
+Note：Performance improvements are one of the great tasks in the Gradle roadmap for 2014 (and reaching into 2015). So I hope, we’ll see the general performance increasing within these years.
+
+Note: This does only affect console builds. Android Studio always uses a Gradle daemon (and depending on your settings some other optimizations).
+
+&gt; 来源：[https://www.timroes.de/2013/09/12/speed-up-gradle/](https://www.timroes.de/2013/09/12/speed-up-gradle/)
+</code></pre><blockquote>
+<pre><code>（_至今没过英语四级的人的蹩脚翻译仅供参考_）
+</code></pre></blockquote>
+<pre><code>如果你使用新的 Gradle 构建系统（或 Android Studio）你也许认识到简单的 Gradle 调用（例如 gradle project 或者 gradle tasks）是如此之慢。在我的电脑上那些gradle 调用要花 8 秒左右。如果你告诉 Gradle 使用一个后台驻留进程去构建就可以减少 Gradle 的启动时间。只需要创建一个名为`gradle.properties`在下面的文件夹中：
+</code></pre><ul>
+<li>/home/<username>/.gradle/ (Linux)</username></li>
+<li>/Users/<username>/.gradle/ (Mac)</username></li>
+<li><p>C:\Users\<username>.gradle (Windows)</username></p>
+<p>在该文件中添加这样一行：</p>
+<p><pre>`org<span class="class">.gradle</span><span class="class">.daemon</span>=true</pre></p>
+</li>
+</ul>
+<p>现在无论你使用 Gradle 命令行还是在 Android Studio 中， Gradle 将使用一个驻留进程去构建项目。你可以把<code>gradle.properties</code>文件放在你项目的根目录并提交到你的 SCM 系统。但是你必须每个项目都这样做（如果你想每个项目都使用后台驻留进程）。</p>
+<p>Note：如果你在一段时间（当前是3小时）内不使用 Gradle 构建任何东西，它将会终止这个进程，那么你会在下一次构建时花费很长时间。</p>
+<p>Note：不会翻译。</p>
+<p>Note：这个只会影响控制台的构建。Android Studio 总是会使用一个 gradle 后台驻留进程（并且依靠于你设置上的其他优化）</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2015-04-07T00:27:45.000Z">2015-04-07</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 638 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2015/04/07/旧物新用/">旧物新用</a>
+            
+        </h1>
+        <div class="content">
+            <p>最近校园天翼升级速度加快，导致之前一直用的基于 OpenWRT 的破解路由器废掉了。加上 Mac 上的天翼校园客户端会无端禁止系统上的代理软件，导致不能使用 shadowsocks，遂购入一台一百多的 Windows 主机倒腾网络共享，顺便也体验下家庭媒体服务器+离线下载器的功能。</p>
+<p><a id="more"></a></p>
+<p>买后首先要解决的问题就是没有显示器<del>鼠标</del>键盘的问题，所以准备以后一直使用远程连接的方式来控制，但第一次安装还是需要借来别人的显示器和键盘，然后做以下配置：</p>
+<ul>
+<li>开启远程设置中的允许特定用户远程登录（也就是之后的管理员账户）</li>
+<li>到控制面板里安全策略中允许空密码登录（关键词，空密码，远程登录）</li>
+</ul>
+<p>为什么使用空密码呢？刚开始有这样的考虑：没有显示器和键盘，我必须保证开机后能自动进入系统，然后自动建立无线热点以便笔记本接入（后来用外置网卡没有尝试成功，每次开机还是有线连接了），Windows 上貌似没有 OS X 下设置用户密码，但在本机上可以开机自动登入的功能吧？所以暂时使用空密码。但是空密码也有坏处，就是所有局域网内部的人都可以远程登录到这个主机（虽然不是不信任舍友，但是把自己的硬盘暴露给所有局域网的人也多少有点不妥吧……更何况无线网也不是绝对安全的）。所以我使用了这么一个相对安全的方法：将管理员用户名后面生成一些乱码，作为显式的密码。这样未登录的用户也看到管理员的账户名，自然也不能随意登录了。</p>
+<p>之后把自己的硬盘挂上去开启了共享，并开启流媒体相关的选项，在 OS X 连接 SMB 服务器，5G 左右的视频也能流畅播放，Perfect，也顺便解决了我对移动硬盘 NTFS 访问无力的痛。</p>
+<p>但愿它能活久点，毕业了还能带回去孝敬长辈 ：）</p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2015-04-05T01:59:54.000Z">2015-04-05</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 582 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2015/04/05/当我换一个新主题时/">当我换一个新主题时</a>
+            
+        </h1>
+        <div class="content">
+            <p>Hexo 的很多特性都与主题密切相关，由于主题的高度独立性，导致使用者切换一个主题时可能要重新配置很多东西。</p>
+<p><a id="more"></a></p>
+<p>前段时间不小心手贱手残执行了一次 <code>hexo init</code> （欢迎作死尝试），结果所有配置相关的文件都被初始化了，只有一些 page 文件夹和 post 文件夹免受于害。于是所有对主题的修改和编辑都得重新弄一次（这里也由于我的疏忽大意，之前虽然有备份博客的源文件夹，不过因为阴差阳错居然 ignore 了主题文件夹，所以一切还是白搭）。</p>
+<p>根据我的日常使用，总共有这几个部分是需要首先修改的：</p>
+<h2 id="有言评论插件"><a href="#有言评论插件" class="headerlink" title="有言评论插件"></a>有言评论插件</h2><p>虽然大多数人用多说，但是我感觉多说不仅样式丑，而且迁移起来难出翔，后台管理各种 bug，虽然有言也不完美，但至少界面简洁安装简单并且不用配置什么 key path 什么的，自动识别 url。关于有言的安装十分简单，只要将官方提供的一段 js 添加到 article.ejs 文件中即可。位置可参考一般主体自带的多说或者 disqus 的代码。</p>
+<h2 id="百度统计"><a href="#百度统计" class="headerlink" title="百度统计"></a>百度统计</h2><p>百度统计也好办，参考 Google 分析代码即可，一般主题都有。</p>
+<h2 id="微博秀"><a href="#微博秀" class="headerlink" title="微博秀"></a>微博秀</h2><p>添加一个文件到 widget ，代码从微博秀地址获得。</p>
+<h2 id="友情链接"><a href="#友情链接" class="headerlink" title="友情链接"></a>友情链接</h2><p>这个很简单，一般主题提供配置。不过我觉得这个是主题不想关的，完全可以放到主配置文件中。这个可以根据自己需求把 theme.links 改成 config.links</p>
+<h2 id="fancybox"><a href="#fancybox" class="headerlink" title="fancybox"></a>fancybox</h2><p>由于我有在某些图片上不使用 fancybox 效果的需求，所以最好更改一下，更改方法参考以前博文：<a href="http://twiceyuan.com/2014/08/12/disable-fancybox/">http://twiceyuan.com/2014/08/12/disable-fancybox/</a></p>
+<h2 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h2><p>参考 <a href="http://twiceyuan.com/2015/01/12/%E4%B8%BAHexo%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95/">http://twiceyuan.com/2015/01/12/%E4%B8%BAHexo%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95/</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2015-04-03T00:24:51.000Z">2015-04-03</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 531 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2015/04/03/TIPS003/">TIP003</a>
+            
+        </h1>
+        <div class="content">
+            <p><strong>True Nobility</strong></p>
+<p>In a calm sea every man is a pilot. </p>
+<p>But all sunshine without shade, all pleasure without pain, is not life at all. Take the lot of the happiest—it is a tangled yarn. Bereavements and blessings, one following another, make us sad and blessed by turns. Even death itself makes life more loving. Men come closest to their true selves in the sober moments of life, under the shadows of sorrow and loss. </p>
+<p><a id="more"></a></p>
+<p>In the affairs of life or of business, it is not intellect that tells so much as character, not brains so much as heart, not genius so much as self-control, patience, and discipline, regulated by judgment. </p>
+<p>I have always believe that the man who has begun to live more seriously within begins to live more simply without. In an age of extravagance and waste, I wish I could show to the world how few the real wants of humanity are. </p>
+<p>To regret one’s errors to the point of not repeating them is true repentance. There is nothing noble in being superior to some other man. The true nobility is in being superior to your previous self. </p>
+<hr>
+<p>风平浪静的大海，每个人都是领航员。 </p>
+<p>但是，只有阳光而无阴影，只有欢乐而无痛苦，那就不是人生。以最幸福的人的生活为例—它是一团纠缠在一起的麻线。丧母之痛和幸福祝愿彼此相接，是我们一会伤心，一会高兴，甚至死亡本身也会使生命更加可亲。在人生的清醒的时刻，在哀痛和伤心的阴影之下，人们真实的自我最接近。 </p>
+<p>在人生或者职业的各种事务中，性格的作用比智力大得多，头脑的作用不如心情，天资不如由判断力所节制着的自制，耐心和规律。 </p>
+<p>我始终相信，开始在内心生活得更严肃的人，也会在外表上开始生活得更朴素。在一个奢华浪费的年代，我希望能向世界表明，人类真正需要的的东西是非常之微少的。 </p>
+<p>悔恨自己的错误，而且力求不再重蹈覆辙，这才是真正的悔悟。优于别人，并不高贵，真正的高贵应该是优于过去的自己。 </p>
+<p><img src="/2015/03/30/TIPS003/tip003.jpg" alt=""></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2015-03-27T00:01:35.000Z">2015-03-27</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 169 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2015/03/27/使用-yum-处理-oracle-环境依赖/">使用 yum 处理 oracle 环境依赖</a>
+            
+        </h1>
+        <div class="content">
+            <p> 安装过 oracle 的都知道，在安装之前配置环境和处理依赖是件很繁琐的事情。在 oracle 自家系统上有较好的解决方案（可能不适用于其他发行版），就是使用 yum 来安装一个预安装包来处理依赖配置环境。</p>
+<p><a id="more"></a></p>
+<p>方法如下：</p>
+<ol>
+<li><code>cd /etc/yum.repos.d/</code></li>
+<li><code>wget http://public-yum.oracle.com/public-yum-ol6.repo</code></li>
+<li>将 <code>[ol6_u3_base]</code> 和 <code>[ol6_UEK_base]</code> 下的 enable 参数改为1</li>
+<li><code>yum install oracle-rdbms-server-11gR2-preinstall</code></li>
+<li>验证环境是否正确安装，然后就可以开始运行安装程序了</li>
+</ol>
+<p>详细：<a href="http://blog.csdn.net/leshami/article/details/26339933" target="_blank" rel="noopener">http://blog.csdn.net/leshami/article/details/26339933</a></p>
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2015-03-21T13:44:10.000Z">2015-03-21</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 609 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2015/03/21/Connect-to-Docker-Container/">连接 Docker Container 的几种方式</a>
+            
+        </h1>
+        <div class="content">
+            <p>经过熟悉之后，在 docker 里安装了一个 ubuntu 准备学习使用。然后遇到了一些问题：</p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2015/03/21/Connect-to-Docker-Container/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2015-03-21T03:57:10.000Z">2015-03-21</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 571 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2015/03/21/docker-basic/">Docker 小试</a>
+            
+        </h1>
+        <div class="content">
+            <p>使用 Docker 照着别人教的把 oracle 装好了，但是对 docker 一些基本的用法还不熟悉，比如：我配置好一个 container，如何打包给别人直接用，如何如何查看 container 的状态等等。这里在网上以及官方文档中收集了一些常用的命令，供自己忘记时查阅使用。</p>
+<img src="/2015/03/21/docker-basic/docker.png">
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2015/03/21/docker-basic/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2015-03-20T08:07:19.000Z">2015-03-20</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 574 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2015/03/20/Oracle-on-Docker/">在 Docker 上配置 Oracle</a>
+            
+        </h1>
+        <div class="content">
+            <p>上一篇说了自己多么智商捉急以至于一个 oracle 装了一下午。所以趁此机会赶时髦学习一下 Docker 的使用。</p>
+<img src="/2015/03/20/Oracle-on-Docker/docker.png">
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2015/03/20/Oracle-on-Docker/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2015-03-19T03:14:09.000Z">2015-03-19</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    a minute read (About 171 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2015/03/19/Install-Oracle-on-Fedora/">在 Parallels Desktop 10 上 安装的 Fedora 上安装 Oracle 11gR2</a>
+            
+        </h1>
+        <div class="content">
+            <p>在 Fedora 上安装 Parallels Tools 有些小问题。需要在此之前安装一些依赖：</p>
+<p><a href="http://kb.parallels.com/en/118876" target="_blank" rel="noopener">参考来源</a></p>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2015/03/19/Install-Oracle-on-Fedora/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+    
+<div class="card card-transparent">
+    <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+        <div class="pagination-previous">
+            <a class="is-flex-grow has-text-black-ter" href="/page/5/">Anterior</a>
+        </div>
+        <div class="pagination-next">
+            <a class="is-flex-grow has-text-black-ter" href="/page/7/">Siguiente</a>
+        </div>
+        <ul class="pagination-list is-hidden-mobile">
+            
+            <li><a class="pagination-link has-text-black-ter" href="/">1</a></li>
+            
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/5/">5</a></li>
+            
+            <li><a class="pagination-link is-current" href="/page/6/">6</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/7/">7</a></li>
+            
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/11/">11</a></li>
+            
+        </ul>
+    </nav>
+</div>
+</div>
+                
+                
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="https://s.gravatar.com/avatar/38576d83bd35b1a8b8df8642ebfa5b51?s=256">
+                    
+                    <p class="is-size-4 is-block">
+                        twiceYuan
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        // TODO
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Entradas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        108
+                    </p>
+                </div>
+            </div>
+            <!-- <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categorias
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div> -->
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiquetas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        52
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/twiceyuan">
+                SEGUIR</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="http://github.com/twiceyuan">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Telegram" href="https://t.me/twiceyuan">
+                
+                <i class="fab fa-telegram"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="http://twitter.com/twiceYuan">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+
+    
+        
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nube de etiquetas
+        </h3>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 18.75px;">Android Studio</a> <a href="/tags/CI/" style="font-size: 13.75px;">CI</a> <a href="/tags/Chrome/" style="font-size: 11.25px;">Chrome</a> <a href="/tags/Dagger-2/" style="font-size: 10px;">Dagger 2</a> <a href="/tags/DevOps/" style="font-size: 10px;">DevOps</a> <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 11.25px;">Git</a> <a href="/tags/GitLab/" style="font-size: 10px;">GitLab</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Hexo/" style="font-size: 17.5px;">Hexo</a> <a href="/tags/Java/" style="font-size: 13.75px;">Java</a> <a href="/tags/Java-EE/" style="font-size: 10px;">Java EE</a> <a href="/tags/Jenkins/" style="font-size: 13.75px;">Jenkins</a> <a href="/tags/Kotlin/" style="font-size: 12.5px;">Kotlin</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/MIUI/" style="font-size: 10px;">MIUI</a> <a href="/tags/Mac/" style="font-size: 16.25px;">Mac</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mavericks/" style="font-size: 10px;">Mavericks</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Oracle/" style="font-size: 12.5px;">Oracle</a> <a href="/tags/Repost/" style="font-size: 11.25px;">Repost</a> <a href="/tags/RxAndroid/" style="font-size: 11.25px;">RxAndroid</a> <a href="/tags/RxJava/" style="font-size: 11.25px;">RxJava</a> <a href="/tags/SSH框架/" style="font-size: 10px;">SSH框架</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/hexo/" style="font-size: 11.25px;">hexo</a> <a href="/tags/iTunes/" style="font-size: 10px;">iTunes</a> <a href="/tags/macOS/" style="font-size: 18.75px;">macOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/tips/" style="font-size: 15px;">tips</a> <a href="/tags/业界新闻/" style="font-size: 10px;">业界新闻</a> <a href="/tags/利器/" style="font-size: 10px;">利器</a> <a href="/tags/博客搭建/" style="font-size: 11.25px;">博客搭建</a> <a href="/tags/复习/" style="font-size: 10px;">复习</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 11.25px;">数据库</a> <a href="/tags/生活技能/" style="font-size: 10px;">生活技能</a> <a href="/tags/知乎/" style="font-size: 12.5px;">知乎</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/编程随想/" style="font-size: 10px;">编程随想</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/自学/" style="font-size: 10px;">自学</a> <a href="/tags/评测/" style="font-size: 10px;">评测</a> <a href="/tags/课堂笔记/" style="font-size: 16.25px;">课堂笔记</a> <a href="/tags/软件工程/" style="font-size: 10px;">软件工程</a> <a href="/tags/软件测试/" style="font-size: 10px;">软件测试</a> <a href="/tags/随笔/" style="font-size: 15px;">随笔</a>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-07T02:02:28.000Z">2018-11-07</time></div>
+                    <a href="/2018/11/07/travis-accept-licenses/" class="has-link-black-ter is-size-6">Travis 上接受 SDK License</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-01T09:43:20.000Z">2018-08-01</time></div>
+                    <a href="/2018/08/01/generate-app-versison-by-git-tag/" class="has-link-black-ter is-size-6">使用 Git 的 tag 管理 App 版本</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-01T07:58:07.000Z">2018-08-01</time></div>
+                    <a href="/2018/08/01/jenkins-trigger-remotely/" class="has-link-black-ter is-size-6">开启用户鉴权时 Jenkins 触发远程构建时的 403 问题</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-12T06:45:40.000Z">2017-12-12</time></div>
+                    <a href="/2017/12/12/kotlin-generic-type/" class="has-link-black-ter is-size-6">Kotlin 的泛型系统</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-10T15:50:54.000Z">2017-12-10</time></div>
+                    <a href="/2017/12/10/rewrite-retropreference-by-kotlin/" class="has-link-black-ter is-size-6">Kotlin 中的属性委托：ValueKit 的实现介绍</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    twiceYuan
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2018 twiceYuan&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en-US");</script>
+
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                if (typeof($.fn.lightGallery) === 'function') {
+                    $('.article').lightGallery({ selector: '.gallery-item' });
+                }
+                if (typeof($.fn.justifiedGallery) === 'function') {
+                    $('.justified-gallery').justifiedGallery();
+                }
+            });
+        })(jQuery);
+    </script>
+    
+
+    
+    
+    
+    <div id="outdated">
+        <h6>Your browser is out-of-date!</h6>
+        <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+        <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // plugin function, place inside DOM ready function
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'flex'
+            })
+        });
+    </script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/animejs@2.2.0/anime.js"></script>
+    <script>
+    function isIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        var trident = ua.indexOf('Trident/');
+        return (msie > 0 || trident > 0);
+    }
+
+    $(document).ready(function () {
+        $('body>.navbar,body>.section,body>.footer').css('opacity', 1);
+        if (!isIE()) {
+            ['.column-main > .card',
+             '.column-left > .card',
+             '.column-right > .card'].map(function(target) {
+                anime({
+                    targets: target,
+                    scale: [0.8, 1],
+                    opacity: [0, 1],
+                    duration: 300,
+                    easing: 'easeOutSine',
+                    delay: function(el, i, l) {
+                        return i * 100;
+                    }
+                })
+            });
+
+            anime({
+                targets: '.navbar-main',
+                translateY: [-100, 0],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutSine'
+            });
+        }
+    });
+    </script>
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<style>
+#back-to-top {
+    position: fixed;
+    padding: 8px 0;
+    transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform, 0.4s ease border-radius;
+    opacity: 0;
+    line-height: 24px;
+    outline: none;
+    transform: translateY(120px);
+}
+#back-to-top.fade-in {
+    opacity: 1;
+}
+#back-to-top.rise-up {
+    transform: translateY(0);
+}
+</style>
+<script src="/js/back-to-top.js"></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

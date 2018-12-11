@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>twiceYuan</title>
+  
+  <subtitle>the singularity is near</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://twiceyuan.com/"/>
+  <updated>2018-11-07T02:13:35.125Z</updated>
+  <id>https://twiceyuan.com/</id>
+  
+  <author>
+    <name>twiceYuan</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Travis 上接受 SDK License</title>
+    <link href="https://twiceyuan.com/2018/11/07/travis-accept-licenses/"/>
+    <id>https://twiceyuan.com/2018/11/07/travis-accept-licenses/</id>
+    <published>2018-11-07T02:02:28.000Z</published>
+    <updated>2018-11-07T02:13:35.125Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在 Travis 上构建项目时有时会遇到自己设备构建成功了，却在 Travis 上提示某个 component 安装失败，需要接受其对应的 license。在失败时其实已经给出一个地址说明了解决方法：&lt;a href=&quot;https://developer.android.com/studio/intro/update#download-with-gradle&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://developer.android.com/studio/intro/update#download-with-gradle&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
+    
+      <category term="CI" scheme="https://twiceyuan.com/tags/CI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 Git 的 tag 管理 App 版本</title>
+    <link href="https://twiceyuan.com/2018/08/01/generate-app-versison-by-git-tag/"/>
+    <id>https://twiceyuan.com/2018/08/01/generate-app-versison-by-git-tag/</id>
+    <published>2018-08-01T09:43:20.000Z</published>
+    <updated>2018-09-02T16:03:51.684Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Android 应用开发到打包上线经常有这样的场景：需要上线了，打了个包，发现版本号没改；然后改了版本号，再打包，提交。为了方便以后定位版本，我们一般还会在发布后为这个版本打个 tag，这个 tag 会标记我们上线前的最后一次提交。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
+    
+      <category term="Git" scheme="https://twiceyuan.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>开启用户鉴权时 Jenkins 触发远程构建时的 403 问题</title>
+    <link href="https://twiceyuan.com/2018/08/01/jenkins-trigger-remotely/"/>
+    <id>https://twiceyuan.com/2018/08/01/jenkins-trigger-remotely/</id>
+    <published>2018-08-01T07:58:07.000Z</published>
+    <updated>2018-12-11T08:41:57.270Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在开启用户鉴权后使用 GitLab 的 WebHook 来触发 Jenkins 构建时，test 请求就会提示 403 鉴权错误，网上搜索了一波资料，大多都是提示修改一些安全设置或者开启匿名用户的 job read 权限。开启 job 的 read 权限后副作用是任何人都可以查看你在 jenkins server 上的构建任务，这对于位于公网上的 jenkins 实例无疑是不安全的，最后发现最佳的实践方式是通过 Jenkins 的 token 来完成鉴权并向 trigger 的 url 发送请求。步骤如下：&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Jenkins" scheme="https://twiceyuan.com/tags/Jenkins/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kotlin 的泛型系统</title>
+    <link href="https://twiceyuan.com/2017/12/12/kotlin-generic-type/"/>
+    <id>https://twiceyuan.com/2017/12/12/kotlin-generic-type/</id>
+    <published>2017-12-12T06:45:40.000Z</published>
+    <updated>2018-12-11T08:51:55.782Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;泛型是静态类型语言中不可缺少的一部分，Kotlin 的泛型定义和使用都类似 Java，但也有一些基于工程实践考虑的优化和改进。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Kotlin" scheme="https://twiceyuan.com/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kotlin 中的属性委托：ValueKit 的实现介绍</title>
+    <link href="https://twiceyuan.com/2017/12/10/rewrite-retropreference-by-kotlin/"/>
+    <id>https://twiceyuan.com/2017/12/10/rewrite-retropreference-by-kotlin/</id>
+    <published>2017-12-10T15:50:54.000Z</published>
+    <updated>2018-12-11T08:54:14.517Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;RetroPreference 是我之前用 Java 写的一个在 Android 项目里方便使用 SharedPreferences 的小工具，它能像 Retrofit 一样定义一个方便查看和管理的接口，然后通过库提供的方法创建实现这个接口的实例来完成对 SharedPreferences 的操作。很早之前我也用 Kotlin 重写了这个工具，但是基本类型必须有一个默认值这点感觉不是很符合使用者的需求。在学习 Kotlin 的委托属性后，我意识到可以用它更简单的实现这个工具。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="https://twiceyuan.com/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Anko 源码阅读笔记：构建 DSL 的基本原理</title>
+    <link href="https://twiceyuan.com/2017/12/06/read-anko-source-dsl-build-theory/"/>
+    <id>https://twiceyuan.com/2017/12/06/read-anko-source-dsl-build-theory/</id>
+    <published>2017-12-06T06:23:59.000Z</published>
+    <updated>2018-12-11T08:54:02.045Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;官方给出这一段 Anko AlertDialog DSL 的例子：&lt;/p&gt;
+&lt;figure class=&quot;highlight kotlin hljs&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;Hi, I&#39;m Roy&quot;&lt;/span&gt;, &lt;span class=&quot;hljs-string&quot;&gt;&quot;Have you tried turning it off and on again?&quot;&lt;/span&gt;) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    yesButton &amp;#123; toast(&lt;span class=&quot;hljs-string&quot;&gt;&quot;Oh…&quot;&lt;/span&gt;) &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    noButton &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这段代码可以构造出一个简单的对话框控件，下面介绍一下这种代码是如何被 Kotlin 解析的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
+    
+      <category term="Kotlin" scheme="https://twiceyuan.com/tags/Kotlin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GitLab CI 配置构建 Android 项目</title>
+    <link href="https://twiceyuan.com/2017/07/10/build-android-project-with-gitlab-ci/"/>
+    <id>https://twiceyuan.com/2017/07/10/build-android-project-with-gitlab-ci/</id>
+    <published>2017-07-10T03:17:48.000Z</published>
+    <updated>2018-09-02T16:03:51.681Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;标准步骤&quot;&gt;&lt;a href=&quot;#标准步骤&quot; class=&quot;headerlink&quot; title=&quot;标准步骤&quot;&gt;&lt;/a&gt;标准步骤&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;配置 GitLab Runner&lt;/li&gt;
+&lt;li&gt;添加配置文件。.gitlab-ci.yaml 文件规则 &lt;a href=&quot;https://docs.gitlab.com/ce/ci/yaml/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://docs.gitlab.com/ce/ci/yaml/&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;可以参考官方提供的文档来试试 &lt;a href=&quot;https://about.gitlab.com/2016/11/30/setting-up-gitlab-ci-for-android-projects/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://about.gitlab.com/2016/11/30/setting-up-gitlab-ci-for-android-projects/&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
+    
+      <category term="CI" scheme="https://twiceyuan.com/tags/CI/"/>
+    
+      <category term="GitLab" scheme="https://twiceyuan.com/tags/GitLab/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>源码安装配置 Nginx 记录</title>
+    <link href="https://twiceyuan.com/2017/06/15/install-nginx-by-source/"/>
+    <id>https://twiceyuan.com/2017/06/15/install-nginx-by-source/</id>
+    <published>2017-06-15T07:23:51.000Z</published>
+    <updated>2018-09-02T16:03:51.685Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;debian 官方源中的 nginx 太旧了（1.6.x），想试试开启 HTTP2 和 TCP/UDP 负载均衡试试，需要 1.9 版本以上。换了 backports 的源一些相关模块总是安装不成功（←太菜），所以尝试了从源码安装，顺便体验一下最新的 nginx。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="DevOps" scheme="https://twiceyuan.com/tags/DevOps/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java 中实例化一个抽象类对象的方式</title>
+    <link href="https://twiceyuan.com/2017/04/07/instantiating-an-abstract-class-in-java/"/>
+    <id>https://twiceyuan.com/2017/04/07/instantiating-an-abstract-class-in-java/</id>
+    <published>2017-04-07T11:39:24.000Z</published>
+    <updated>2018-09-02T16:03:51.686Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在 Java 中抽象类是不能直接被实例化的。但是很多时候抽象类的该特点成为一个比较麻烦的阻碍。例如如果我想使用动态代理来给一个抽象类赋予其执行抽象方法的能力，就会有两个困难：1. 动态代理只能创建实现接口的一个代理对象，而不能是一个继承抽象类的对象。为此标准的 JVM 中有一些实现，例如 javassist 可以使用字节码工具来完成这一目的(ProxyFactory)。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
+    
+      <category term="Java" scheme="https://twiceyuan.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JitPack 发布包含 Annotation Processor 的项目</title>
+    <link href="https://twiceyuan.com/2017/03/24/jitpack-publish-project-include-annotation-processor/"/>
+    <id>https://twiceyuan.com/2017/03/24/jitpack-publish-project-include-annotation-processor/</id>
+    <published>2017-03-24T08:14:24.000Z</published>
+    <updated>2018-09-02T16:03:51.690Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;普通的项目（单个 Library Module）发布到 JitPack，体验不错几乎是零配置的。尝试了一下直接构建了一下一个包含两个 module 的项目——一个 Android Library Module 和一个纯 Java Module 的时候，JitPack 只构建了 Java 的 Module。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android 版本分布</title>
+    <link href="https://twiceyuan.com/2017/03/22/android-version-statistics/"/>
+    <id>https://twiceyuan.com/2017/03/22/android-version-statistics/</id>
+    <published>2017-03-22T15:26:47.000Z</published>
+    <updated>2018-09-02T16:03:51.680Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Google 官方的数据，7天为一个统计周期：应该没有比这个更官方的了&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.android.com/about/dashboards/index.html&quot; target=&quot;_blank&quot; rel=&quot;noope
+      
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Intellij IDEA 下调试 Annotation Processor 代码的配置</title>
+    <link href="https://twiceyuan.com/2017/03/21/annotation-processor-debug-in-intellij/"/>
+    <id>https://twiceyuan.com/2017/03/21/annotation-processor-debug-in-intellij/</id>
+    <published>2017-03-21T05:33:48.000Z</published>
+    <updated>2018-09-02T16:03:51.681Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Annation Processor 是 Java 中静态分析注解并在预编译期生成代码常用的一个技术，因为不属于运行时代码，所以调试起来和普通代码有些不同，这里记录一下调试 Annotation Processor 代码的方法(Intellij 或 Android Studio)。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android Studio" scheme="https://twiceyuan.com/tags/Android-Studio/"/>
+    
+      <category term="Java" scheme="https://twiceyuan.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jenkins 获得本次构建的 git change log</title>
+    <link href="https://twiceyuan.com/2017/02/21/jenkins-changelog/"/>
+    <id>https://twiceyuan.com/2017/02/21/jenkins-changelog/</id>
+    <published>2017-02-20T20:32:29.000Z</published>
+    <updated>2018-09-02T16:03:51.689Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Jenkins 每次构建都会根据 git 的提交记录生成一个 web 页面来显示自上次构建之后的提交记录列表。在配置 CI 工作流时，很多情况需要获取这个提交记录的 String 值，但是 Jenkins 并没有提供这个功能。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Jenkins" scheme="https://twiceyuan.com/tags/Jenkins/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>借助 Docker 使用 Hexo</title>
+    <link href="https://twiceyuan.com/2017/02/11/docker-hexo/"/>
+    <id>https://twiceyuan.com/2017/02/11/docker-hexo/</id>
+    <published>2017-02-11T06:17:04.000Z</published>
+    <updated>2018-12-11T08:49:44.671Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;去歧义：本文讲述的是&lt;/p&gt;
+&lt;p&gt;本来想命名为：在 Docker 中使用 Hexo，想想还是有区别的：一个是完全把 Hexo 博客 host 在一个 docker 容器里(顶多把 site 的目录映射到外部来)，一个是仅仅把 Docker 作为替代宿主机安装 Node 以及 Hexo 环境的隔离环境。这样本机就可以不用安装 node 以及 hexo 相关的环境，如果你有在多台机器上使用 Hexo 的需求，那么使用 Docker 来代替本地安装是个不错的选择。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Docker" scheme="https://twiceyuan.com/tags/Docker/"/>
+    
+      <category term="Hexo" scheme="https://twiceyuan.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于 Android 背景色 Alpha 值的一个坑</title>
+    <link href="https://twiceyuan.com/2017/01/12/colordrawable-bug/"/>
+    <id>https://twiceyuan.com/2017/01/12/colordrawable-bug/</id>
+    <published>2017-01-12T15:35:13.000Z</published>
+    <updated>2018-09-02T16:03:51.682Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这是公司项目一个留了很久的 bug，尝试找了很多次原因都没有头绪。这个 bug 是这样的：&lt;/p&gt;
+&lt;p&gt;定义了一个主题色为例如 #FF0000，很多界面控件都用了这个颜色。可是这个颜色在 app 使用过程中用着用着就会出现变成了透明的情况，而且出现透明之后，所有使用这个颜色的控件都会变成透明。&lt;/p&gt;
+&lt;p&gt;更奇怪的是，重启应用会恢复这个问题，但是操作一会儿又会出现。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用 Supervisor 监听程序运行</title>
+    <link href="https://twiceyuan.com/2016/11/24/supervisor-note/"/>
+    <id>https://twiceyuan.com/2016/11/24/supervisor-note/</id>
+    <published>2016-11-24T13:53:38.000Z</published>
+    <updated>2018-12-11T08:55:30.050Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天发现之前搭的 nexus maven manager 服务挂了，被要求解决挂了之后不能自动重启的问题。本来想写个 shell 糊弄一下，请教了一下公司的后端小哥得知了 supervisor。其实 supervisor 之前倒也「用」过，阴影中的袜子官方文档貌似就介绍过它的使用，查了一下文档发现用起来很方便，应该是此类问题的最佳实践了，这里稍微记录一下基本用法。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://twiceyuan.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jenkins 中如何让 Android SDK 根据需要自动更新</title>
+    <link href="https://twiceyuan.com/2016/11/18/auto-update-android-sdk-on-jenkins/"/>
+    <id>https://twiceyuan.com/2016/11/18/auto-update-android-sdk-on-jenkins/</id>
+    <published>2016-11-18T14:45:59.000Z</published>
+    <updated>2018-12-11T08:47:59.092Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;每次项目中切换了新的 support，总是要登录构建服务器更新一下 SDK，很麻烦。其实 Jenkins 本身是支持自动更新的，稍微留一下会发现，构建时不存在的 SDK 的报错信息为：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You have not accepted th
+      
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
+    
+      <category term="CI" scheme="https://twiceyuan.com/tags/CI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从 Retrofit 源码学习 Java 的动态代理的使用</title>
+    <link href="https://twiceyuan.com/2016/11/11/retrofit-dynamic-proxy/"/>
+    <id>https://twiceyuan.com/2016/11/11/retrofit-dynamic-proxy/</id>
+    <published>2016-11-11T13:25:55.000Z</published>
+    <updated>2018-09-02T16:03:51.692Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Retrofit 是当前 Android 最流行的 HTTP 网络库之一了，其使用方式比较特殊，是通过定义一个接口类，通过给接口中方法和方法参数添加注解的方式来定义网络请求接口。这种风格下定义一个网络接口变得很简单。不过 Retrofit 是如何使用一个接口的 Class 创建出来实现了该接口的对象呢？最近因为工作原因想封装项目中的网络请求部分，在解决获取泛型嵌套问题的时候，一直没有找到比较理想的方案，所以拜读了 Retrofit 的源码看看这个明星网络库是如何实现这一黑科技的。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
+    
+      <category term="Java" scheme="https://twiceyuan.com/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android 项目的 Jenkins 参数化构建</title>
+    <link href="https://twiceyuan.com/2016/11/02/build-android-project-with-params/"/>
+    <id>https://twiceyuan.com/2016/11/02/build-android-project-with-params/</id>
+    <published>2016-11-02T07:20:56.000Z</published>
+    <updated>2018-12-11T08:39:42.553Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;需求描述&quot;&gt;&lt;a href=&quot;#需求描述&quot; class=&quot;headerlink&quot; title=&quot;需求描述&quot;&gt;&lt;/a&gt;需求描述&lt;/h3&gt;&lt;p&gt;项目分为三种类型构建：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;测试环境构建 debug&lt;/li&gt;
+&lt;li&gt;测试环境构建后上传内测平台 (fir.im)&lt;/li&gt;
+&lt;li&gt;发布版构建 release&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;三种构建类型在完成后都保存构建输出的 apk，只有在类型 2 完成后执行上传到内测平台操作&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
+    
+      <category term="Jenkins" scheme="https://twiceyuan.com/tags/Jenkins/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用 nexus 搭建 maven 私有仓库和 gradle maven 插件的配置</title>
+    <link href="https://twiceyuan.com/2016/10/29/setup-private-maven-repo-for-gradle-project/"/>
+    <id>https://twiceyuan.com/2016/10/29/setup-private-maven-repo-for-gradle-project/</id>
+    <published>2016-10-29T03:50:51.000Z</published>
+    <updated>2018-12-11T08:55:02.338Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;现在在 Android 开发特别是 Android Studio 普及依赖之后，gradle 是日常需要使用的必不可少的工具之一，使用 gradle 构建 Android 项目时一个重要的功能就是管理项目的依赖。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
+    
+      <category term="Maven" scheme="https://twiceyuan.com/tags/Maven/"/>
+    
+      <category term="Gradle" scheme="https://twiceyuan.com/tags/Gradle/"/>
+    
+  </entry>
+  
+</feed>
