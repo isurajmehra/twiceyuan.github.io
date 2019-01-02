@@ -1,7 +1,7 @@
 title: AsyncTask简介
-tags:
-  - Android
+tags: [Android]
 date: 2015-04-15 20:05:47
+
 ---
 
 AsyncTask enables proper and easy use of the UI thread. This class allows to perform background operations and publish results on the UI thread without having to manipulate threads and/or handlers.

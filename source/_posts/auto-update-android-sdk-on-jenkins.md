@@ -21,3 +21,4 @@ echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_SDK/licenses/an
 
 
 参考：http://stackoverflow.com/questions/38096225/automatically-accept-all-sdk-licences
+

@@ -1,6 +1,6 @@
 title: "在 Parallels Desktop 10 上 安装的 Fedora 上安装 Oracle 11gR2"
 date: 2015-03-19 11:14:09
-tags: [oracle]
+tags: [Oracle]
 
 ---
 

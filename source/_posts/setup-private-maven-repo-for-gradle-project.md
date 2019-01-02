@@ -1,6 +1,6 @@
 title: 使用 nexus 搭建 maven 私有仓库和 gradle maven 插件的配置
 date: 2016-10-29 11:50:51
-tags: [Android, Maven, gradle]
+tags: [Android, Maven, Gradle]
 
 ---
 现在在 Android 开发特别是 Android Studio 普及依赖之后，gradle 是日常需要使用的必不可少的工具之一，使用 gradle 构建 Android 项目时一个重要的功能就是管理项目的依赖。<!-- more -->在 gradle 中配置依赖是十分方便的，一般只需要配置一个仓库的地址，例如：

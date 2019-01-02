@@ -1,8 +1,7 @@
 title: Android 上的 git 服务器应用：Gidder
-tags:
-  - Android
-  - Git
+tags: [Android,Git]
 date: 2015-09-03 16:38:38
+
 ---
 
 好久没更新文章了，水一篇娱乐向的应用推荐：Gidder —— 在 Android 上搭建 git 服务器。

@@ -1,6 +1,6 @@
 title: "Hexo升级3.0啦"
 date: 2015-03-15 11:14:09
-tags: [hexo]
+tags: [Hexo]
 
 ---
 

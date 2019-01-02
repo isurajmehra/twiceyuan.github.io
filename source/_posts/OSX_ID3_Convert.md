@@ -1,6 +1,7 @@
 title: 音乐 ID3 乱码修复工具
 date: 2014-10-28 20:33:12
-tags: [OS X, iTunes, Mac]
+tags: [macOS, iTunes, Mac]
+
 ---
 音乐导入进 iTunes 常会有ID3信息乱码，图形工具大多需要付费，介绍一个免费好用的 Java 编写的命令行工具 id3iconv，官方网站在[这儿](http://www.zhoufeng.net/eng/id3iconv/)可自行下载。
 

@@ -1,10 +1,7 @@
 title: 搭建 jenkins 构建 Android 项目
-tags:
-  - Android
-  - CI
-  - Jenkins
-categories: []
+tags: [Android,CI,Jenkins]
 date: 2016-07-27 08:08:00
+
 ---
 之前用过 Flow.ci、Travis 等公共的 CI 工具感觉很方便，但毕竟源码在别人那里多少有点别扭。Jenkins 是一个免费的高度可定制的 CI 开源项目，现在的公司使用它来构建 Android 项目，所以也来试一试，记录下搭建的过程以及遇到的问题，供自己和需要的人参考。
 

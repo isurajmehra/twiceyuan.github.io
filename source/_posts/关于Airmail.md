@@ -1,7 +1,7 @@
 layout: post
 title: Airmail两天体验
 date: 2013-08-14 16:24:24
-tags: [Mac,OS X,评测]
+tags: [Mac,macOS,评测]
 
 ---
 Sparrow眼看被Google收买之后基本停止了更新，虽说官方承诺短期内会一直维护但恐怕没有大的更新了，只希望他们能做出更好的Gmail给大伙用吧:)。

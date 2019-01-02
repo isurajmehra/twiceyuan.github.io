@@ -1,6 +1,6 @@
 title: 开启用户鉴权时 Jenkins 触发远程构建时的 403 问题
 date: 2018-08-01 15:58:07
-tags: [jenkins]
+tags: [Jenkins]
 
 ---
 

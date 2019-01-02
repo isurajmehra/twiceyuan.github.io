@@ -1,9 +1,7 @@
 title: Android Studio 配置记录
-tags:
-  - Android
-  - Android Studio
-categories: []
+tags: [Android,Android Studio]
 date: 2015-05-09 12:22:00
+
 ---
 记录 Android Studio 一些自认为有用的配置。
 
@@ -36,3 +34,4 @@ date: 2015-05-09 12:22:00
 -  Live template
 
    编写代码模板。这个在 Settings 里搜索就可以找到，可以编辑一些常用的代码片段使用自己设定的几个字母快速生成。当然，某些情况下更方便和优雅的还是抽象出方法。
+

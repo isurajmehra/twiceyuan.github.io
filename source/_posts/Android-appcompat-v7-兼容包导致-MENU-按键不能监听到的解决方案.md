@@ -1,7 +1,7 @@
 title: Android appcompat-v7 兼容包导致 MENU 按键不能监听到的解决方案
-tags:
-  - Android
+tags: [Android]
 date: 2015-05-07 08:24:06
+
 ---
 
 在使用 com.android.support:appcompat-v7 版本 21 以上，并且 Activity 继承 ActionBarActivity 或者 AppCompactActivity 时，会发现 onKeyDown() 方法和 onKeyUp() 方法均获取不到菜单键 (MENU) 的点击事件。

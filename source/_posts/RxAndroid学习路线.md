@@ -1,9 +1,5 @@
 title: RxAndroid学习路线
-tags:
-  - Android
-  - RxJava
-  - RxAndroid
-
+tags: [Android,RxJava,RxAndroid]
 date: 2015-09-03 16:49:56
 
 ---

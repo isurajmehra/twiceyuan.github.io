@@ -1,8 +1,7 @@
 title: How to speed up gradle build time
-tags:
-  - Android
-  - Android Studio
+tags: [Android,Android Studio]
 date: 2015-04-15 07:31:21
+
 ---
 
 If you use the new Gradle build system with Android (or Android Studio) you might have realized, that even the simplest Gradle call (e.g. gradle project or grade tasks) is pretty slow. On my computer it took around eight seconds for that kind of Gradle calls. <a id="more"></a>You can decrease this startup time of Gradle (on my computer down to two seconds), if you tell Gradle to use a daemon to build. Just create a file named gradle.properties in the following directory:
@@ -15,15 +14,15 @@ Add this line to the file:
 
     org<span class="class">.gradle</span><span class="class">.daemon</span>=true
     `</pre>
-
+    
     From now on Gradle will use a daemon to build, whether you are using Gradle from command line or building in Android Studio. You could also place the gradle.properties file to the root directory of your project and commit it to your SCM system. But you would have to do this, for every project (if you want to use the daemon in every project).
-
+    
     Note: If you don’t build anything with Gradle for some time (currently 3 hours), it will stop the daemon, so that you will experience a long start-up time at the next build.
-
+    
     Note：Performance improvements are one of the great tasks in the Gradle roadmap for 2014 (and reaching into 2015). So I hope, we’ll see the general performance increasing within these years.
-
+    
     Note: This does only affect console builds. Android Studio always uses a Gradle daemon (and depending on your settings some other optimizations).
-
+    
     > 来源：[https://www.timroes.de/2013/09/12/speed-up-gradle/](https://www.timroes.de/2013/09/12/speed-up-gradle/)
 > 
 >     （_至今没过英语四级的人的蹩脚翻译仅供参考_）

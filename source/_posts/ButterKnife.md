@@ -1,6 +1,5 @@
 title: Android 绑定 View 终极利器——ButterKnife
-tags:
-  - Android
+tags: [Android]
 date: 2015-06-02 07:58:42
 
 ---

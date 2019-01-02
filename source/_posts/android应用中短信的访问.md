@@ -1,6 +1,7 @@
 title: Android应用中短信的访问
 date: 2014-01-23 16:58:06
 tags: [Android]
+
 ---
 
 首先在 AndroidManifest.xml 文件中添加代码

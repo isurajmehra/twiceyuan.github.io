@@ -1,6 +1,7 @@
 title: 多版本 Android Studio 共存[译]
 date: 2016-01-24 14:13:54
 tags: [Android Studio]
+
 ---
 
 现在同时安装多个版本的 Android Studio 已经成为可能。当我们提供 Canary 版本（或者 Beta 版本）的下一版本 IDE 时，你也许想安装这个新版本但并不想替换掉你原有的稳定版。

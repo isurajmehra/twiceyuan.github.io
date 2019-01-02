@@ -1,6 +1,7 @@
 title: 在Android Studio中删除Module
 date: 2014-05-14 18:20:20
 tags: [Android Studio, Android]
+
 ---
 先前在项目设置中选择 Module 之后上面的减号不见了，所以原来删除 Module 的方法不再适用。
 

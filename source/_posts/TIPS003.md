@@ -1,7 +1,7 @@
 title: TIP003
-tags:
-  - tips
+tags: [tips]
 date: 2015-04-03 08:24:51
+
 ---
 
 **True Nobility**

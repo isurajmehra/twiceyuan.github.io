@@ -1,6 +1,7 @@
 title: MongoDB 学习笔记1 —— 配置与启动
 date: 2014-10-01 19:25:22
 tags: [MongoDB, 数据库]
+
 ---
 _（环境：OS X Yosemite beta）_
 
@@ -37,7 +38,7 @@ _（环境：OS X Yosemite beta）_
 
     MongoDB shell version: 2.6.4
     connecting to: localhost:27017/admin
- 
+
 ###终止服务
 
 如果是前台运行的话，在 OS X 的终端下直接 Control + C 就可以终止服务了。如果是后台启动，可以在 Shell 下输入 db.shutdownServer() 来终止

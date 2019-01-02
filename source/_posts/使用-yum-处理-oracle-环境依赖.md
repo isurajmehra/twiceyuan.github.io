@@ -1,6 +1,5 @@
 title: 使用 yum 处理 oracle 环境依赖
-tags:
-  - oracle
+tags: Oracle
 date: 2015-03-27 08:01:35
 ---
 

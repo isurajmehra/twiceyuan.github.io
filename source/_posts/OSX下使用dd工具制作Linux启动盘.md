@@ -1,6 +1,7 @@
 title: OS X 下实用 dd 工具制作 Linux 的启动盘
 date: 2013-09-16 11:33:04
-tags: [Mac, Linux, OS X]
+tags: [Mac, Linux, macOS]
+
 ---
 
 以 Ubuntu 为例，转换 iso 文件为 dmg 文件

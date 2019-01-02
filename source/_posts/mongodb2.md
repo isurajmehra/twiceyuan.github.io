@@ -1,6 +1,7 @@
 title: MongoDB 学习笔记2 —— 数据库的基本操作
 date: 2014-10-01 19:35:07
 tags: [MongoDB, 数据库]
+
 ---
 
 ###增
@@ -23,13 +24,13 @@ tags: [MongoDB, 数据库]
 获取文档：
 
 	newObject=db.db_name({key:value});
-	
+
 修改文档：
 
 	newObject.key=new_value
 
 更新到数据库：
-	
+​	
     db.db_name.update({key:value},newObject)
 
 #### 2. 利用修改器更新
@@ -39,7 +40,7 @@ tags: [MongoDB, 数据库]
 属性增加指定数值
 
     db.db_name.update(key:value,{"$inc":1})
-	
+
 (2) $set 修改器
 
 属性修改为指定值。如该属性不存在，则创建并赋值
@@ -47,8 +48,9 @@ tags: [MongoDB, 数据库]
 	db.dbname.update(key:value,{"$set",key:value})
 	
 	并且可以修改 value 的数据类型，比如集合
-	
-	
+
+
+​	
 (3) $push $pop 数组
 
 (4) $ne 和 $addToSet 对比

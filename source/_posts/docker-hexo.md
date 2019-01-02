@@ -1,8 +1,7 @@
 title: 借助 Docker 使用 Hexo
-tags:
-  - Hexo
-  - Docker
+tags: [Hexo,Docker]
 date: 2017-02-11 14:17:04
+
 ---
 去歧义：本文讲述的是
 

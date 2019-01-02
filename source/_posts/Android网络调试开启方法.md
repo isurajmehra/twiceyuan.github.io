@@ -1,6 +1,7 @@
 title: Android网络调试开启方法
 date: 2014-11-21 19:09:01
 tags: Android
+
 ---
 最近卖了nexus 4换了nexus7(2013)玩，发现之前一直在CM上使用的网络调试在原生Android 5.0上并没有开启的选项，Google了一下，貌似原生的Android都没有。
 
@@ -34,3 +35,4 @@ tags: Android
        start adbd
 
 参考：[stackoverflow](http://stackoverflow.com/questions/2604727/how-can-i-connect-to-android-with-adb-over-tcp)
+

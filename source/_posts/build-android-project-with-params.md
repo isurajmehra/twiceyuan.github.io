@@ -1,6 +1,6 @@
 title: Android 项目的 Jenkins 参数化构建
 date: 2016-11-02 15:20:56
-tags: [Android, jenkins]
+tags: [Android, Jenkins]
 
 ---
 ### 需求描述

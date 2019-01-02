@@ -1,6 +1,6 @@
 title: Kotlin 中的属性委托：ValueKit 的实现介绍
 date: 2017-12-10 23:50:54
-tags: [kotlin, Android]
+tags: [Kotlin, Android]
 
 ---
 RetroPreference 是我之前用 Java 写的一个在 Android 项目里方便使用 SharedPreferences 的小工具，它能像 Retrofit 一样定义一个方便查看和管理的接口，然后通过库提供的方法创建实现这个接口的实例来完成对 SharedPreferences 的操作。很早之前我也用 Kotlin 重写了这个工具，但是基本类型必须有一个默认值这点感觉不是很符合使用者的需求。在学习 Kotlin 的委托属性后，我意识到可以用它更简单的实现这个工具。

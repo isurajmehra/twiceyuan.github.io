@@ -1,6 +1,7 @@
 title: Chrome书签图标不显示以及关闭自动更新的方法
 date: 2013-10-12 14:50:27
-tags: [Chrome, OS X]
+tags: [Chrome, macOS]
+
 ---
 
 最近在OS X Mavericks 上升级 Chrome 30之后发现频繁崩溃，查找查找相关资料发现属于 Chrome 的bug，所以在先退回29。

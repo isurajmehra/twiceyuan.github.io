@@ -1,6 +1,7 @@
 title: 在 Mac中离线升级 Android Studio
 date: 2013-09-27 10:10:27
-tags: [Mac, Android Studio, Android, OS X]
+tags: [Mac, Android Studio, Android, macOS]
+
 ---
 
 Android Studio 在线升级一直是个蛋疼问题，挂代理速度比较慢而且不稳定，但是所有蛋疼的在线升级问题都可以用一个方法解决——离线升级包。Mac 用离线升级包和Windows上基本相同只不过路径和资源的url不一样。

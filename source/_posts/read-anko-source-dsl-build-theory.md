@@ -1,6 +1,6 @@
 title: Anko 源码阅读笔记：构建 DSL 的基本原理
 date: 2017-12-06 14:23:59
-tags: [kotlin, Android]
+tags: [Kotlin, Android]
 
 ---
 官方给出这一段 Anko AlertDialog DSL 的例子：

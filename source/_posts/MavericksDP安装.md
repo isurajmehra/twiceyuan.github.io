@@ -1,8 +1,8 @@
 title: 进不了系统的情况下用 Dp1安装 Mavericks
 date: 2013-09-08 15:27:47
-tags: [Mac ,Mavericks, OS X]
----
+tags: [Mac ,Mavericks, macOS]
 
+---
 今天手贱+心急，在10.8下直接安装了dp7的升级包，结果是10.8进不去（无限菊花），10.9装不了；更悲剧的是，想重装 MTLion，系统版本显示为10.9提示已安装更高版本的系统不能覆盖安装。
 <!-- more -->
 

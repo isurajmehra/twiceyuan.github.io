@@ -1,8 +1,7 @@
 title: 在 github 上部署 maven repository 以及在 Android 中使用
-tags:
-  - Android
-  - Android Studio
+tags: [Android,Android Studio]
 date: 2015-05-07 07:24:42
+
 ---
 
 以 volley 为例。

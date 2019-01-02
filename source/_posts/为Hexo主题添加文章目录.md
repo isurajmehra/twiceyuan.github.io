@@ -1,6 +1,6 @@
 title: 为Hexo添加文章目录
 date: 2015-01-12 21:10:31
-tags: hexo
+tags: Hexo
 toc: true
 
 ---

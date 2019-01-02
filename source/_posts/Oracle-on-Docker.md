@@ -1,6 +1,6 @@
 title: "在 Docker 上配置 Oracle"
 date: 2015-03-20 16:07:19
-tags: [Docker, oracle]
+tags: [Docker, Oracle]
 toc: true
 
 ---
@@ -46,7 +46,7 @@ docker shell 下：
     sid: xe
     username: system
     password: oracle
-    
+
 SYSTEM和SYS的初始密码都为 `oracle`
 
 Container SSH 的 root 密码为`admin`。
@@ -56,3 +56,4 @@ Container SSH 的 root 密码为`admin`。
 安装完毕之后，就可以通过客户端配置上述数据库信息来连接数据库了。图为 OS X 下 SQL Developer 连接 Docker 中数据库的配置界面。
 
 {% asset_img oracle_config.png %}
+

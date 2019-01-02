@@ -1,6 +1,6 @@
 title: Kotlin 的泛型系统
 date: 2017-12-12 14:45:40
-tags: [kotlin]
+tags: [Kotlin]
 
 ---
 

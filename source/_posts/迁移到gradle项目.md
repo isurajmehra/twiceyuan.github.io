@@ -1,6 +1,7 @@
 title: 如何将 Intellij 项目迁移到 Gradle 项目
 date: 2013-09-30 16:35:23
 tags: [Android Studio, Android]
+
 ---
 
 > _本文来自 Google 官方文档，原文请点击 http://tools.android.com/tech-docs/new-build-system/migrating-from-intellij-projects_
