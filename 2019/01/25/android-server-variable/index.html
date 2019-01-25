@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta charset="utf-8">
+<title>Android 项目中配置服务器地址的方案演变 - twiceYuan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="在客户端开发时，经常会遇到一个非业务需求——更换服务器的 Base URL。一般的情况是测试环境和生产环境之间相互切换。">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 项目中配置服务器地址的方案演变">
+<meta property="og:url" content="https://twiceyuan.com/2019/01/25/android-server-variable/index.html">
+<meta property="og:site_name" content="twiceYuan">
+<meta property="og:description" content="在客户端开发时，经常会遇到一个非业务需求——更换服务器的 Base URL。一般的情况是测试环境和生产环境之间相互切换。">
+<meta property="og:locale" content="en-US">
+<meta property="og:updated_time" content="2019-01-25T08:36:45.480Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 项目中配置服务器地址的方案演变">
+<meta name="twitter:description" content="在客户端开发时，经常会遇到一个非业务需求——更换服务器的 Base URL。一般的情况是测试环境和生产环境之间相互切换。">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+    
+
+    
+    
+    
+    <style>body>.navbar,body>.section,body>.footer{opacity: 0}</style>
+    
+
+    
+    
+    
+    
+
+
+    
+    
+
+    
+    
+<script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?1560044f7350c95ffd183a737b08e65d";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+<style>
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #3273dc;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+</style>
+
+    
+
+
+</head>
+<body class="is-2-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                twiceYuan
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives/">Archives</a>
+                
+                <a class="navbar-item"
+                href="/tags/">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about/">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="Search" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-01-25T08:06:07.000Z">2019-01-25</time>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 minutes read (About 1583 words)
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                Android 项目中配置服务器地址的方案演变
+            
+        </h1>
+        <div class="content">
+            <p>在客户端开发时，经常会遇到一个非业务需求——更换服务器的 Base URL。一般的情况是测试环境和生产环境之间相互切换。</p>
+<a id="more"></a>
+<h3 id="手动修改"><a href="#手动修改" class="headerlink" title="手动修改"></a>手动修改</h3><p>最初的时候，我们使用的方式是最原始、手动的：定义一个常量，开发的时候改成测试服务器的地址，上线前改成生产服务器的地址。在项目的初期，一个 App 项目里只会和一个服务器打交道时，这种方式是最自然、简单的。</p>
+<h3 id="通过一个常量做同一控制"><a href="#通过一个常量做同一控制" class="headerlink" title="通过一个常量做同一控制"></a>通过一个常量做同一控制</h3><p>随着项目的迭代，可能出现很多服务器的情况。例如我们现在维护的一个 App，大概会和 6~10 个服务器进行通讯。当需要数据交互的服务器变多时，每次切换要改一堆服务器着实有点丑陋，所以后来项目的维护者又定义了一个常量：isDevEnv。从名字就可以看出来代表的是是否为开发环境，通过对这个常量的判断，来决定是否使用测试环境，类似这样：</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String releaseMainUrl = <span class="hljs-string">"https://twiceyuan.com"</span></span><br><span class="line">String debugMainUrl = <span class="hljs-string">"https://dev.twiceyuan.com"</span></span><br><span class="line">String mainUrl = <span class="hljs-keyword">if</span> (isDevEnv) debugMainUrl <span class="hljs-keyword">else</span> releaseMainUrl</span><br></pre></td></tr></table></figure>
+<p>后来知道了有 BuildConfig.DEBUG 这个 gradle 自动维护的常量，isDevEnv 就可以用它来代替，这样服务环境的切换似乎更加自动化了。</p>
+<h3 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h3><p>然而这样还是有一些问题：</p>
+<ol>
+<li>每次切换其实只是一个常量的修改，但是切换 BuildType 常常需要一次漫长的 Gradle Sync 过程，并且在这之后还需要再编译一次项目；</li>
+<li>随着时间的推移以及需要接入的新服务器的添加，发现切换服务器并不是之前设想的一刀切，要么全是测试要么全是生产的模式，而是有时新加入的服务器，需要在测试阶段对接产品的生产数据；</li>
+<li>有时后端可能需要临时设置一个服务器地址（比如局域网自己机器的），这时候还要麻烦客户端开发来把这个常量改一下打个包给后端，然后再改回来。</li>
+</ol>
+<h3 id="理想的方案"><a href="#理想的方案" class="headerlink" title="理想的方案"></a>理想的方案</h3><p>针对这些问题，理想的方案需要满足以下几点需求：</p>
+<ol>
+<li>能够在项目用通过代码配置测试服务器和生产服务器</li>
+<li>针对第一部配置的服务器，能够设置一个默认值，并且运行时可以选择这个值</li>
+<li>针对测试服务器的选项，可以根据需要运行时修改这个值。</li>
+<li>生产版本不允许修改这个值。</li>
+</ol>
+<p>有在运行时改变的功能，就需要对数据进行持久化，以方便下次启动时能够仍然使用之前设置的值。所以针对每一项需要持久化的数据为：目前选择的是哪个服务器选项（没有保存过就使用默认的），该选项的值（没有修改过也是取默认的）。另外需要有一个完整的配置界面，可以修改对应的值。</p>
+<p>根据上面提到的需求，首先我们似乎需要定义一个可供配置的服务器 model：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Variable</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> String name;                 <span class="hljs-comment">// 名称</span></span><br><span class="line">    <span class="hljs-keyword">public</span> String desc;                 <span class="hljs-comment">// 说明</span></span><br><span class="line">    <span class="hljs-keyword">public</span> Item currentValue;           <span class="hljs-comment">// 默认值/当前选项</span></span><br><span class="line">    <span class="hljs-keyword">public</span> ArrayList&lt;Item&gt; selections;  <span class="hljs-comment">// 可选项</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同时每个选项可以配置名称、值以及是否可以编辑：<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Item</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> String name;        <span class="hljs-comment">// 选项名称</span></span><br><span class="line">    <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> isEditable; <span class="hljs-comment">// 是否可编辑</span></span><br><span class="line">    <span class="hljs-keyword">public</span> String value;  			 <span class="hljs-comment">// 选项值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>因为获取一个 Variable 对象值时，可能需要拦截操作比如判断是否从缓存取还是外存中取，所以选择使用了动态代理+ interface 定义，类似 retrofit 定义的方式实现。</p>
+<p>比如下面就是一个正常的服务器定义：</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CRM</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 测试服务器可在运行时编辑</span></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Debug</span> : <span class="hljs-type">Variable.Item</span></span>(<span class="hljs-string">"测试"</span>, <span class="hljs-string">"http://debug.server"</span>, isEditable = <span class="hljs-literal">true</span>) </span><br><span class="line">    <span class="hljs-comment">// 生产服务器不可编辑</span></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Release</span> : <span class="hljs-type">Variable.Item</span></span>(<span class="hljs-string">"生产"</span>, <span class="hljs-string">"http://release.server"</span>)</span><br><span class="line">    <span class="hljs-comment">// 默认选择提供者</span></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Default</span> : <span class="hljs-type">Variable.DefaultItemProvider &#123;</span></span></span><br><span class="line">        <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">provide</span><span class="hljs-params">()</span></span>: Class&lt;<span class="hljs-keyword">out</span> Variable.Item&gt; &#123;</span><br><span class="line">            <span class="hljs-keyword">return</span> Release::<span class="hljs-class"><span class="hljs-keyword">class</span>.<span class="hljs-title">java</span></span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>之后就是这个服务器的真正配置，默认服务器采用定义提供者 class 也是这个原因，因为注解无法赋值一个非常量，所以需要定义一个实现选择服务器逻辑的 class 用来放到注解值：</p>
+<figure class="highlight kotlin hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">    <span class="hljs-comment">//...</span></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ServerConfig</span> </span>&#123;</span><br><span class="line">        <span class="hljs-meta">@VariableProp(</span></span><br><span class="line"><span class="hljs-meta">        name = <span class="hljs-meta-string">"crm"</span>, desc = <span class="hljs-meta-string">"CRM 服务器"</span>,</span></span><br><span class="line"><span class="hljs-meta">        selections = [CRM.Debug::class, CRM.Release::class],</span></span><br><span class="line"><span class="hljs-meta">        defaultValue = CRM.Default::class</span></span><br><span class="line"><span class="hljs-meta">    )</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">crm</span><span class="hljs-params">()</span></span>: Variable</span><br><span class="line">    <span class="hljs-comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样以来，对于使用者来说的配置工作就完成了。它背后的原理其实也很简单：</p>
+<p>首先通过 Proxy 根据定义的 ServerConfig 接口创建一个代理对象，来获取调用方法的注解属性。获取的方式有一个优先级，即先判断缓存变量中是否有，再判断外寸中缓存的配置是否有(有的话缓存到内存)，都没有的话，根据注解获取默认值，再缓存到内存中：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Map&lt;String, Variable&gt; cache = <span class="hljs-keyword">new</span> ConcurrentHashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Variable <span class="hljs-title">getEnvVariableByAnnotation</span><span class="hljs-params">(Context context, VariableProp variableAnnotation)</span> </span>&#123;</span><br><span class="line">    String name = variableAnnotation.name();</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 1. 内存中有优先使用内存的</span></span><br><span class="line">    Variable cachedVariable = cache.get(name);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (cachedVariable != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> cachedVariable;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 2. 判断外存中是否有，有的话取外存并缓存到内存中</span></span><br><span class="line">    Variable diskCachedVariable = readFromDisk(context, name);</span><br><span class="line">    <span class="hljs-keyword">if</span> (diskCachedVariable != <span class="hljs-keyword">null</span>) &#123;</span><br><span class="line">    cache.put(name, diskCachedVariable);</span><br><span class="line">    <span class="hljs-keyword">return</span> diskCachedVariable;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 3. 都没有，则根据注解获取默认的</span></span><br><span class="line">    Variable newVariable = generateVariableByDefault(variableAnnotation);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 缓存到内存中</span></span><br><span class="line">    cache.put(name, newVariable);</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> newVariable;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这些变量的配置页面，也可以通过相同的方法，反射 interface 来获取，同时配置页面做过的改动，应用到内存和外寸，开发者可以通过重启应用或者自定义刷新依赖这些变量的地方来通知这些变更。</p>
+<p>项目的实现和例子都分享到了 GitHub 上，欢迎 Star 或 PR：<a href="https://jitpack.io/com/github/twiceyuan/EnvVariable" target="_blank" rel="noopener">https://jitpack.io/com/github/twiceyuan/EnvVariable</a></p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Android/">Android</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2018/12/11/MacCaseSensitiveConversion/">
+                <span class="level-item">macOS 文件系统的大小写敏感转换</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">Comentarios</h3>
+        
+<script>
+    var disqus_config = function () {
+        this.page.url = 'https://twiceyuan.com/2019/01/25/android-server-variable/';
+        this.page.identifier = '2019/01/25/android-server-variable/';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'twiceyuan' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+    </div>
+</div>
+</div>
+                
+                
+
+
+
+<div class="column is-4-tablet is-4-desktop is-4-widescreen  has-order-3 column-right">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    <img class="image is-128x128 has-mb-6" src="https://s.gravatar.com/avatar/38576d83bd35b1a8b8df8642ebfa5b51?s=256">
+                    
+                    <p class="is-size-4 is-block">
+                        twiceYuan
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        // TODO
+                    </p>
+                    
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Entradas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        110
+                    </p>
+                </div>
+            </div>
+            <!-- <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Categorias
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        0
+                    </p>
+                </div>
+            </div> -->
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        Etiquetas
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        52
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/twiceyuan">
+                SEGUIR</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="http://github.com/twiceyuan">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Telegram" href="https://t.me/twiceyuan">
+                
+                <i class="fab fa-telegram"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="http://twitter.com/twiceYuan">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+
+    
+        
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Nube de etiquetas
+        </h3>
+        <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/Android-Studio/" style="font-size: 17.78px;">Android Studio</a> <a href="/tags/CI/" style="font-size: 13.33px;">CI</a> <a href="/tags/Chrome/" style="font-size: 11.11px;">Chrome</a> <a href="/tags/Dagger-2/" style="font-size: 10px;">Dagger 2</a> <a href="/tags/DevOps/" style="font-size: 10px;">DevOps</a> <a href="/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/tags/Git/" style="font-size: 11.11px;">Git</a> <a href="/tags/GitLab/" style="font-size: 10px;">GitLab</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Java/" style="font-size: 13.33px;">Java</a> <a href="/tags/Java-EE/" style="font-size: 10px;">Java EE</a> <a href="/tags/Jenkins/" style="font-size: 13.33px;">Jenkins</a> <a href="/tags/Kotlin/" style="font-size: 12.22px;">Kotlin</a> <a href="/tags/Linux/" style="font-size: 14.44px;">Linux</a> <a href="/tags/MIUI/" style="font-size: 10px;">MIUI</a> <a href="/tags/Mac/" style="font-size: 15.56px;">Mac</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/Mavericks/" style="font-size: 10px;">Mavericks</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/Octopress/" style="font-size: 10px;">Octopress</a> <a href="/tags/Oracle/" style="font-size: 12.22px;">Oracle</a> <a href="/tags/Repost/" style="font-size: 11.11px;">Repost</a> <a href="/tags/RxAndroid/" style="font-size: 11.11px;">RxAndroid</a> <a href="/tags/RxJava/" style="font-size: 11.11px;">RxJava</a> <a href="/tags/SSH框架/" style="font-size: 10px;">SSH框架</a> <a href="/tags/Swift/" style="font-size: 10px;">Swift</a> <a href="/tags/hexo/" style="font-size: 11.11px;">hexo</a> <a href="/tags/iTunes/" style="font-size: 10px;">iTunes</a> <a href="/tags/macOS/" style="font-size: 18.89px;">macOS</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/tips/" style="font-size: 14.44px;">tips</a> <a href="/tags/业界新闻/" style="font-size: 10px;">业界新闻</a> <a href="/tags/利器/" style="font-size: 10px;">利器</a> <a href="/tags/博客搭建/" style="font-size: 11.11px;">博客搭建</a> <a href="/tags/复习/" style="font-size: 10px;">复习</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 11.11px;">数据库</a> <a href="/tags/生活技能/" style="font-size: 10px;">生活技能</a> <a href="/tags/知乎/" style="font-size: 12.22px;">知乎</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a> <a href="/tags/编程随想/" style="font-size: 10px;">编程随想</a> <a href="/tags/编译原理/" style="font-size: 10px;">编译原理</a> <a href="/tags/自学/" style="font-size: 10px;">自学</a> <a href="/tags/评测/" style="font-size: 10px;">评测</a> <a href="/tags/课堂笔记/" style="font-size: 15.56px;">课堂笔记</a> <a href="/tags/软件工程/" style="font-size: 10px;">软件工程</a> <a href="/tags/软件测试/" style="font-size: 10px;">软件测试</a> <a href="/tags/随笔/" style="font-size: 14.44px;">随笔</a>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            Recientes
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-01-25T08:06:07.000Z">2019-01-25</time></div>
+                    <a href="/2019/01/25/android-server-variable/" class="has-link-black-ter is-size-6">Android 项目中配置服务器地址的方案演变</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-12-11T09:03:54.000Z">2018-12-11</time></div>
+                    <a href="/2018/12/11/MacCaseSensitiveConversion/" class="has-link-black-ter is-size-6">macOS 文件系统的大小写敏感转换</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-11-07T02:02:28.000Z">2018-11-07</time></div>
+                    <a href="/2018/11/07/travis-accept-licenses/" class="has-link-black-ter is-size-6">Travis 上接受 SDK License</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-01T09:43:20.000Z">2018-08-01</time></div>
+                    <a href="/2018/08/01/generate-app-versison-by-git-tag/" class="has-link-black-ter is-size-6">使用 Git 的 tag 管理 App 版本</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-08-01T07:58:07.000Z">2018-08-01</time></div>
+                    <a href="/2018/08/01/jenkins-trigger-remotely/" class="has-link-black-ter is-size-6">开启用户鉴权时 Jenkins 触发远程构建时的 403 问题</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            Archivos
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/07/">
+                <span class="level-start">
+                    <span class="level-item">July 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2016/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2016</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/06/">
+                <span class="level-start">
+                    <span class="level-item">June 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/04/">
+                <span class="level-start">
+                    <span class="level-item">April 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">7</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2015/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2015</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">8</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/12/">
+                <span class="level-start">
+                    <span class="level-item">December 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/11/">
+                <span class="level-start">
+                    <span class="level-item">November 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/05/">
+                <span class="level-start">
+                    <span class="level-item">May 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">6</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2014/01/">
+                <span class="level-start">
+                    <span class="level-item">January 2014</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/10/">
+                <span class="level-start">
+                    <span class="level-item">October 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/09/">
+                <span class="level-start">
+                    <span class="level-item">September 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">5</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/03/">
+                <span class="level-start">
+                    <span class="level-item">March 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2013/02/">
+                <span class="level-start">
+                    <span class="level-item">February 2013</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    twiceYuan
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 twiceYuan&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus">Icarus</a>
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("en-US");</script>
+
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                if (typeof($.fn.lightGallery) === 'function') {
+                    $('.article').lightGallery({ selector: '.gallery-item' });
+                }
+                if (typeof($.fn.justifiedGallery) === 'function') {
+                    $('.justified-gallery').justifiedGallery();
+                }
+            });
+        })(jQuery);
+    </script>
+    
+
+    
+    
+    
+    <div id="outdated">
+        <h6>Your browser is out-of-date!</h6>
+        <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+        <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // plugin function, place inside DOM ready function
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#ffffff',
+                lowerThan: 'flex'
+            })
+        });
+    </script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/animejs@2.2.0/anime.js"></script>
+    <script>
+    function isIE() {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf('MSIE ');
+        var trident = ua.indexOf('Trident/');
+        return (msie > 0 || trident > 0);
+    }
+
+    $(document).ready(function () {
+        $('body>.navbar,body>.section,body>.footer').css('opacity', 1);
+        if (!isIE()) {
+            ['.column-main > .card',
+             '.column-left > .card',
+             '.column-right > .card'].map(function(target) {
+                anime({
+                    targets: target,
+                    scale: [0.8, 1],
+                    opacity: [0, 1],
+                    duration: 300,
+                    easing: 'easeOutSine',
+                    delay: function(el, i, l) {
+                        return i * 100;
+                    }
+                })
+            });
+
+            anime({
+                targets: '.navbar-main',
+                translateY: [-100, 0],
+                opacity: [0, 1],
+                duration: 300,
+                easing: 'easeOutSine'
+            });
+        }
+    });
+    </script>
+    
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+
+<a id="back-to-top" title="Back to Top" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<style>
+#back-to-top {
+    position: fixed;
+    padding: 8px 0;
+    transition: 0.4s ease opacity, 0.4s ease width, 0.4s ease transform, 0.4s ease border-radius;
+    opacity: 0;
+    line-height: 24px;
+    outline: none;
+    transform: translateY(120px);
+}
+#back-to-top.fade-in {
+    opacity: 1;
+}
+#back-to-top.rise-up {
+    transform: translateY(0);
+}
+</style>
+<script src="/js/back-to-top.js"></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: 'Entradas',
+                PAGES: 'Pages',
+                CATEGORIES: 'Categorias',
+                TAGS: 'Etiquetas',
+                UNTITLED: '(Untitled)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

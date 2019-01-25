@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://twiceyuan.com/"/>
-  <updated>2018-12-11T09:28:59.613Z</updated>
+  <updated>2019-01-25T08:36:45.480Z</updated>
   <id>https://twiceyuan.com/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android 项目中配置服务器地址的方案演变</title>
+    <link href="https://twiceyuan.com/2019/01/25/android-server-variable/"/>
+    <id>https://twiceyuan.com/2019/01/25/android-server-variable/</id>
+    <published>2019-01-25T08:06:07.000Z</published>
+    <updated>2019-01-25T08:36:45.480Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在客户端开发时，经常会遇到一个非业务需求——更换服务器的 Base URL。一般的情况是测试环境和生产环境之间相互切换。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>macOS 文件系统的大小写敏感转换</title>
@@ -397,32 +415,6 @@
       <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
     
       <category term="Java" scheme="https://twiceyuan.com/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 项目的 Jenkins 参数化构建</title>
-    <link href="https://twiceyuan.com/2016/11/02/build-android-project-with-params/"/>
-    <id>https://twiceyuan.com/2016/11/02/build-android-project-with-params/</id>
-    <published>2016-11-02T07:20:56.000Z</published>
-    <updated>2018-12-11T08:39:42.553Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;需求描述&quot;&gt;&lt;a href=&quot;#需求描述&quot; class=&quot;headerlink&quot; title=&quot;需求描述&quot;&gt;&lt;/a&gt;需求描述&lt;/h3&gt;&lt;p&gt;项目分为三种类型构建：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;测试环境构建 debug&lt;/li&gt;
-&lt;li&gt;测试环境构建后上传内测平台 (fir.im)&lt;/li&gt;
-&lt;li&gt;发布版构建 release&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;三种构建类型在完成后都保存构建输出的 apk，只有在类型 2 完成后执行上传到内测平台操作&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Android" scheme="https://twiceyuan.com/tags/Android/"/>
-    
-      <category term="Jenkins" scheme="https://twiceyuan.com/tags/Jenkins/"/>
     
   </entry>
   

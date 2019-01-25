@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://twiceyuan.com/2019/01/25/android-server-variable/</loc>
+    
+    <lastmod>2019-01-25T08:36:45.480Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://twiceyuan.com/2015/05/11/Android%E5%BA%94%E7%94%A8%E8%AF%81%E4%B9%A6%E7%AD%BE%E5%90%8D/</loc>
     
     <lastmod>2018-12-11T09:29:02.268Z</lastmod>
@@ -576,70 +583,7 @@
   </url>
   
   <url>
-    <loc>https://twiceyuan.com/2015/11/22/%E5%85%B3%E4%BA%8EAdapter%E7%9A%84%E4%B8%80%E4%B8%AA%E5%BC%82%E5%B8%B8/</loc>
-    
-    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://twiceyuan.com/2017/01/12/colordrawable-bug/</loc>
-    
-    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://twiceyuan.com/2017/03/24/jitpack-publish-project-include-annotation-processor/</loc>
-    
-    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://twiceyuan.com/2015/01/21/TIPS000/</loc>
-    
-    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://twiceyuan.com/2013/02/27/linux01/</loc>
-    
-    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://twiceyuan.com/2013/03/05/linux02/</loc>
-    
-    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://twiceyuan.com/2013/08/02/%E5%A5%BD%E4%B9%85%E6%B2%A1%E6%9B%B4%E6%96%B0%E4%BA%86/</loc>
-    
-    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://twiceyuan.com/2013/03/06/linux03/</loc>
-    
-    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://twiceyuan.com/2015/03/21/docker-basic/</loc>
-    
-    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://twiceyuan.com/2017/03/22/android-version-statistics/</loc>
+    <loc>https://twiceyuan.com/2015/02/16/AndroidSDKMirror/</loc>
     
     <lastmod>2018-09-02T16:03:51.000Z</lastmod>
     
@@ -647,41 +591,6 @@
   
   <url>
     <loc>https://twiceyuan.com/2015/03/21/Connect-to-Docker-Container/</loc>
-    
-    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://twiceyuan.com/2015/10/09/otto-%E5%9C%A8-Service-%E4%B8%AD%E5%8F%91%E5%B8%83%E4%BA%8B%E4%BB%B6/</loc>
-    
-    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://twiceyuan.com/2018/08/01/generate-app-versison-by-git-tag/</loc>
-    
-    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://twiceyuan.com/2016/11/11/retrofit-dynamic-proxy/</loc>
-    
-    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://twiceyuan.com/2013/08/05/%E8%AF%B4%E8%AF%B4%E8%BF%99%E6%AE%B5%E6%97%B6%E9%97%B40/</loc>
-    
-    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://twiceyuan.com/2015/12/26/retrofit2-0/</loc>
     
     <lastmod>2018-09-02T16:03:51.000Z</lastmod>
     
@@ -702,7 +611,42 @@
   </url>
   
   <url>
+    <loc>https://twiceyuan.com/2015/01/21/TIPS000/</loc>
+    
+    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://twiceyuan.com/2017/03/22/android-version-statistics/</loc>
+    
+    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://twiceyuan.com/2017/07/10/build-android-project-with-gitlab-ci/</loc>
+    
+    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://twiceyuan.com/2017/01/12/colordrawable-bug/</loc>
+    
+    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://twiceyuan.com/2015/03/21/docker-basic/</loc>
+    
+    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://twiceyuan.com/2018/08/01/generate-app-versison-by-git-tag/</loc>
     
     <lastmod>2018-09-02T16:03:51.000Z</lastmod>
     
@@ -723,7 +667,7 @@
   </url>
   
   <url>
-    <loc>https://twiceyuan.com/2015/01/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/</loc>
+    <loc>https://twiceyuan.com/2017/02/21/jenkins-changelog/</loc>
     
     <lastmod>2018-09-02T16:03:51.000Z</lastmod>
     
@@ -737,21 +681,49 @@
   </url>
   
   <url>
-    <loc>https://twiceyuan.com/2015/02/16/AndroidSDKMirror/</loc>
+    <loc>https://twiceyuan.com/2017/03/24/jitpack-publish-project-include-annotation-processor/</loc>
     
     <lastmod>2018-09-02T16:03:51.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://twiceyuan.com/2017/02/21/jenkins-changelog/</loc>
+    <loc>https://twiceyuan.com/2013/02/27/linux01/</loc>
     
     <lastmod>2018-09-02T16:03:51.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://twiceyuan.com/2014/12/26/J2EE-Test-Note/</loc>
+    <loc>https://twiceyuan.com/2013/03/05/linux02/</loc>
+    
+    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://twiceyuan.com/2013/03/06/linux03/</loc>
+    
+    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://twiceyuan.com/2015/10/09/otto-%E5%9C%A8-Service-%E4%B8%AD%E5%8F%91%E5%B8%83%E4%BA%8B%E4%BB%B6/</loc>
+    
+    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://twiceyuan.com/2016/11/11/retrofit-dynamic-proxy/</loc>
+    
+    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://twiceyuan.com/2015/12/26/retrofit2-0/</loc>
     
     <lastmod>2018-09-02T16:03:51.000Z</lastmod>
     
@@ -759,6 +731,41 @@
   
   <url>
     <loc>https://twiceyuan.com/2015/01/13/%E4%BD%BF%E7%94%A8CyanDelta%E5%8D%87%E7%BA%A7%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/</loc>
+    
+    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://twiceyuan.com/2015/11/22/%E5%85%B3%E4%BA%8EAdapter%E7%9A%84%E4%B8%80%E4%B8%AA%E5%BC%82%E5%B8%B8/</loc>
+    
+    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://twiceyuan.com/2013/08/02/%E5%A5%BD%E4%B9%85%E6%B2%A1%E6%9B%B4%E6%96%B0%E4%BA%86/</loc>
+    
+    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://twiceyuan.com/2013/08/05/%E8%AF%B4%E8%AF%B4%E8%BF%99%E6%AE%B5%E6%97%B6%E9%97%B40/</loc>
+    
+    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://twiceyuan.com/2015/01/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/</loc>
+    
+    <lastmod>2018-09-02T16:03:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://twiceyuan.com/2014/12/26/J2EE-Test-Note/</loc>
     
     <lastmod>2018-09-02T16:03:51.000Z</lastmod>
     
@@ -786,14 +793,14 @@
   </url>
   
   <url>
-    <loc>https://twiceyuan.com/links/index.html</loc>
+    <loc>https://twiceyuan.com/about/index.html</loc>
     
     <lastmod>2018-09-02T16:03:51.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://twiceyuan.com/about/index.html</loc>
+    <loc>https://twiceyuan.com/links/index.html</loc>
     
     <lastmod>2018-09-02T16:03:51.000Z</lastmod>
     
