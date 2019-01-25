@@ -129,5 +129,5 @@ private static Variable getEnvVariableByAnnotation(Context context, VariableProp
 
 这些变量的配置页面，也可以通过相同的方法，反射 interface 来获取，同时配置页面做过的改动，应用到内存和外寸，开发者可以通过重启应用或者自定义刷新依赖这些变量的地方来通知这些变更。
 
-项目的实现和例子都分享到了 GitHub 上，欢迎 Star 或 PR：https://jitpack.io/com/github/twiceyuan/EnvVariable
+项目的实现和例子都分享到了 GitHub 上，欢迎 Star 或 PR：https://github.com/twiceyuan/EnvVariable/
 
