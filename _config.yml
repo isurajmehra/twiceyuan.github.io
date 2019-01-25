@@ -188,4 +188,4 @@ deploy:
 backup:
   type: git
   repository:
-    github: git@github.com:twiceyuan/twiceyuan.github.io.git,backup
+    backup: git@github.com:twiceyuan/twiceyuan.github.io.git,backup
