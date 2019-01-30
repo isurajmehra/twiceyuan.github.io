@@ -107,15 +107,15 @@ private static Variable getEnvVariableByAnnotation(Context context, VariableProp
     Variable cachedVariable = cache.get(name);
 
     if (cachedVariable != null) {
-    return cachedVariable;
+        return cachedVariable;
     }
 
     // 2. 判断外存中是否有，有的话取外存并缓存到内存中
     Variable diskCachedVariable = readFromDisk(context, name);
-    if (diskCachedVariable != null) {
-    cache.put(name, diskCachedVariable);
-    return diskCachedVariable;
-    }
+        if (diskCachedVariable != null) {
+            cache.put(name, diskCachedVariable);
+            return diskCachedVariable;
+        }
 
     // 3. 都没有，则根据注解获取默认的
     Variable newVariable = generateVariableByDefault(variableAnnotation);

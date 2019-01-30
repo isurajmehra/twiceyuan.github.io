@@ -1,4 +1,4 @@
-require('../includes/tasks/welcome');
+// require('../includes/tasks/welcome');
 require('../includes/tasks/check_deps');
 require('../includes/tasks/check_config');
 require('../includes/generators/categories')(hexo);
