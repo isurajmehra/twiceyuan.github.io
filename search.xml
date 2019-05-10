@@ -284,9 +284,9 @@
             
             <tag> Android </tag>
             
-            <tag> CI </tag>
-            
             <tag> GitLab </tag>
+            
+            <tag> CI </tag>
             
         </tags>
         
@@ -2102,7 +2102,7 @@ Note: This does only affect console builds. Android Studio always uses a Gradle 
 <p>docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</p>
 <p>Create a new image from a container’s changes</p>
 <p>根据一个 container 的变化创建一个新的 image</p>
-<p><code>-a, --author=&quot;&quot;</code>     Author (e.g., “John Hannibal Smith <a href="mailto:&#x68;&#97;&#110;&#x6e;&#x69;&#98;&#97;&#x6c;&#64;&#x61;&#x2d;&#116;&#101;&#x61;&#109;&#x2e;&#x63;&#111;&#109;" target="_blank" rel="noopener">&#x68;&#97;&#110;&#x6e;&#x69;&#98;&#97;&#x6c;&#64;&#x61;&#x2d;&#116;&#101;&#x61;&#109;&#x2e;&#x63;&#111;&#109;</a>“)</p>
+<p><code>-a, --author=&quot;&quot;</code>     Author (e.g., “John Hannibal Smith <a href="mailto:&#x68;&#97;&#x6e;&#110;&#x69;&#x62;&#97;&#x6c;&#x40;&#97;&#x2d;&#x74;&#101;&#x61;&#x6d;&#46;&#x63;&#x6f;&#x6d;" target="_blank" rel="noopener">&#x68;&#97;&#x6e;&#110;&#x69;&#x62;&#97;&#x6c;&#x40;&#97;&#x2d;&#x74;&#101;&#x61;&#x6d;&#46;&#x63;&#x6f;&#x6d;</a>“)</p>
 <p><code>--help=false</code>        Print usage</p>
 <p><code>-m, --message=&quot;&quot;</code>    Commit message</p>
 <p><code>-p, --pause=true</code>    Pause container during commit</p>
