@@ -164,9 +164,6 @@ jsonContent:
     categories: false
     tags: false
 
-admin:
-  deployCommand: './hexo-deploy.sh'
-
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
